@@ -43,22 +43,35 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
   int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
   int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
 
+  int leftRecvStarts[4]   = { 0, 0, 0, 0 };
+  int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
+  int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
+  int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
+  int bottomRecvStarts[4] = { 0, 0, 0, 0 };
+  int bottomSendStarts[4] = { 0, cf.ng, 0, 0 };
+  int topRecvStarts[4]    = { 0, cf.ngj - cf.ng, 0, 0 };
+  int topSendStarts[4]    = { 0, cf.ncj, 0, 0 };
   //aH = Kokkos::create_mirror_view(a);
 
   FS4D &aR = a;
 
   if (rank % 2 == 0) {
-    MPI_Irecv( aH.data()
+    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    MPI_Irecv( a.data()
              , 4
              , MPI_DOUBLE
-             ,
+             , temp_rank
+             , MPI_ANY_TAG
+             , MPI_COMM_WORLD
+             , MPI_REQUEST_NULL
              );
   }
   else {
-    MPI_Isend( aH.data()
+    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    MPI_Isend( a.data()
              , 4
              , MPI_DOUBLE
-             , rank + 1
+             , temp_rank
              , MPI_ANY_TAG
              , MPI_COMM_WORLD
              , MPI_REQUEST_NULL
