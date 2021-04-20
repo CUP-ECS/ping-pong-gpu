@@ -3,5 +3,5 @@
 
 struct inputConfig {
   int nci, ncj, nck;
-  int ng, ngi, ngj, ngk;
+  int ng, ngi, ngj, ngk, nvt;
 };
