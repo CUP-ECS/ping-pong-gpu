@@ -1,1 +1,0 @@
-/home/ghostbird/spack/opt/spack/linux-archrolling-skylake/gcc-10.2.0/cuda-11.1.0-b4evoscxqkutpww7unbxs6jknfnry2z3/libnvvp/features/org.eclipse.equinox.p2.extras.feature_1.2.0.v20140911-0143/META-INF/MANIFEST.MF

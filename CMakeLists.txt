@@ -19,9 +19,14 @@ find_package(Kokkos 3 REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
 add_executable(ping_pong src/ping_pong.cpp)
+#target_link_libraries(ping_pong
+#                      kokkos
+#                      lua)
+
 target_link_libraries(ping_pong
-                      kokkos
-                      lua)
+	Kokkos::kokkos
+	MPI::MPI_CXX)
+
 
 #if (TEMPI)
 #  target_link_libraries(ping_pong PRIVATE tempi)
@@ -48,3 +53,4 @@ install(TARGETS ping_pong
 
 # print build strings
 message("Ping Pong Build Time ${BUILD_TIME}")
+
