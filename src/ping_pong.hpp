@@ -54,6 +54,7 @@ class directHaloExchange : public mpiHaloExchange
 
 #ifndef DIRECT
 #define DIRECT
+#endif
 
     MPI_Datatype leftRecvSubArray, rightRecvSubArray;
     MPI_Datatype leftSendSubArray, rightSendSubArray;
@@ -70,6 +71,7 @@ class packedHaloExchange : public mpiHaloExchange
 
 #ifndef CUDA_AWARE
 #define CUDA_AWARE
+#endif
 
     FS4D leftSend, leftRecv;
     FS4D rightSend, rightRecv;
@@ -109,6 +111,7 @@ class copyHaloExchange : public packedHaloExchange
 
 #ifndef COPY
 #define COPY
+#endif
 
     FS4DH leftSend_H, leftRecv_H;
     FS4DH rightSend_H, rightRecv_H;
