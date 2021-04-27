@@ -1,1 +1,1 @@
-/home/ghostbird/spack/opt/spack/linux-archrolling-skylake/gcc-10.2.0/kokkos-3.2.00-fgoicgl2cf7xxkutnjtg6j32mkqba36n/include/ROCm/Kokkos_ROCm_Invoke.hpp
+/g/g15/haskins8/spack/opt/spack/linux-rhel7-power9le/gcc-8.3.1/kokkos-3.2.00-szs4cjrmi42cgjlz3quck3rir763ozuo/include/ROCm/Kokkos_ROCm_Invoke.hpp

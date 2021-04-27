@@ -1,6 +1,7 @@
 spack:
   specs:
-  - kokkos std=14 +cuda +cuda_lambda cuda_arch=50 +wrapper
+  - spectrum-mpi
+  - kokkos std=14 +cuda +cuda_lambda cuda_arch=70 +wrapper
   #- cuda @10.1.243 +hwloc +numactl
   concretization: together
   view: true
