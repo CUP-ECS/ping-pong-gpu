@@ -1,40 +1,18 @@
 #include "ping_pong.hpp"
-#include "input.hpp"
-//#include "Kokkos_Core.hpp"
-//#include "kokkosTypes.hpp"
-//
-//Maybe pass in dimensional array
+//#include "input.hpp"
+#include <iostream>
+#include "Kokkos_Core.hpp"
+#include "KokkosTypes.hpp"
+#include <stdio.h>
+#include <stdlib.h>
+#include <mpi.h>
 
-void ping_pong_n_dim( struct inputConfig &cf, int max_i,
+using namespace std;
+
+void initialize_data( struct inputConfig &cf, int max_i,
                       int n_iterations      , int dimension ) {
-  int rank, num_procs;
-  int i, j, k, v;
-  MPI_Comm_rank( MPI_COMM_WORLD, &rank );
-  MPI_Comm_size( MPI_COMM_WORLD, &num_procs );
-
-  MPI_Comm node_comm;
-  MPI_Comm_split_type( MPI_COMM_WORLD, MPI_COMM_TYPE_SHARED, rank,
-                       MPI_INFO_NULL, &node_comm );
-  int node_size, node_rank;
-  MPI_Comm_rank( node_comm, &node_rank );
-  MPI_Comm_size( node_comm, &node_size );
-  MPI_Comm_free( &node_comm );
-
-  int num_gpus;
-  cudaGetDeviceCount( &num_gpus );
-
-  int  max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
-  int  dim_collapse;
-  int  collapse_size;
-  bool gpu_send,
-       gpu_copy,
-       gpu_pack;
-
-  double time, max_time;
-  bool active;
-
-#ifdef DIRECT
   int order;
+  // Need to use something else instead of FS_LAYOUT here.
   if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
     order = MPI_ORDER_FORTRAN;
   } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
@@ -43,7 +21,6 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
     cerr << "Invalid array order in mpiBuffers.\n";
     exit(-1);
   }
-  a = Kokkos::View<double ****, FS_LAYOUT>( "send", i, j, 2, 2 );
 
   int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
 
@@ -55,119 +32,215 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
   int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
   int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
   int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
-  int bottomRecvStarts[4] = { 0, 0, 0, 0 };
-  int bottomSendStarts[4] = { 0, cf.ng, 0, 0 };
-  int topRecvStarts[4]    = { 0, cf.ngj - cf.ng, 0, 0 };
-  int topSendStarts[4]    = { 0, cf.ncj, 0, 0 };
-  //aH = Kokkos::create_mirror_view(a);
 
   MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
                           , order, MPI_DOUBLE, &leftRecvSubArray );
-  MPI_Type_commit(&leftRecvSubArray);
+  MPI_Type_commit( &leftRecvSubArray );
 
-  MPI_Type_create_subarray(4, bigsizes, xsubsizes, leftSendStarts
-                          , order, MPI_DOUBLE, &leftSendSubArray);
-  MPI_Type_commit(&leftSendSubArray);
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
+                          , order, MPI_DOUBLE, &leftSendSubArray );
+  MPI_Type_commit( &leftSendSubArray );
 
-  MPI_Type_create_subarray(4, bigsizes, xsubsizes, rightRecvStarts
-                          , order, MPI_DOUBLE, &rightRecvSubArray);
-  MPI_Type_commit(&rightRecvSubArray);
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
+                          , order, MPI_DOUBLE, &rightRecvSubArray );
+  MPI_Type_commit( &rightRecvSubArray );
 
-  MPI_Type_create_subarray(4, bigsizes, xsubsizes, rightSendStarts
-                          , order, MPI_DOUBLE, &rightSendSubArray);
-  MPI_Type_commit(&rightSendSubArray);
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
+                          , order, MPI_DOUBLE, &rightSendSubArray );
+  MPI_Type_commit( &rightSendSubArray );
+}
 
-  MPI_Type_create_subarray(4, bigsizes, ysubsizes, bottomRecvStarts
-                          , order, MPI_DOUBLE, &bottomRecvSubArray);
-  MPI_Type_commit(&bottomRecvSubArray);
+void ping_pong_n_dim( struct inputConfig &cf, int max_i,
+                      int n_iterations      , int dimension ) {
 
-  MPI_Type_create_subarray(4, bigsizes, ysubsizes, bottomSendStarts
-                          , order, MPI_DOUBLE, &bottomSendSubArray);
-  MPI_Type_commit(&bottomSendSubArray);
+  FS4D a  = Kokkos::View<double ****>( "data", cf.ngi, cf.ngj, cf.ngk, cf.nvt );
+  FS4D aR = Kokkos::View<double *>( "recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt );
+  FS4D aS = Kokkos::View<double *>( "send"   , cf.ng * cf.ngj * cf.ngk * cf.nvt );
 
-  MPI_Type_create_subarray(4, bigsizes, ysubsizes, topRecvStarts
-                          , order, MPI_DOUBLE, &topRecvSubArray);
-  MPI_Type_commit(&topRecvSubArray);
+  int rank, num_procs;
+  int i, j, k, v = 4;
+  MPI_Comm_rank( MPI_COMM_WORLD, &rank );
+  MPI_Comm_size( MPI_COMM_WORLD, &num_procs );
 
-  MPI_Type_create_subarray(4, bigsizes, ysubsizes, topSendStarts
-                          , order, MPI_DOUBLE, &topSendSubArray);
-  MPI_Type_commit(&topSendSubArray);
+  MPI_Comm node_comm;
+  MPI_Comm_split_type( MPI_COMM_WORLD, MPI_COMM_TYPE_SHARED, rank,
+                       MPI_INFO_NULL, &node_comm );
+  int node_size, node_rank;
+  MPI_Comm_rank( node_comm, &node_rank );
+  MPI_Comm_size( node_comm, &node_size );
+  MPI_Comm_free( &node_comm );
 
-  FS4D &aR = a;
+  //int num_gpus;
+  //cudaGetDeviceCount( &num_gpus );
+
+  int  max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
+  int  dim_collapse;
+  int  collapse_size;
+  int  order;
+  bool gpu_send,
+       gpu_copy,
+       gpu_pack;
+
+  double time, max_time;
+  bool active;
+
+  // Need to use something else instead of FS_LAYOUT here.
+  if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
+    order = MPI_ORDER_FORTRAN;
+  } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
+    order = MPI_ORDER_C;
+  } else {
+    cerr << "Invalid array order in mpiBuffers.\n";
+    exit(-1);
+  }
+
+  int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
+
+  int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
+  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
+  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
+
+  int leftRecvStarts[4]   = { 0, 0, 0, 0 };
+  int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
+  int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
+  int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
+
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
+                          , order, MPI_DOUBLE, &leftRecvSubArray );
+  MPI_Type_commit( &leftRecvSubArray );
+
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
+                          , order, MPI_DOUBLE, &leftSendSubArray );
+  MPI_Type_commit( &leftSendSubArray );
+
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
+                          , order, MPI_DOUBLE, &rightRecvSubArray );
+  MPI_Type_commit( &rightRecvSubArray );
+
+  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
+                          , order, MPI_DOUBLE, &rightSendSubArray );
+  MPI_Type_commit( &rightSendSubArray );
+
+#ifdef DIRECT
 
   if (rank % 2 == 0) {
     int temp_rank = (rank < num_procs) ? rank + 1 : 1;
-    MPI_Irecv( a.data(), 1, leftRecvSubArray  , temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-    MPI_Irecv( a.data(), 1, rightRecvSubArray , temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-    MPI_Irecv( a.data(), 1, bottomRecvSubArray, temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-    MPI_Irecv( a.data(), 1, topRecvSubArray   , temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
+    MPI_Send( a.data(), 1, rightSendSubArray , temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( a.data(), 1, rightRecvSubArray , temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD );
   }
   else {
     int temp_rank = (rank < num_procs) ? rank + 1 : 0;
-    MPI_Isend( a.data(), 1, leftSendSubArray  , temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-    MPI_Isend( a.data(), 1, rightSendSubArray , temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-    MPI_Isend( a.data(), 1, bottomSendSubArray, temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-    MPI_Isend( a.data(), 1, topSendSubArray   , temp_rank
-             , MPI_ANY_TAG, MPI_COMM_WORLD, MPI_REQUEST_NULL );
-           //  MPI_Isend( aH.data()
+    MPI_Recv( a.data(), 1, leftRecvSubArray  , temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Send( a.data(), 1, leftSendSubArray  , temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD );
   }
-//           , 4
-//           , MPI_DOUBLE
-//           ,
-//           );
-//  MPI_Irecv( aH.data()
-//           , 4
-//           , MPI_DOUBLE
-//           ,
-//           )
+
+#elif CUDA_AWARE
+  leftSend   = Kokkos::View<double****,FS_LAYOUT>("leftSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  leftRecv   = Kokkos::View<double****,FS_LAYOUT>("leftRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightSend  = Kokkos::View<double****,FS_LAYOUT>("rightSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+
+  auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ng, cf.ngj, cf.ngk, cf.nvt});
+  auto yPol = Kokkos::MDRangePolicy<yPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ng, cf.ngk, cf.nvt});
+  auto zPol = Kokkos::MDRangePolicy<zPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ngj, cf.ng, cf.nvt});
+
+  Kokkos::parallel_for( xPol, *this );
+  Kokkos::fence();
+  if (rank % 2 == 0) {
+    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+  }
+  else {
+    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+  }
+//  Kokkos::parallel_for( yPol, *this );
+//  Kokkos::fence();
+//  if (rank % 2 == 0) {
+//    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+//    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//  }
+//  else {
+//    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+//    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//  }
+//  Kokkos::parallel_for( zPol, *this );
+//  Kokkos::fence();
+//  if (rank % 2 == 0) {
+//    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+//    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//  }
+//  else {
+//    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+//    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+//  }
+  //Kokkos::deep_copy(aH, a);
+
+#elif COPY
+
+  FS4D aR = a;
+  FS4D aS = a;
+
+  aR_H = Kokkos::create_mirror_view(aR);
+  aS_H = Kokkos::create_mirror_view(aS);
+  //aS
+
+  //int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
+  //int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
+  //int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
+
+  auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
+                      xsubsizes );
+  //auto yPol = Kokkos::MDRangePolicy<yPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
+  //                    ysubsizes );
+  //auto zPol = Kokkos::MDRangePolicy<zPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
+  //                    zsubsizes );
+
+  Kokkos::parallel_for( xPol, *this );
+  //Kokkos::parallel_for( yPol, *this );
+  //Kokkos::parallel_for( zPol, *this );
+
+  Kokkos::deep_copy(  leftRecv_H,  left_recv );
+  Kokkos::deep_copy( rightRecv_H, right_recv );
+  Kokkos::deep_copy(  leftSend_H,  left_send );
+  Kokkos::deep_copy( rightSend_H, right_send );
+
+  if (rank % 2 == 0) {
+    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+  }
+  else {
+    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+  }
 
 #endif
-#ifdef CUDA_AWARE
-  a = Kokkos::View<double ****, FS_LAYOUT>("send", i, j, 2, 2);
-
-  aH = Kokkos::create_mirror_view(a);
-
-  FS4D &aR = a;
-
-  Kokkos::deep_copy(aH, a);
-
-  MPI_Isend( aH.data()
-           , 4
-           , MPI_DOUBLE
-           ,
-           )
-  MPI_Irecv( aH.data()
-           , 4
-           , MPI_DOUBLE
-           ,
-           )
-
-#endif
-#ifdef COPY
-  a = Kokkos::View<double ****, FS_LAYOUT>("send", i, j, 2, 2);
-
-  aH = Kokkos::create_mirror_view(a);
-
-  FS4D &aR = a;
-
-  MPI_Isend( aH.data()
-           , 4
-           , MPI_DOUBLE
-           ,
-           )
-  MPI_Irecv( aH.data()
-           , 4
-           , MPI_DOUBLE
-           ,
-           )
-
-#endif
-
 }
