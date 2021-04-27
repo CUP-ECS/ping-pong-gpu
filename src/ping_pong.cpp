@@ -2,53 +2,53 @@
 //#include "input.hpp"
 #include <iostream>
 #include "Kokkos_Core.hpp"
-#include "KokkosTypes.hpp"
+//#include "KokkosTypes.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
 
 using namespace std;
 
-void initialize_data( struct inputConfig &cf, int max_i,
-                      int n_iterations      , int dimension ) {
-  int order;
-  // Need to use something else instead of FS_LAYOUT here.
-  if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
-    order = MPI_ORDER_FORTRAN;
-  } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
-    order = MPI_ORDER_C;
-  } else {
-    cerr << "Invalid array order in mpiBuffers.\n";
-    exit(-1);
-  }
-
-  int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
-
-  int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
-  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
-  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
-
-  int leftRecvStarts[4]   = { 0, 0, 0, 0 };
-  int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
-  int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
-  int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
-
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
-                          , order, MPI_DOUBLE, &leftRecvSubArray );
-  MPI_Type_commit( &leftRecvSubArray );
-
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
-                          , order, MPI_DOUBLE, &leftSendSubArray );
-  MPI_Type_commit( &leftSendSubArray );
-
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
-                          , order, MPI_DOUBLE, &rightRecvSubArray );
-  MPI_Type_commit( &rightRecvSubArray );
-
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
-                          , order, MPI_DOUBLE, &rightSendSubArray );
-  MPI_Type_commit( &rightSendSubArray );
-}
+//void initialize_data( struct inputConfig &cf, int max_i,
+//                      int n_iterations      , int dimension ) {
+//  int order;
+//  // Need to use something else instead of FS_LAYOUT here.
+//  if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
+//    order = MPI_ORDER_FORTRAN;
+//  } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
+//    order = MPI_ORDER_C;
+//  } else {
+//    cerr << "Invalid array order in mpiBuffers.\n";
+//    exit(-1);
+//  }
+//
+//  int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
+//
+//  int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
+//  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
+//  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
+//
+//  int leftRecvStarts[4]   = { 0, 0, 0, 0 };
+//  int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
+//  int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
+//  int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
+//
+//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
+//                          , order, MPI_DOUBLE, &leftRecvSubArray );
+//  MPI_Type_commit( &leftRecvSubArray );
+//
+//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
+//                          , order, MPI_DOUBLE, &leftSendSubArray );
+//  MPI_Type_commit( &leftSendSubArray );
+//
+//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
+//                          , order, MPI_DOUBLE, &rightRecvSubArray );
+//  MPI_Type_commit( &rightRecvSubArray );
+//
+//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
+//                          , order, MPI_DOUBLE, &rightSendSubArray );
+//  MPI_Type_commit( &rightSendSubArray );
+//}
 
 void ping_pong_n_dim( struct inputConfig &cf, int max_i,
                       int n_iterations      , int dimension ) {
