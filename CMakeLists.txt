@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.10)
 # set project name and languages
 project(Ping_Pong CXX C Fortran CUDA)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # MPI
@@ -18,12 +18,12 @@ find_package(MPI REQUIRED)
 find_package(Kokkos 3 REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
-add_executable(ping_pong src/ping_pong.cpp)
+add_executable(ping_pong src/main.cpp src/ping_pong.cpp)
 #target_link_libraries(ping_pong
 #                      kokkos
 #                      lua)
 
-target_link_libraries(ping_pong 
+target_link_libraries(ping_pong PUBLIC
 	Kokkos::kokkos
 	MPI::MPI_CXX)
 

@@ -1,64 +1,23 @@
 #include "ping_pong.hpp"
-//#include "input.hpp"
+#include "input.hpp"
 #include <iostream>
 #include "Kokkos_Core.hpp"
-//#include "KokkosTypes.hpp"
+#include "KokkosTypes.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
 
 using namespace std;
 
-//void initialize_data( struct inputConfig &cf, int max_i,
-//                      int n_iterations      , int dimension ) {
-//  int order;
-//  // Need to use something else instead of FS_LAYOUT here.
-//  if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
-//    order = MPI_ORDER_FORTRAN;
-//  } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
-//    order = MPI_ORDER_C;
-//  } else {
-//    cerr << "Invalid array order in mpiBuffers.\n";
-//    exit(-1);
-//  }
-//
-//  int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
-//
-//  int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
-//  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
-//  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
-//
-//  int leftRecvStarts[4]   = { 0, 0, 0, 0 };
-//  int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
-//  int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
-//  int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
-//
-//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
-//                          , order, MPI_DOUBLE, &leftRecvSubArray );
-//  MPI_Type_commit( &leftRecvSubArray );
-//
-//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
-//                          , order, MPI_DOUBLE, &leftSendSubArray );
-//  MPI_Type_commit( &leftSendSubArray );
-//
-//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
-//                          , order, MPI_DOUBLE, &rightRecvSubArray );
-//  MPI_Type_commit( &rightRecvSubArray );
-//
-//  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
-//                          , order, MPI_DOUBLE, &rightSendSubArray );
-//  MPI_Type_commit( &rightSendSubArray );
-//}
+void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
 
-void ping_pong_n_dim( struct inputConfig &cf, int max_i,
-                      int n_iterations      , int dimension ) {
+  struct inputConfig cf = executeConfiguration();
 
   FS4D a  = Kokkos::View<double ****>( "data", cf.ngi, cf.ngj, cf.ngk, cf.nvt );
-  FS4D aR = Kokkos::View<double *>( "recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt );
-  FS4D aS = Kokkos::View<double *>( "send"   , cf.ng * cf.ngj * cf.ngk * cf.nvt );
+  FS1D aR = Kokkos::View<double    *>( "recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt );
+  FS1D aS = Kokkos::View<double    *>( "send"   , cf.ng * cf.ngj * cf.ngk * cf.nvt );
 
   int rank, num_procs;
-  int i, j, k, v = 4;
   MPI_Comm_rank( MPI_COMM_WORLD, &rank );
   MPI_Comm_size( MPI_COMM_WORLD, &num_procs );
 
@@ -74,15 +33,15 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
   //cudaGetDeviceCount( &num_gpus );
 
   int  max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
-  int  dim_collapse;
-  int  collapse_size;
+  //int  dim_collapse;
+  //int  collapse_size;
   int  order;
-  bool gpu_send,
-       gpu_copy,
-       gpu_pack;
+  //bool gpu_send,
+  //     gpu_copy,
+  //     gpu_pack;
 
-  double time, max_time;
-  bool active;
+  //double time, max_time;
+  //bool active;
 
   // Need to use something else instead of FS_LAYOUT here.
   if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
@@ -97,8 +56,8 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
   int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
 
   int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
-  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
-  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
+  //int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
+  //int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
 
   int leftRecvStarts[4]   = { 0, 0, 0, 0 };
   int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
@@ -125,16 +84,16 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
 
   if (rank % 2 == 0) {
     int temp_rank = (rank < num_procs) ? rank + 1 : 1;
-    MPI_Send( a.data(), 1, rightSendSubArray , temp_rank
+    MPI_Send( a.data(), 1, rightSendSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Recv( a.data(), 1, rightRecvSubArray , temp_rank
-            , MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( a.data(), 1, rightRecvSubArray, temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
     int temp_rank = (rank < num_procs) ? rank + 1 : 0;
-    MPI_Recv( a.data(), 1, leftRecvSubArray  , temp_rank
-            , MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Send( a.data(), 1, leftSendSubArray  , temp_rank
+    MPI_Recv( a.data(), 1, leftRecvSubArray, temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+    MPI_Send( a.data(), 1, leftSendSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD );
   }
 
@@ -155,12 +114,12 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
     MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
     int temp_rank = (rank < num_procs) ? rank + 1 : 0;
     MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
@@ -232,12 +191,12 @@ void ping_pong_n_dim( struct inputConfig &cf, int max_i,
     MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
     int temp_rank = (rank < num_procs) ? rank + 1 : 0;
     MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
