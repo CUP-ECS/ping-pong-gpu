@@ -9,6 +9,16 @@
 
 using namespace std;
 
+MPI_Datatype leftRecvSubArray, rightRecvSubArray;
+MPI_Datatype leftSendSubArray, rightSendSubArray;
+
+FS4D leftSend, leftRecv;
+FS4D rightSend, rightRecv;
+
+FS4DH leftSend_H, leftRecv_H;
+FS4DH rightSend_H, rightRecv_H;
+
+
 void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
 
   struct inputConfig cf = executeConfiguration();

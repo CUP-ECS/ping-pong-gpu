@@ -18,7 +18,7 @@ find_package(MPI REQUIRED)
 find_package(Kokkos 3 REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
-add_executable(ping_pong src/main.cpp src/ping_pong.cpp)
+add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
 #target_link_libraries(ping_pong
 #                      kokkos
 #                      lua)

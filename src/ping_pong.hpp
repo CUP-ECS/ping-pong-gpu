@@ -12,5 +12,3 @@
 //typedef typename Kokkos::View<double *, FS_LAYOUT> FS1D;
 
 void ping_pong_n_dim( int max_i, int n_iterations, int dimension );
-
-
