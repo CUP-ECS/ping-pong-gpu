@@ -18,7 +18,6 @@ FS4D rightSend, rightRecv;
 FS4DH leftSend_H, leftRecv_H;
 FS4DH rightSend_H, rightRecv_H;
 
-
 void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
 
   struct inputConfig cf = executeConfiguration();
@@ -43,15 +42,10 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
   //cudaGetDeviceCount( &num_gpus );
 
   int  max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
-  //int  dim_collapse;
-  //int  collapse_size;
   int  order;
   //bool gpu_send,
   //     gpu_copy,
   //     gpu_pack;
-
-  //double time, max_time;
-  //bool active;
 
   // Need to use something else instead of FS_LAYOUT here.
   if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
@@ -64,10 +58,7 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
   }
 
   int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
-
   int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
-  //int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
-  //int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
 
   int leftRecvStarts[4]   = { 0, 0, 0, 0 };
   int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
@@ -114,8 +105,8 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
   rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
 
   auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ng, cf.ngj, cf.ngk, cf.nvt});
-  auto yPol = Kokkos::MDRangePolicy<yPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ng, cf.ngk, cf.nvt});
-  auto zPol = Kokkos::MDRangePolicy<zPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ngj, cf.ng, cf.nvt});
+  //auto yPol = Kokkos::MDRangePolicy<yPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ng, cf.ngk, cf.nvt});
+  //auto zPol = Kokkos::MDRangePolicy<zPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ngj, cf.ng, cf.nvt});
 
   Kokkos::parallel_for( xPol, *this );
   Kokkos::fence();
