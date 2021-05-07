@@ -9,6 +9,8 @@
 
 using namespace std;
 
+#define DIRECT
+
 MPI_Datatype leftRecvSubArray, rightRecvSubArray;
 MPI_Datatype leftSendSubArray, rightSendSubArray;
 
@@ -84,14 +86,16 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
 #ifdef DIRECT
 
   if (rank % 2 == 0) {
-    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    //int temp_rank = (rank + 1 < num_procs) ? rank + 1 : 1;
+    int temp_rank = 1;
     MPI_Send( a.data(), 1, rightSendSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( a.data(), 1, rightRecvSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
-    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    //int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    int temp_rank = 0;
     MPI_Recv( a.data(), 1, leftRecvSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( a.data(), 1, leftSendSubArray, temp_rank
@@ -105,59 +109,35 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
   rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
 
   auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ng, cf.ngj, cf.ngk, cf.nvt});
-  //auto yPol = Kokkos::MDRangePolicy<yPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ng, cf.ngk, cf.nvt});
-  //auto zPol = Kokkos::MDRangePolicy<zPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ngi, cf.ngj, cf.ng, cf.nvt});
 
-  Kokkos::parallel_for( xPol, *this );
+  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
+					    const int k, const int v) {
+        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
+        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
+      });
   Kokkos::fence();
   if (rank % 2 == 0) {
-    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
-    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+    //int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    int temp_rank = 1;
+    MPI_Send( rightSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+    MPI_Recv( rightRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
-    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
-    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+    int temp_rank = 0;
+    MPI_Recv( leftRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+    MPI_Send( leftSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
-//  Kokkos::parallel_for( yPol, *this );
-//  Kokkos::fence();
-//  if (rank % 2 == 0) {
-//    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
-//    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//  }
-//  else {
-//    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
-//    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//  }
-//  Kokkos::parallel_for( zPol, *this );
-//  Kokkos::fence();
-//  if (rank % 2 == 0) {
-//    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
-//    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//  }
-//  else {
-//    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
-//    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
-//            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-//  }
-  //Kokkos::deep_copy(aH, a);
 
+  Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
+      });
+  Kokkos::fence();
 #elif COPY
 
   FS4D aR = a;
@@ -173,34 +153,44 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
 
   auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
                       xsubsizes );
-  //auto yPol = Kokkos::MDRangePolicy<yPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
-  //                    ysubsizes );
-  //auto zPol = Kokkos::MDRangePolicy<zPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
-  //                    zsubsizes );
 
-  Kokkos::parallel_for( xPol, *this );
+  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
+					    const int k, const int v) {
+        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
+        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
+      });
+
   //Kokkos::parallel_for( yPol, *this );
   //Kokkos::parallel_for( zPol, *this );
 
-  Kokkos::deep_copy(  leftRecv_H,  left_recv );
-  Kokkos::deep_copy( rightRecv_H, right_recv );
   Kokkos::deep_copy(  leftSend_H,  left_send );
   Kokkos::deep_copy( rightSend_H, right_send );
 
   if (rank % 2 == 0) {
-    int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    int temp_rank = 1;
     MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
-    int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    int temp_rank =0;
     MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
+  Kokkos::deep_copy(  leftRecv_H,  left_recv );
+  Kokkos::deep_copy( rightRecv_H, right_recv );
+
+  Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
+      });
+  Kokkos::fence();
+#else
+  printf("No directive defined.");
 
 #endif
 }

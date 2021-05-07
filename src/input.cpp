@@ -4,15 +4,16 @@
 
 struct inputConfig executeConfiguration() {
   struct inputConfig cf;
-  cf.ng  = 3;
-  cf.ngi = 4;
-  cf.ngj = 4;
-  cf.ngk = 4;
+  cf.nci = 14;
+  cf.ncj = 14;
+  cf.nck = 14;
   cf.nvt = 5;
 
-  cf.nci = 2;
-  cf.ncj = 2;
-  cf.nck = 2;
+  cf.ng  = 3;
+  cf.ngi = cf.nci + 2 * cf.ng;
+  cf.ngj = cf.ncj + 2 * cf.ng;
+  cf.ngk = cf.nck + 2 * cf.ng;
+
 
   return cf;
 };
