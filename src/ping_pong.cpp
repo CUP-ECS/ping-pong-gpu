@@ -6,10 +6,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
+#include <chrono>
 
 using namespace std;
 
 #define DIRECT
+//#define CUDA_AWARE
+//#define COPY
 
 MPI_Datatype leftRecvSubArray, rightRecvSubArray;
 MPI_Datatype leftSendSubArray, rightSendSubArray;
@@ -20,9 +23,115 @@ FS4D rightSend, rightRecv;
 FS4DH leftSend_H, leftRecv_H;
 FS4DH rightSend_H, rightRecv_H;
 
+void send_recv( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, FS1D aR_H, FS1D aS_H ) {
+
+#ifdef DIRECT
+  if (rank % 2 == 0) {
+    //int temp_rank = (rank + 1 < num_procs) ? rank + 1 : 1;
+    int temp_rank = 1;
+    MPI_Send( a.data(), 1, rightSendSubArray, temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( a.data(), 1, rightRecvSubArray, temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+  }
+  else {
+    //int temp_rank = (rank < num_procs) ? rank + 1 : 0;
+    int temp_rank = 0;
+    MPI_Recv( a.data(), 1, leftRecvSubArray, temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+    MPI_Send( a.data(), 1, leftSendSubArray, temp_rank
+            , MPI_TAG2, MPI_COMM_WORLD );
+  }
+
+#elif CUDA_AWARE
+  leftSend   = Kokkos::View<double****,FS_LAYOUT>("leftSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  leftRecv   = Kokkos::View<double****,FS_LAYOUT>("leftRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightSend  = Kokkos::View<double****,FS_LAYOUT>("rightSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+
+  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
+					    const int k, const int v) {
+        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
+        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
+      });
+  Kokkos::fence();
+
+  if (rank % 2 == 0) {
+    //int temp_rank = (rank < num_procs) ? rank + 1 : 1;
+    int temp_rank = 1;
+    MPI_Send( rightSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( rightRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+  }
+  else {
+    int temp_rank = 0;
+    MPI_Recv( leftRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+    MPI_Send( leftSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+  }
+
+  Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
+      });
+  Kokkos::fence();
+
+#elif COPY
+  auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
+                      xsubsizes );
+  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
+					    const int k, const int v) {
+        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
+        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
+      });
+
+  Kokkos::deep_copy(  leftSend_H,  left_send );
+  Kokkos::deep_copy( rightSend_H, right_send );
+
+  if (rank == 0)
+    start = std::chrono::high_resolution_clock::now(); 
+  if (rank % 2 == 0) {
+    int temp_rank = 1;
+    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+  }
+  else {
+    int temp_rank = 0;
+    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
+            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+  }
+  Kokkos::deep_copy(  leftRecv_H,  left_recv );
+  Kokkos::deep_copy( rightRecv_H, right_recv );
+
+  Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
+      });
+  Kokkos::fence();
+#endif
+}
+
 void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
 
   struct inputConfig cf = executeConfiguration();
+  //std::chrono::high_resolution_clock::time_point start 
+  auto start = std::chrono::high_resolution_clock::now(); 
+  //std::chrono::high_resolution_clock::time_point stop 
+  auto stop  = std::chrono::high_resolution_clock::now();
+  //std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+  //std::chrono::steady_clock::time_point stop  = std::chrono::steady_clock::now();
+
+  float duration  = std::chrono::duration<float, std::nano>(stop - start).count();
+  float latency   = duration / 2;
+  float bandwidth = 10 / duration;   
 
   FS4D a  = Kokkos::View<double ****>( "data", cf.ngi, cf.ngj, cf.ngk, cf.nvt );
   FS1D aR = Kokkos::View<double    *>( "recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt );
@@ -83,114 +192,21 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
                           , order, MPI_DOUBLE, &rightSendSubArray );
   MPI_Type_commit( &rightSendSubArray );
 
-#ifdef DIRECT
+  if (rank == 0)
+    start = std::chrono::high_resolution_clock::now(); 
 
-  if (rank % 2 == 0) {
-    //int temp_rank = (rank + 1 < num_procs) ? rank + 1 : 1;
-    int temp_rank = 1;
-    MPI_Send( a.data(), 1, rightSendSubArray, temp_rank
-            , MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Recv( a.data(), 1, rightRecvSubArray, temp_rank
-            , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+  for (int i = 0; i < n_iterations; i++) {
+    send_recv();
   }
-  else {
-    //int temp_rank = (rank < num_procs) ? rank + 1 : 0;
-    int temp_rank = 0;
-    MPI_Recv( a.data(), 1, leftRecvSubArray, temp_rank
-            , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-    MPI_Send( a.data(), 1, leftSendSubArray, temp_rank
-            , MPI_TAG2, MPI_COMM_WORLD );
+  if (rank == 0) {
+    stop = std::chrono::high_resolution_clock::now();
+
+    duration  = std::chrono::duration<float>( stop - start ).count();
+    latency   = duration / ( n_iterations * 2 );
+    bandwidth = ( cf.ng * cf.ngj * cf.ngk * cf.nvt * 8 * 2 * n_iterations ) / duration;
+    //auto duration = std::chrono::duration_cast<microseconds>(stop - start); 
+    cout << duration  << endl;
+    cout << latency   << endl;
+    cout << bandwidth << endl;
   }
-
-#elif CUDA_AWARE
-  leftSend   = Kokkos::View<double****,FS_LAYOUT>("leftSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  leftRecv   = Kokkos::View<double****,FS_LAYOUT>("leftRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  rightSend  = Kokkos::View<double****,FS_LAYOUT>("rightSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-
-  auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>({0, 0, 0, 0}, {cf.ng, cf.ngj, cf.ngk, cf.nvt});
-
-  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
-					    const int k, const int v) {
-        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
-        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
-      });
-  Kokkos::fence();
-  if (rank % 2 == 0) {
-    //int temp_rank = (rank < num_procs) ? rank + 1 : 1;
-    int temp_rank = 1;
-    MPI_Send( rightSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Recv( rightRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-  }
-  else {
-    int temp_rank = 0;
-    MPI_Recv( leftRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-    MPI_Send( leftSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-  }
-
-  Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
-        a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
-      });
-  Kokkos::fence();
-#elif COPY
-
-  FS4D aR = a;
-  FS4D aS = a;
-
-  aR_H = Kokkos::create_mirror_view(aR);
-  aS_H = Kokkos::create_mirror_view(aS);
-  //aS
-
-  //int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
-  //int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
-  //int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
-
-  auto xPol = Kokkos::MDRangePolicy<xPack,Kokkos::Rank<4>>( {0, 0, 0, 0},
-                      xsubsizes );
-
-  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
-					    const int k, const int v) {
-        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
-        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
-      });
-
-  //Kokkos::parallel_for( yPol, *this );
-  //Kokkos::parallel_for( zPol, *this );
-
-  Kokkos::deep_copy(  leftSend_H,  left_send );
-  Kokkos::deep_copy( rightSend_H, right_send );
-
-  if (rank % 2 == 0) {
-    int temp_rank = 1;
-    MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightSendSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), rightRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-  }
-  else {
-    int temp_rank =0;
-    MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftRecvSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-    MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), leftSendSubArray
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-  }
-  Kokkos::deep_copy(  leftRecv_H,  left_recv );
-  Kokkos::deep_copy( rightRecv_H, right_recv );
-
-  Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
-        a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
-      });
-  Kokkos::fence();
-#else
-  printf("No directive defined.");
-
-#endif
 }
