@@ -1,1 +1,2 @@
-** 
+**  latency # seconds / # trips
+**  bandwidth # bytes sent and recieved / # seconds

@@ -23,7 +23,10 @@ FS4D rightSend, rightRecv;
 FS4DH leftSend_H, leftRecv_H;
 FS4DH rightSend_H, rightRecv_H;
 
-void send_recv( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, FS1D aR_H, FS1D aS_H ) {
+void send_recv( int rank, int n_iterations,    FS4D a, 
+                FS1D aR,           FS1D aS, FS1D aR_H, 
+                FS1D aS_H,  inputConfig cf, int order ) {
+  //int  max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
 
 #ifdef DIRECT
   if (rank % 2 == 0) {
@@ -44,15 +47,19 @@ void send_recv( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, FS1D aR_H,
   }
 
 #elif CUDA_AWARE
-  leftSend   = Kokkos::View<double****,FS_LAYOUT>("leftSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  leftRecv   = Kokkos::View<double****,FS_LAYOUT>("leftRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  rightSend  = Kokkos::View<double****,FS_LAYOUT>("rightSend",cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  leftSend   = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+                                                  cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  leftRecv   = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+                                                  cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightSend  = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+                                                  cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightRecv  = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+                                                  cf.ng,cf.ngj,cf.ngk,cf.nvt);
 
   Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
 					    const int k, const int v) {
-        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
-        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
+        leftSend( i, j, k, v) = a(cf.ng +      i, j, k, v);
+        rightSend(i, j, k, v) = a(i     + cf.nci, j, k, v);
       });
   Kokkos::fence();
 
@@ -116,6 +123,8 @@ void send_recv( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, FS1D aR_H,
         a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
       });
   Kokkos::fence();
+#else
+  cout << "Invalid Directive"
 #endif
 }
 
@@ -149,24 +158,7 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
   MPI_Comm_size( node_comm, &node_size );
   MPI_Comm_free( &node_comm );
 
-  //int num_gpus;
-  //cudaGetDeviceCount( &num_gpus );
-
-  int  max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
   int  order;
-  //bool gpu_send,
-  //     gpu_copy,
-  //     gpu_pack;
-
-  // Need to use something else instead of FS_LAYOUT here.
-  if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
-    order = MPI_ORDER_FORTRAN;
-  } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
-    order = MPI_ORDER_C;
-  } else {
-    cerr << "Invalid array order in mpiBuffers.\n";
-    exit(-1);
-  }
 
   int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
   int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
@@ -192,11 +184,28 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension ) {
                           , order, MPI_DOUBLE, &rightSendSubArray );
   MPI_Type_commit( &rightSendSubArray );
 
+  //int num_gpus;
+  //cudaGetDeviceCount( &num_gpus );
+
+  //bool gpu_send,
+  //     gpu_copy,
+  //     gpu_pack;
+
+  // Need to use something else instead of FS_LAYOUT here.
+  if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
+    order = MPI_ORDER_FORTRAN;
+  } else if (std::is_same<FS_LAYOUT, Kokkos::LayoutRight>::value) {
+    order = MPI_ORDER_C;
+  } else {
+    cerr << "Invalid array order in mpiBuffers.\n";
+    exit(-1);
+  }
+
   if (rank == 0)
     start = std::chrono::high_resolution_clock::now(); 
 
   for (int i = 0; i < n_iterations; i++) {
-    send_recv();
+    send_recv( rank, n_iterations, a, aR, aS, aR_H, aS_H, cf, order );
   }
   if (rank == 0) {
     stop = std::chrono::high_resolution_clock::now();
