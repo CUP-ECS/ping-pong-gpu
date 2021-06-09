@@ -28,8 +28,8 @@
 #include <sstream>
 
 //#define FS_LAYOUT  Kokkos::LayoutRight
-//#define FS_LAYOUT  Kokkos::LayoutLeft
-#define FS_LAYOUT Kokkos::DefaultExecutionSpace::array_layout
+#define FS_LAYOUT Kokkos::LayoutRight
+//#define FS_LAYOUT Kokkos::DefaultExecutionSpace::array_layout
 
 // double view types
 typedef typename Kokkos::View<double ******, FS_LAYOUT> FS6D;

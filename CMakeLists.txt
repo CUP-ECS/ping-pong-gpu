@@ -1,14 +1,11 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.18)
 # include(ExternalProject)
-
-# Switch to nvcc compiler wrapper if building for cuda
-#if (CUDA) set(CMAKE_CXX_COMPILER "nvcc_wrapper")
-#elseif(AMDGPU)
-#  set(CMAKE_CXX_COMPILER "hipcc")
-#endif()
 
 # set project name and languages
 project(Ping_Pong CXX C Fortran CUDA)
+
+# Switch to nvcc compiler wrapper if building for cuda
+#set(CMAKE_CXX_COMPILER "nvcc_wrapper")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -23,14 +20,10 @@ add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
 #                      kokkos
 #                      lua)
 
-target_link_libraries(ping_pong PUBLIC
-	Kokkos::kokkos
-	MPI::MPI_CXX)
-
-
-#if (TEMPI)
-#  target_link_libraries(ping_pong PRIVATE tempi)
-#endif (TEMPI)
+add_subdirectory(tempi)
+set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
+target_link_libraries(ping_pong PRIVATE tempi::tempi)
+target_link_libraries(ping_pong PUBLIC Kokkos::kokkos MPI::MPI_CXX)
 
 # add built strings to source code
 #if(CUDA)

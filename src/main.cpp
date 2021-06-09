@@ -19,12 +19,14 @@ int main( int argc, char *argv[] ) {
   int max_i        = 20;
   int n_iterations = 1000;
   int dimension    = 4;
+  int mode         = 0;
 
   if ( argc > 1 ) max_i        = atoi( argv[1] );
   if ( argc > 2 ) n_iterations = atoi( argv[2] );
   if ( argc > 3 ) dimension    = atoi( argv[3] );
+  if ( argc > 4 ) mode         = atoi( argv[4] );
 
-  ping_pong_n_dim( max_i, n_iterations, dimension );
+  ping_pong_n_dim( max_i, n_iterations, dimension, mode );
 
   MPI_Finalize();
 
