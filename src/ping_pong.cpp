@@ -1,5 +1,5 @@
 #include "ping_pong.hpp"
-#include "input.hpp"
+//#include "input.hpp"
 #include <iostream>
 #include "Kokkos_Core.hpp"
 #include "KokkosTypes.hpp"
@@ -24,7 +24,8 @@ using namespace std;
 //FS4DH rightSend_H, rightRecv_H;
 
 void direct( int rank, int n_iterations,    FS4D a, 
-                FS1D aR,  FS1D aS, inputConfig cf, int mode ) {
+                FS1D aR,  FS1D aS, inputConfig cf, int mode, int order ) {
+
   if (rank % 2 == 0) {
     //int temp_rank = (rank + 1 < num_procs) ? rank + 1 : 1;
     int temp_rank = 1;
@@ -43,10 +44,11 @@ void direct( int rank, int n_iterations,    FS4D a,
   }
 }
 
-void cuda_aware( int rank, int n_iterations,    FS4D a, 
-                FS1D aR,  FS1D aS, inputConfig cf, int mode, xPol ) {
-  auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
-                                           {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
+void cuda_aware( int rank, int n_iterations, FS4D a, 
+                 FS1D aR, FS1D aS, inputConfig cf, int mode, int order ) {
+
+  auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>({0, 0, 0, 0},
+                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt});
   leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
                                                  cf.ng,cf.ngj,cf.ngk,cf.nvt);
   leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
@@ -56,11 +58,11 @@ void cuda_aware( int rank, int n_iterations,    FS4D a,
   rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
                                                  cf.ng,cf.ngj,cf.ngk,cf.nvt);
 
-  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
-  				    const int k, const int v) {
-        leftSend( i, j, k, v ) = a( cf.ng + i, j, k, v );
-        rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
-      });
+  Kokkos::parallel_for(
+    xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+      leftSend( i, j, k, v ) = a( cf.ng + i, j, k, v );
+      rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
+    });
   Kokkos::fence();
   
   if (rank % 2 == 0) {
@@ -89,17 +91,21 @@ void cuda_aware( int rank, int n_iterations,    FS4D a,
 }
 
 void copy( int rank, int n_iterations,    FS4D a, 
-                FS1D aR,  FS1D aS, inputConfig cf, int mode ) {
+                FS1D aR,  FS1D aS, inputConfig cf, int mode, int order ) {
+
+  auto aR_H = Kokkos::create_mirror_view(aR);
+  auto aS_H = Kokkos::create_mirror_view(aS);
+
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
-  leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
-                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
-                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
-                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
-                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  //leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  //leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  //rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  //rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
 
   Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
         				    const int k, const int v) {
@@ -107,8 +113,8 @@ void copy( int rank, int n_iterations,    FS4D a,
         rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
       });
   
-  Kokkos::deep_copy(  leftSend_H,  leftSend );
-  Kokkos::deep_copy( rightSend_H, rightSend );
+  Kokkos::deep_copy(leftSend_H, leftSend);
+  Kokkos::deep_copy(rightSend_H, rightSend);
   
   //if (rank == 0)
   //  start = std::chrono::high_resolution_clock::now(); 
@@ -138,19 +144,19 @@ void copy( int rank, int n_iterations,    FS4D a,
 
 }
 
-void send_recv( int rank, int n_iterations,    FS4D a, 
-                FS1D aR,  FS1D aS, inputConfig cf, int mode ) {
+void send_recv( int rank, int n_iterations, FS4D a, 
+                FS1D aR,  FS1D aS, inputConfig cf, int mode, int order ) {
 
                                          //cf.ng,cf.ngj,cf.ngk,cf.nvt);
   switch (mode) {
     case 0:
-      direct( rank, n_iterations, a, aR, aS, cf, mode );
+      direct( rank, n_iterations, a, aR, aS, cf, mode, order );
       break;
     case 1:
-      cuda_aware( rank, n_iterations, a, aR, aS, cf, mode );
+      cuda_aware( rank, n_iterations, a, aR, aS, cf, mode, order );
       break;
     case 2:
-      copy( rank, n_iterations, a, aR, aS, cf, mode );
+      copy( rank, n_iterations, a, aR, aS, cf, mode, order );
       break;
     default:
       cout << "Invalid Directive";
@@ -168,13 +174,14 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
   //std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
   //std::chrono::steady_clock::time_point stop  = std::chrono::steady_clock::now();
 
+  int   order;
   float duration  = std::chrono::duration<float, std::nano>(stop - start).count();
   float latency   = duration / 2;
   float bandwidth = 10 / duration;   
 
-  FS4D a    = Kokkos::View<double ****, FS_LAYOUT>( "data", cf.ngi, cf.ngj, cf.ngk, cf.nvt );
-  FS1D aR   = Kokkos::View<double    *, FS_LAYOUT>( "recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt );
-  FS1D aS   = Kokkos::View<double    *, FS_LAYOUT>( "send"   , cf.ng * cf.ngj * cf.ngk * cf.nvt );
+  FS4D a    = Kokkos::View<double ****,FS_LAYOUT>("data", cf.ngi, cf.ngj, cf.ngk, cf.nvt );
+  FS1D aR   = Kokkos::View<double    *,FS_LAYOUT>("recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt);
+  FS1D aS   = Kokkos::View<double    *,FS_LAYOUT>("send"   , cf.ng * cf.ngj * cf.ngk * cf.nvt);
   //aR_H = Kokkos::create_mirror_view(aR);
   //aS_H = Kokkos::create_mirror_view(aS);
 
@@ -189,8 +196,6 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
   MPI_Comm_rank( node_comm, &node_rank );
   MPI_Comm_size( node_comm, &node_size );
   MPI_Comm_free( &node_comm );
-
-  int  order;
 
   // Need to use something else instead of FS_LAYOUT here.
   if (std::is_same<FS_LAYOUT, Kokkos::LayoutLeft>::value) {
@@ -237,7 +242,7 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
     start = std::chrono::high_resolution_clock::now(); 
 
   for (int i = 0; i < n_iterations; i++) {
-    send_recv( rank, n_iterations, a, aR, aS, cf, mode );
+    send_recv( rank, n_iterations, a, aR, aS, cf, mode, order );
     //send_recv( rank, n_iterations, a, aR, aS, aR_H, aS_H, cf );
   }
   if (rank == 0) {

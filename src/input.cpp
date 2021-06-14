@@ -14,6 +14,5 @@ struct inputConfig executeConfiguration() {
   cf.ngj = cf.ncj + 2 * cf.ng;
   cf.ngk = cf.nck + 2 * cf.ng;
 
-
   return cf;
 };
