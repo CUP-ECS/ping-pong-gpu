@@ -27,7 +27,6 @@
 #include <ostream>
 #include <sstream>
 
-//#define FS_LAYOUT  Kokkos::LayoutRight
 #define FS_LAYOUT Kokkos::LayoutRight
 //#define FS_LAYOUT Kokkos::DefaultExecutionSpace::array_layout
 
