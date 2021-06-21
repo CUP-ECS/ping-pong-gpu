@@ -3,17 +3,17 @@
 #include "Kokkos_Core.hpp"
 #include "KokkosTypes.hpp"
 
-#ifndef DIRECT
-#define DIRECT
-#endif
-
-#ifndef CUDA_AWARE
-#define CUDA_AWARE
-#endif
-
-#ifndef COPY
-#define COPY
-#endif
+//#ifndef DIRECT
+//#define DIRECT
+//#endif
+//
+//#ifndef CUDA_AWARE
+//#define CUDA_AWARE
+//#endif
+//
+//#ifndef COPY
+//#define COPY
+//#endif
 
 struct inputConfig {
   int nci, ncj, nck;
