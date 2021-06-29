@@ -22,10 +22,37 @@
 //FS4DH rightSend_H, rightRecv_H;
 
 //void direct(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
-//
+void direct( int rank, int n_iterations, FS4D a
+           , FS1D aR, FS1D aS, inputConfig cf, int mode, int order
+           , MPI_Datatype leftRecvSubArray, MPI_Datatype rightRecvSubArray
+           , MPI_Datatype leftSendSubArray, MPI_Datatype rightSendSubArray
+           );
+
+void cuda_aware( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
+               , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
+               , FS4D rightRecv, MPI_Datatype leftRecvSubArray
+               , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
+               , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
+               , FS4DH rightSend_H, FS4DH rightRecv_H
+               );
 //void cuda_aware(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
 //void copy(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
-//
+void copy( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
+         , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
+         , FS4D rightRecv, MPI_Datatype leftRecvSubArray
+         , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
+         , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
+         , FS4DH rightSend_H, FS4DH rightRecv_H
+         );
+
 //void send_recv(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
+void send_recv( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
+              , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
+              , FS4D rightRecv, MPI_Datatype leftRecvSubArray
+              , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
+              , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
+              , FS4DH rightSend_H, FS4DH rightRecv_H
+              );
+
 
 void ping_pong_n_dim(int max_i, int n_iterations, int dimension, int mode);
