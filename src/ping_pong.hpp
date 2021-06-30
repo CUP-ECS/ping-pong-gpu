@@ -21,23 +21,37 @@
 //FS4DH leftSend_H, leftRecv_H;
 //FS4DH rightSend_H, rightRecv_H;
 
+//class mpiBuffers {
+//  public:
+//    mpiBuffers(struct inputConfig cf);
+//
+//    FS4D leftSend;
+//    FS4D leftRecv;
+//    FS4D rightSend;
+//    FS4D rightRecv;
+//
+//    FS4DH leftSend_H;
+//    FS4DH leftRecv_H;
+//    FS4DH rightSend_H;
+//    FS4DH rightRecv_H;
+//}
+
 //void direct(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
 void direct( int rank, int n_iterations, FS4D a
-           , FS1D aR, FS1D aS, inputConfig cf, int mode, int order
+           , inputConfig cf, int mode, int order
            , MPI_Datatype leftRecvSubArray, MPI_Datatype rightRecvSubArray
            , MPI_Datatype leftSendSubArray, MPI_Datatype rightSendSubArray
            );
 
-void cuda_aware( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
+void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
                , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
                , FS4D rightRecv, MPI_Datatype leftRecvSubArray
                , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
-               , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
-               , FS4DH rightSend_H, FS4DH rightRecv_H
+               , MPI_Datatype rightSendSubArray
                );
 //void cuda_aware(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
-//void copy(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
-void copy( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
+//void copy(int rank, int n_iterations, FS4D a, inputConfig cf, int mode);
+void copy( int rank, int n_iterations, FS4D a, inputConfig cf
          , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
          , FS4D rightRecv, MPI_Datatype leftRecvSubArray
          , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
@@ -46,7 +60,7 @@ void copy( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
          );
 
 //void send_recv(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
-void send_recv( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf
+void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
               , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
               , FS4D rightRecv, MPI_Datatype leftRecvSubArray
               , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray

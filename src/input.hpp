@@ -20,4 +20,4 @@ struct inputConfig {
   int ng, ngi, ngj, ngk, nvt;
 };
 
-struct inputConfig executeConfiguration();
+struct inputConfig executeConfiguration(int max_i);

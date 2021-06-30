@@ -1,17 +1,18 @@
 #include "input.hpp"
 #include <iostream>
 
-struct inputConfig executeConfiguration() {
+struct inputConfig executeConfiguration( int max_i ) {
   struct inputConfig cf;
-  cf.nci = 14;
-  cf.ncj = 14;
-  cf.nck = 14;
-  cf.nvt = 5;
 
+  cf.ngi = max_i;
+  cf.ngj = max_i;
+  cf.ngk = max_i;
   cf.ng  = 3;
-  cf.ngi = cf.nci + 2 * cf.ng;
-  cf.ngj = cf.ncj + 2 * cf.ng;
-  cf.ngk = cf.nck + 2 * cf.ng;
+
+  cf.nci = cf.ngi - 2 * cf.ng;
+  cf.ncj = cf.ngj - 2 * cf.ng;
+  cf.nck = cf.ngk - 2 * cf.ng;
+  cf.nvt = 5;
 
   return cf;
 };
