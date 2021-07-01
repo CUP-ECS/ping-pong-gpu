@@ -179,8 +179,8 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
   MPI_Datatype leftSendSubArray, rightSendSubArray;
   
   struct inputConfig cf = executeConfiguration( max_i );
-  auto start = std::chrono::high_resolution_clock::now(); 
-  auto stop  = std::chrono::high_resolution_clock::now();
+  auto start       = std::chrono::high_resolution_clock::now(); 
+  auto stop        = std::chrono::high_resolution_clock::now();
   double duration  = std::chrono::duration<double, std::nano>(stop - start).count();
   double latency   = duration / 2;
   double bandwidth = 10 / duration;
@@ -255,24 +255,22 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
     start = std::chrono::high_resolution_clock::now(); 
 
   for (int i = 0; i < n_iterations; i++) {
-    send_recv( rank, n_iterations, a, cf, mode, order, 
-               leftSend, leftRecv, rightSend, rightRecv, leftRecvSubArray, rightRecvSubArray,
-               leftSendSubArray, rightSendSubArray, leftSend_H, leftRecv_H, rightSend_H,
-               rightRecv_H
+    send_recv( rank, n_iterations, a, cf, mode, order
+             , leftSend, leftRecv, rightSend, rightRecv, leftRecvSubArray, rightRecvSubArray
+             , leftSendSubArray, rightSendSubArray, leftSend_H, leftRecv_H, rightSend_H
+             , rightRecv_H
              );
-    //send_recv( rank, n_iterations, a, aR, aS, cf, mode, order);
   }
   if (rank == 0) {
     stop = std::chrono::high_resolution_clock::now();
 
-    duration  = std::chrono::duration<float>( stop - start ).count();
+    duration  = std::chrono::duration<double>( stop - start ).count();
     latency   = duration / ( n_iterations * 2 );
-    bandwidth = ( cf.ng * cf.ngj * cf.ngk * cf.nvt * 8 * 2 * n_iterations ) / duration;
+    bandwidth = ( (double) cf.ng * cf.ngj * cf.ngk * cf.nvt * 8.0 * 2.0 * n_iterations ) / duration;
 
     cout << "Duration  = " + to_string( duration )  << endl;
     cout << "Latency   = " + to_string( latency )   << endl;
     cout << "Bandwidth = " + to_string( bandwidth ) << endl;
-    cout << "Test      = " + to_string( 3 * 100 * 100 * 5 * 8 * 1000 / duration );
   }
 }
 
