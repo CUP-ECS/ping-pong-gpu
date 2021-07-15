@@ -1,6 +1,7 @@
 #include "ping_pong.hpp"
 //#include "input.hpp"
 #include <iostream>
+#include <fstream>
 #include "Kokkos_Core.hpp"
 #include "KokkosTypes.hpp"
 #include <stdio.h>
@@ -175,6 +176,8 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
 
 void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
 
+  ofstream file;
+
   MPI_Datatype leftRecvSubArray, rightRecvSubArray;
   MPI_Datatype leftSendSubArray, rightSendSubArray;
   
@@ -267,10 +270,20 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
     duration  = std::chrono::duration<double>( stop - start ).count();
     latency   = duration / ( n_iterations * 2 );
     bandwidth = ( (double) cf.ng * cf.ngj * cf.ngk * cf.nvt * 8.0 * 2.0 * n_iterations ) / duration;
+    
+    file.open("ping_pong.dat", ios::out | ios::app);
+
+    //file << "duration,latency,bandwidth"
+    file << to_string( max_i     ) + ","
+          + to_string( duration  ) + "," 
+          + to_string( latency   ) + "," 
+          + to_string( bandwidth ) << endl;
 
     cout << "Duration  = " + to_string( duration )  << endl;
     cout << "Latency   = " + to_string( latency )   << endl;
     cout << "Bandwidth = " + to_string( bandwidth ) << endl;
+
+    file.close();
   }
 }
 
