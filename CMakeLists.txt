@@ -14,16 +14,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(MPI REQUIRED)
 find_package(Kokkos 3 REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+include_directories(SYSTEM $CUDA_HOME/include/)
 
-add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
+add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp src/nvtx_pmpi.c)
 #target_link_libraries(ping_pong
 #                      kokkos
 #                      lua)
 
-add_subdirectory(tempi)
+#add_subdirectory(tempi)
 set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
-target_link_libraries(ping_pong PRIVATE tempi::tempi)
+#target_link_libraries(ping_pong PRIVATE tempi::tempi)
 target_link_libraries(ping_pong PUBLIC Kokkos::kokkos MPI::MPI_CXX)
+target_link_libraries(ping_pong PRIVATE nvToolsExt)
 
 # add built strings to source code
 #if(CUDA)

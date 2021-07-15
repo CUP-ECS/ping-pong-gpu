@@ -27,14 +27,14 @@ void direct( int rank, int n_iterations, FS4D a
            , MPI_Datatype leftSendSubArray, MPI_Datatype rightSendSubArray
            ) {
   if (rank % 2 == 0) {
-    int temp_rank = 1;
+    int temp_rank = rank + 1;
     MPI_Send( a.data(), 1, rightSendSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( a.data(), 1, rightRecvSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
-    int temp_rank = 0;
+    int temp_rank = rank - 1;
     MPI_Recv( a.data(), 1, leftRecvSubArray, temp_rank
             , MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( a.data(), 1, leftSendSubArray, temp_rank
@@ -61,14 +61,14 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
   Kokkos::fence();
   
   if (rank % 2 == 0) {
-    int temp_rank = 1;
+    int temp_rank = rank + 1;
     MPI_Send( rightSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( rightRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
-    int temp_rank = 0;
+    int temp_rank = rank - 1;
     MPI_Recv( leftRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( leftSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
@@ -109,21 +109,21 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
   Kokkos::deep_copy(leftSend_H, leftSend);
   Kokkos::deep_copy(rightSend_H, rightSend);
   if (rank % 2 == 0) {
-    int temp_rank = 1;
+    int temp_rank = rank + 1;
     MPI_Send( rightSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE 
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
     MPI_Recv( rightRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
   }
   else {
-    int temp_rank = 0;
+    int temp_rank = rank - 1;
     MPI_Recv( leftRecv_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE 
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     MPI_Send( leftSend_H.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
-  Kokkos::deep_copy(  leftRecv_H,  leftRecv );
-  Kokkos::deep_copy( rightRecv_H, rightRecv );
+  Kokkos::deep_copy(  leftRecv,  leftRecv_H );
+  Kokkos::deep_copy( rightRecv, rightRecv_H );
   
   Kokkos::parallel_for(
       xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
