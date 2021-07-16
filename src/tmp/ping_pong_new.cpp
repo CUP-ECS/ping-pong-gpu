@@ -98,14 +98,14 @@ void copy( int rank, int n_iterations,    FS4D a,
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
-  //leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
-  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  //leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
-  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  //rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
-  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  //rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
-  //                                               cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
+  rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+                                                 cf.ng,cf.ngj,cf.ngk,cf.nvt);
 
   Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
         				    const int k, const int v) {
@@ -146,8 +146,6 @@ void copy( int rank, int n_iterations,    FS4D a,
 
 void send_recv( int rank, int n_iterations, FS4D a, 
                 FS1D aR,  FS1D aS, inputConfig cf, int mode, int order ) {
-
-                                         //cf.ng,cf.ngj,cf.ngk,cf.nvt);
   switch (mode) {
     case 0:
       direct( rank, n_iterations, a, aR, aS, cf, mode, order );
