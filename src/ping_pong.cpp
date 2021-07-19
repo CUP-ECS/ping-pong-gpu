@@ -52,16 +52,16 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
 //void cuda_aware( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, 
 //                 int mode, int order ) {
 
-  auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>({0, 0, 0, 0},
-                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt});
+  auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
   Kokkos::parallel_for(
     xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
-      leftSend( i, j, k, v ) = a( cf.ng + i, j, k, v );
+      leftSend(  i, j, k, v ) = a( cf.ng +  i, j, k, v );
       rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
     });
   Kokkos::fence();
   
-  if (rank % 2 == 0) {
+  if ( rank % 2 == 0 ) {
     int temp_rank = rank + 1;
     MPI_Send( rightSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
@@ -194,7 +194,7 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
 
   int rank, num_procs;
   MPI_Comm_rank( MPI_COMM_WORLD, &rank );
-  MPI_Comm_size( MPI_COMM_WORLD, &num_procs );
+  MPI_Comm_size( MPI_COMM_WORLD, &num_procs )
 
   MPI_Comm node_comm;
   MPI_Comm_split_type( MPI_COMM_WORLD, MPI_COMM_TYPE_SHARED, rank,
