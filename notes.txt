@@ -33,4 +33,5 @@
 * I've also started putting together a presentation for a meeting with Carl Pearson,
   but otherwise I don't have much more to discuss.
 
-
+*** Additional Data ***
+640,11.735221,0.005868,8376834419.358094
