@@ -1,2 +1,36 @@
 **  latency # seconds / # trips
 **  bandwidth # bytes sent and recieved / # seconds
+
+*** Internship Sandia ***
+
+* Hello, my name is Keira Haskins. I am a PhD student working with Patrick Bridges at
+  UNM. To start off working at Sandia, I will be working on using nvprof or 
+  similar tools to analyze the performance and communication patterns of applications 
+  which run on the GPU. Recently
+  I have been spending time working on an MPI/CUDA based ping pong test which focuses
+  on three different techniques; direct sending and recieving,
+  a cuda aware method, and a method for copying data to the GPU first. From here I will
+  use nvprof to analyze various methods for communication between the CPU and
+  GPU on this application before moving on to larger applications, possibly FIESTA
+  or HIGRAD; As an example for how we may change our communication patterns; should 
+  we call pack send pack send, maybe pack pack send send, or possibly other patterns? 
+  I ultimately want to be able to analyze GPU application communication patterns
+  in order to determine what could be changed to improve GPU application performance.
+
+* I've gotten my ping pong test working and I've started running it with nvprof, and
+  I have since started looking at where it's spending most of its time for different
+  methods.
+
+* Ping pong test -> started working on making it more dynamic, such that I can adjust
+  different parameters in it; which direction we are accessing data structures, how many
+  dimensions we are looking at etc
+
+* I've started looking at nvprof output for the ping pong test and I've started working
+  on how to best make graphs of the data for bandwidth, latency, and runtime along with
+  the data relating to where time is being spent in the application as output from
+  nvprof.
+
+* I've also started putting together a presentation for a meeting with Carl Pearson,
+  but otherwise I don't have much more to discuss.
+
+
