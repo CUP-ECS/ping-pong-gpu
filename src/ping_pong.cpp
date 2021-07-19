@@ -254,10 +254,10 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
   FS4DH rightSend_H = Kokkos::create_mirror_view(rightSend); 
   FS4DH rightRecv_H = Kokkos::create_mirror_view(leftRecv); 
 
-  if (rank == 0)
+  if ( rank == 0 )
     start = std::chrono::high_resolution_clock::now(); 
 
-  for (int i = 0; i < n_iterations; i++) {
+  for ( int i = 0; i < n_iterations; i++ ) {
     send_recv( rank, n_iterations, a, cf, mode, order
              , leftSend, leftRecv, rightSend, rightRecv, leftRecvSubArray, rightRecvSubArray
              , leftSendSubArray, rightSendSubArray, leftSend_H, leftRecv_H, rightSend_H
@@ -270,8 +270,18 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
     duration  = std::chrono::duration<double>( stop - start ).count();
     latency   = duration / ( n_iterations * 2 );
     bandwidth = ( (double) cf.ng * cf.ngj * cf.ngk * cf.nvt * 8.0 * 2.0 * n_iterations ) / duration;
-    
-    file.open("ping_pong.dat", ios::out | ios::app);
+
+    switch ( mode ) {
+    case 0:
+        file.open("ping_pong_direct.dat", ios::out | ios::app);
+        break;
+    case 1:
+        file.open("ping_pong_cuda.dat", ios::out | ios::app);
+        break;
+    case 2:
+        file.open("ping_pong_copy.dat", ios::out | ios::app);
+        break;       
+    }
 
     //file << "duration,latency,bandwidth"
     file << to_string( max_i     ) + ","
