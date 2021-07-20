@@ -13,6 +13,14 @@ import os
 '''
 def gather_data():
     df = pd.read_csv("ping_pong_direct.dat")
+    #df = pd.read_csv("ping_pong.dat")
+    #ax = df.plot.gca()
+    # df.plot(kind='bar', rot=0, subplots=True)
+    axes = df.plot.line(subplots=True, x='max_i') 
+    axes[0].set_ylabel('seconds')
+    axes[1].set_ylabel('seconds')
+    axes[2].set_ylabel('GiB/s')
+
     df.plot(kind='bar', rot=0, subplots=True, marker='o', linestyle='dashed')
     # set the spacing between subplots
     plt.subplots_adjust(left=0.1,
@@ -21,8 +29,9 @@ def gather_data():
                         top=0.9, 
                         wspace=0.4, 
                         hspace=0.4)
-    #plot(x, y, color='green', marker='o', linestyle='dashed', linewidth=2, markersize=12)
     #axes[1].legend(loc=2)
+    type(axes)
+    #plt.savefig('output.png')
     plt.savefig('output_direct.png')
     #print(data)
 
