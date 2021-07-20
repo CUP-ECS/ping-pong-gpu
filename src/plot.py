@@ -12,7 +12,7 @@ import os
 ===============================================================================
 '''
 def gather_data():
-    df = pd.read_csv("ping_pong.dat")
+    df = pd.read_csv("ping_pong_direct.dat")
     df.plot(kind='bar', rot=0, subplots=True, marker='o', linestyle='dashed')
     # set the spacing between subplots
     plt.subplots_adjust(left=0.1,
@@ -23,7 +23,7 @@ def gather_data():
                         hspace=0.4)
     #plot(x, y, color='green', marker='o', linestyle='dashed', linewidth=2, markersize=12)
     #axes[1].legend(loc=2)
-    plt.savefig('output.png')
+    plt.savefig('output_direct.png')
     #print(data)
 
 
