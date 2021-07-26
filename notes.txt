@@ -34,4 +34,60 @@
   but otherwise I don't have much more to discuss.
 
 *** Additional Data ***
+
+* Direct
+640,8.326584,0.004163,11806041701.367895
+
+* Cuda aware
 640,11.735221,0.005868,8376834419.358094
+640,11.853410,0.005927,8293309709.931513
+
+* Copy
+640,27.059686,0.013530,3632858096.816575
+
+*** Presentation Ping Pong ***
+
+Slide 1:
+  Hello! My name is Rei Haskins, I am a grad student working with Patrick Bridges at
+  UNM, and Kurt Ferreira and Scott Levy at Sandia National Labs. Today I will be
+  discussing the work that I have been doing on the analysis of HPC applications which
+  run on GPUs.
+
+Slide 2:
+  Our motivation for this work is to first determine if changes made to communication
+  patterns and how data is actually packed onto GPUs may improve overall application
+  performance. Secondly, as a whole we would like to be able to learn more about
+  communication and data movement within HPC applications.
+
+Slide 3:
+  Next I would like to talk about our desire to analyze GPU applications. First off,
+  we created an MPI library to profile GPU activities during communication of HPC
+  applications. Second, we built a ping pong test which uses a number of Kokkos features
+  borrowed from FIESTA. We designed it such that it uses real application data structures
+  and MPI types.
+
+Slide 4:
+  Once again, for our ping pong test we extracted data structures from FIESTA. The
+  ping pong test supports three different communication methods: First, there is
+  direct communication which sends and receives directly from GPU to GPU without any
+  data copying first. Second, we have a cuda aware method, which first packs data into
+  a flat Kokkos buffer before sending and receiving between GPUs. Lastly, we have a
+  copy method which starts off by performing a deep copy, moving data from GPU to the
+  host before sending and receiving between GPUs.
+
+Slide 5:
+  Lastly I would like to present some results that I have gathered from running the ping
+  pong test with nvprof. To start, the first three top plots are the duration, latency,
+  and bandwidth produced by the application itself. Below each one is the corresponding
+  output from nvprof showing where each run was spending most of its time. As we can see 
+  for the direct method around 50 percent of the application time is being spent in
+  CUDA memcopy from device to host and another 48 percent is being spent copying memory
+  for CUDA from host to device. Looking at the first figure we may also observe that
+  the bandwidth is higher than for both cuda aware and copy and the duration and latency
+  is lower than both cuda aware and copy and that cuda aware is also better than copy
+  in each area as well. Also of note, both cuda aware and copy spend about 33 percent
+  in cuda_parallel_launch_local_memory twice before then spending around 15-16 percent
+  of their time in CUDA memcopy from device to host and then host to device.
+
+Slide 6:
+  Thank you for listening to my talk, are there any questions?
