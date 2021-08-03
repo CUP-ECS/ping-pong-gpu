@@ -28,6 +28,7 @@
 #include <sstream>
 
 #define FS_LAYOUT Kokkos::LayoutRight
+//#define FS_LAYOUT Kokkos::LayoutLeft
 //#define FS_LAYOUT Kokkos::DefaultExecutionSpace::array_layout
 
 // double view types

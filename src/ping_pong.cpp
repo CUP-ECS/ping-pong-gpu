@@ -48,17 +48,36 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
                , FS4D rightRecv, MPI_Datatype leftRecvSubArray
                , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
                , MPI_Datatype rightSendSubArray
+               , int direction
                ) {
 //void cuda_aware( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, 
 //                 int mode, int order ) {
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                             {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
-  Kokkos::parallel_for(
-    xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
-      leftSend(  i, j, k, v ) = a( cf.ng +  i, j, k, v );
-      rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
-    });
+  switch( direction ) {
+    case 0:
+      Kokkos::parallel_for(
+        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+          leftSend(  i, j, k, v ) = a( cf.ng +  i, j, k, v );
+          rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
+        });
+      break;
+    case 1:
+      Kokkos::parallel_for(
+        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+          leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
+          rightSend( i, j, k, v ) = a( i, j + cf.nci, k, v );
+        });
+      break;
+    case 2:
+      Kokkos::parallel_for(
+        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+          leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
+          rightSend( i, j, k, v ) = a( i, j, k + cf.nci, v );
+        });
+      break;
+  }
   Kokkos::fence();
   
   if ( rank % 2 == 0 ) {
@@ -76,11 +95,30 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
   
-  Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+
+  switch( direction ) {
+    case 0:
+     Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
       });
+      break;
+    case 1:
+     Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(i, cf.nci - cf.ng + j, k, v) = rightRecv(i, j, k, v);
+      });
+      break;
+    case 2:
+     Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(i, j, cf.nci - cf.ng + k, v) = rightRecv(i, j, k, v);
+      });
+      break;
+  }
   Kokkos::fence();
 
 }
@@ -94,6 +132,7 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
          , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
          , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
          , FS4DH rightSend_H, FS4DH rightRecv_H
+         , int direction
          ) {
 //void copy( int rank, int n_iterations,    FS4D a, 
 //                FS1D aR,  FS1D aS, inputConfig cf, int mode, int order ) {
@@ -101,11 +140,34 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
 
-  Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
-        				    const int k, const int v) {
-        leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
-        rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
-      });
+  //Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
+  //      				    const int k, const int v) {
+  //      leftSend(i, j, k, v) = a(cf.ng + i, j, k, v);
+  //      rightSend(i, j, k, v) = a(i + cf.nci, j, k, v);
+  //    });
+  switch( direction ) {
+    case 0:
+      Kokkos::parallel_for(
+        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+          leftSend(  i, j, k, v ) = a( cf.ng +  i, j, k, v );
+          rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
+        });
+      break;
+    case 1:
+      Kokkos::parallel_for(
+        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+          leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
+          rightSend( i, j, k, v ) = a( i, j + cf.nci, k, v );
+        });
+      break;
+    case 2:
+      Kokkos::parallel_for(
+        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+          leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
+          rightSend( i, j, k, v ) = a( i, j, k + cf.nci, v );
+        });
+      break;
+  }
   
   Kokkos::deep_copy(leftSend_H, leftSend);
   Kokkos::deep_copy(rightSend_H, rightSend);
@@ -125,12 +187,36 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
   }
   Kokkos::deep_copy(  leftRecv,  leftRecv_H );
   Kokkos::deep_copy( rightRecv, rightRecv_H );
-  
-  Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+
+  switch( direction ) {
+    case 0:
+     Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
       });
+      break;
+    case 1:
+     Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(i, cf.nci - cf.ng + j, k, v) = rightRecv(i, j, k, v);
+      });
+      break;
+    case 2:
+     Kokkos::parallel_for(
+      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        a(i, j, k, v) = leftRecv(i, j, k, v);
+        a(i, j, cf.nci - cf.ng + k, v) = rightRecv(i, j, k, v);
+      });
+      break;
+  }
+  
+  //Kokkos::parallel_for(
+  //    xPol, KOKKOS_LAMBDA(const int i, const int j, const int k, const int v) {
+  //      a(i, j, k, v) = leftRecv(i, j, k, v);
+  //      a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
+  //    });
   Kokkos::fence();
 
 }
@@ -140,7 +226,7 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
               , FS4D rightRecv, MPI_Datatype leftRecvSubArray
               , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
               , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
-              , FS4DH rightSend_H, FS4DH rightRecv_H
+              , FS4DH rightSend_H, FS4DH rightRecv_H, int direction
               ) {
 
 //void send_recv( int rank, int n_iterations, FS4D a, 
@@ -158,6 +244,7 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
                 , leftSend, leftRecv, rightSend, rightRecv
                 , leftRecvSubArray, rightRecvSubArray, leftSendSubArray
                 , rightSendSubArray
+                , direction
                 );
       break;
     case 2:
@@ -166,6 +253,7 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
           , leftRecvSubArray, rightRecvSubArray, leftSendSubArray
           , rightSendSubArray, leftSend_H, leftRecv_H
           , rightSend_H, rightRecv_H
+          , direction
           );
       break;
     default:
@@ -174,23 +262,27 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
   }
 }
 
-void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
+void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int direction ) {
 
   ofstream file;
 
   MPI_Datatype leftRecvSubArray, rightRecvSubArray;
   MPI_Datatype leftSendSubArray, rightSendSubArray;
-  
+
+  //MPI_Datatype bottomRecvSubArray, topRecvSubArray;
+  //MPI_Datatype bottomSendSubArray, topSendSubArray;
+
+  //MPI_Datatype downRecvSubArray, upRecvSubArray;
+  //MPI_Datatype downSendSubArray, upSendSubArray;
+
   struct inputConfig cf = executeConfiguration( max_i );
   auto start       = std::chrono::high_resolution_clock::now(); 
   auto stop        = std::chrono::high_resolution_clock::now();
-  double duration  = std::chrono::duration<double, std::nano>(stop - start).count();
+  double duration  = std::chrono::duration<double, std::nano>( stop - start ).count();
   double latency   = duration / 2;
   double bandwidth = 10 / duration;
 
-  FS4D a  = Kokkos::View<double ****, FS_LAYOUT>("data"   , cf.ngi, cf.ngj , cf.ngk,  cf.nvt);
-  //FS1D aR = Kokkos::View<double    *, FS_LAYOUT>("recieve", cf.ng * cf.ngj * cf.ngk * cf.nvt);
-  //FS1D aS = Kokkos::View<double    *, FS_LAYOUT>("send"   , cf.ng * cf.ngj * cf.ngk * cf.nvt);
+  FS4D a  = Kokkos::View<double ****, FS_LAYOUT>( "data", cf.ngi, cf.ngj, cf.ngk,  cf.nvt );
 
   int rank, num_procs;
   MPI_Comm_rank( MPI_COMM_WORLD, &rank );
@@ -218,27 +310,82 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
 
   int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
   int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
+  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
+  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
 
-  int leftRecvStarts[4]   = { 0, 0, 0, 0 };
-  int leftSendStarts[4]   = { cf.ng, 0, 0, 0 };
-  int rightRecvStarts[4]  = { cf.ngi - cf.ng, 0, 0, 0 };
-  int rightSendStarts[4]  = { cf.nci, 0, 0, 0 };
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
-                          , order, MPI_DOUBLE, &leftRecvSubArray );
-  MPI_Type_commit( &leftRecvSubArray );
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
-                          , order, MPI_DOUBLE, &leftSendSubArray );
-  MPI_Type_commit( &leftSendSubArray );
+  //switch ( direction ) {
+    //case 0:
+  if ( direction == 0 ) {
+      int leftRecvStarts[4]  = { 0, 0, 0, 0 };
+      int leftSendStarts[4]  = { cf.ng, 0, 0, 0 };
+      int rightRecvStarts[4] = { cf.ngi - cf.ng, 0, 0, 0 };
+      int rightSendStarts[4] = { cf.nci, 0, 0, 0 };
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
-                          , order, MPI_DOUBLE, &rightRecvSubArray );
-  MPI_Type_commit( &rightRecvSubArray );
+      MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
+                              , order, MPI_DOUBLE, &leftRecvSubArray );
+      MPI_Type_commit( &leftRecvSubArray );
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
-                          , order, MPI_DOUBLE, &rightSendSubArray );
-  MPI_Type_commit( &rightSendSubArray );
+      MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
+                              , order, MPI_DOUBLE, &leftSendSubArray );
+      MPI_Type_commit( &leftSendSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
+                              , order, MPI_DOUBLE, &rightRecvSubArray );
+      MPI_Type_commit( &rightRecvSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
+                              , order, MPI_DOUBLE, &rightSendSubArray );
+      MPI_Type_commit( &rightSendSubArray );
+  } else if ( direction == 1 ) {
+      //break;
+    //case 1:
+      int leftRecvStarts[4]  = { 0, 0, 0, 0 };
+      int leftSendStarts[4]  = { 0, cf.ng, 0, 0 };
+      int rightRecvStarts[4] = { 0, cf.ngj - cf.ng, 0, 0 };
+      int rightSendStarts[4] = { 0, cf.ncj, 0, 0 };
+
+      MPI_Type_create_subarray( 4, bigsizes, ysubsizes, leftRecvStarts
+                              , order, MPI_DOUBLE, &leftRecvSubArray );
+      MPI_Type_commit( &leftRecvSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, ysubsizes, leftSendStarts
+                              , order, MPI_DOUBLE, &leftSendSubArray );
+      MPI_Type_commit( &leftSendSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, ysubsizes, rightRecvStarts
+                              , order, MPI_DOUBLE, &rightRecvSubArray );
+      MPI_Type_commit( &rightRecvSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, ysubsizes, rightSendStarts
+                              , order, MPI_DOUBLE, &rightSendSubArray );
+      MPI_Type_commit( &rightSendSubArray );
+  } else if ( direction == 2 ) {
+      //break;
+    //case 2:
+      int leftRecvStarts[4]  = { 0, 0, 0, 0 };
+      int leftSendStarts[4]  = { 0, 0, cf.ng, 0 };
+      int rightRecvStarts[4] = { 0, 0, cf.ngk - cf.ng, 0 };
+      int rightSendStarts[4] = { 0, 0, cf.nck, 0 };
+
+      MPI_Type_create_subarray( 4, bigsizes, zsubsizes, leftRecvStarts
+                              , order, MPI_DOUBLE, &leftRecvSubArray );
+      MPI_Type_commit( &leftRecvSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, zsubsizes, leftSendStarts
+                              , order, MPI_DOUBLE, &leftSendSubArray );
+      MPI_Type_commit( &leftSendSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, zsubsizes, rightRecvStarts
+                              , order, MPI_DOUBLE, &rightRecvSubArray );
+      MPI_Type_commit( &rightRecvSubArray );
+
+      MPI_Type_create_subarray( 4, bigsizes, zsubsizes, rightSendStarts
+                              , order, MPI_DOUBLE, &rightSendSubArray );
+      MPI_Type_commit( &rightSendSubArray );
+      //break;
+  }
 
   FS4D leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
@@ -261,7 +408,7 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode ) {
     send_recv( rank, n_iterations, a, cf, mode, order
              , leftSend, leftRecv, rightSend, rightRecv, leftRecvSubArray, rightRecvSubArray
              , leftSendSubArray, rightSendSubArray, leftSend_H, leftRecv_H, rightSend_H
-             , rightRecv_H
+             , rightRecv_H, direction
              );
   }
   if (rank == 0) {
