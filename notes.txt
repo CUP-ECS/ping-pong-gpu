@@ -45,49 +45,109 @@
 * Copy
 640,27.059686,0.013530,3632858096.816575
 
+*** Posters ***
+
+  * 13th August / 17/18 days
+
 *** Presentation Ping Pong ***
 
+working with Patrick Bridges at
+UNM, and Kurt Ferreira and Scott Levy at Sandia.
+
 Slide 1:
-  Hello! My name is Rei Haskins, I am a grad student working with Patrick Bridges at
-  UNM, and Kurt Ferreira and Scott Levy at Sandia National Labs. Today I will be
-  discussing the work that I have been doing on the analysis of HPC applications which
-  run on GPUs.
+  Hello! My name is Rei Haskins, I am a grad student working at UNM with Patrick 
+  Bridges, and at Sandia with Kurt Ferreira and Scott Levy, and today I will be
+  discussing the work that we have been doing on the analysis of HPC applications
+  which run on GPUs using MPI.
 
 Slide 2:
+  So to start,
   Our motivation for this work is to first determine if changes made to communication
-  patterns and how data is actually packed onto GPUs may improve overall application
+  patterns and how data is packed onto GPUs may improve overall application
   performance. Secondly, as a whole we would like to be able to learn more about
   communication and data movement within HPC applications.
 
 Slide 3:
-  Next I would like to talk about our desire to analyze GPU applications. First off,
+  First I would like to talk about our desire to analyze GPU applications. To start,
   we created an MPI library to profile GPU activities during communication of HPC
   applications. Second, we built a ping pong test which uses a number of Kokkos features
   borrowed from FIESTA. We designed it such that it uses real application data structures
   and MPI types.
 
 Slide 4:
-  Once again, for our ping pong test we extracted data structures from FIESTA. The
+  For our ping pong test we extracted data structures from FIESTA. The
   ping pong test supports three different communication methods: First, there is
   direct communication which sends and receives directly from GPU to GPU without any
   data copying first. Second, we have a cuda aware method, which first packs data into
   a flat Kokkos buffer before sending and receiving between GPUs. Lastly, we have a
-  copy method which starts off by performing a deep copy, moving data from GPU to the
-  host before sending and receiving between GPUs.
+  copy method which starts off by performing a deep copy, or the moving data from GPU 
+  to the host before sending and receiving between GPUs.
 
 Slide 5:
-  Lastly I would like to present some results that I have gathered from running the ping
-  pong test with nvprof. To start, the first three top plots are the duration, latency,
-  and bandwidth produced by the application itself. Below each one is the corresponding
-  output from nvprof showing where each run was spending most of its time. As we can see 
-  for the direct method around 50 percent of the application time is being spent in
+  Next I would like to present some results that I have gathered from running the ping
+  pong test with nvprof on Lassen. To start, the first three top plots are the duration, 
+  latency, and bandwidth produced by the application itself. Below each one is the 
+  corresponding output from nvprof showing where each run was spending most of its 
+  time. As we can see for the direct method around 50 percent of the application time 
+  is being spent in
   CUDA memcopy from device to host and another 48 percent is being spent copying memory
   for CUDA from host to device. Looking at the first figure we may also observe that
   the bandwidth is higher than for both cuda aware and copy and the duration and latency
   is lower than both cuda aware and copy and that cuda aware is also better than copy
   in each area as well. Also of note, both cuda aware and copy spend about 33 percent
   in cuda_parallel_launch_local_memory twice before then spending around 15-16 percent
-  of their time in CUDA memcopy from device to host and then host to device.
+  of their time in CUDA memcopy from device to host and then host to device. Max_i is
+  used to define one side of the data structure being used; for this we looked at 10,
+  20, 40, 80, 160, 320, and 640.
 
 Slide 6:
+  Lastly I would like to talk a bit about where we would like to go next: First we would
+  like to modify the ping pong test in order to make use of dimensions other than x and
+  we want to use Fortran order arrays. Second, we want to look at using other versions of
+  MPI in order to see how GPU usage changes depending on the version. Third, we want to
+  see about running on different systems and or accelerators. In the long term, we want
+  to look at running on non-NVIDIA accelerators, AMD, etc, and lastly we want to consider
+  integration with other performance monitoring systems other than NVprof.
+
+Slide 7:
   Thank you for listening to my talk, are there any questions?
+
+
+*** Ping Pong Notes ***
+    ** Talk to Ryan and or Amanda about compiling with Mvapich.
+    
+    * Have a graph of the pieces of code -> Packing in one direction is a node, sending,
+      receiving, unpacking, are all nodes; each node is a snippet of code.
+    * Generate a ping pong that works in a particular order based on a 
+    * Evaluate a few cases by hand to start
+    ** Take FIESTA and make an alternate communication strategy -> Ask Ryan about this
+      - Ordering of packing and sending
+    * Want to understand what's going on between all packs/sends vs alternating
+
+*** Ping Pong Data ***
+
+,0.078896
+,0.087249
+,0.118332
+,0.224270
+,0.698187
+,2.238316
+,8.326584
+
+
+,0.118801
+,0.135347
+,0.163165
+,0.263389
+,0.894650
+,2.877888
+,11.85341
+
+
+,0.185193
+,0.209339
+,0.300820
+,0.545074
+,1.696082
+,6.218402
+,27.05968

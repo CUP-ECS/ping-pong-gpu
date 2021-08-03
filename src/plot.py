@@ -17,9 +17,20 @@ def gather_data():
     df = pd.read_csv("ping_pong_copy.dat")
     #df = pd.read_csv("ping_pong.dat")
     axes = df.plot.line(subplots=True, x='max_i', marker='o') 
+    #axes[0].set_ylabel('seconds')
+    #axes[1].set_ylabel('seconds')
+    #axes[2].set_ylabel('GiB/s')
+
     axes[0].set_ylabel('seconds')
-    axes[1].set_ylabel('seconds')
-    axes[2].set_ylabel('GiB/s')
+    axes[1].set_ylabel('GiB/s')
+
+    #axes[0].set(ylim=(0,30))
+    #axes[1].set(ylim=(0.00,0.02))
+    #axes[2].set(ylim=(0,1.5e10))
+
+    #axes[0].set(ylim=(0,30))
+    axes[0].set(ylim=(0.00,0.02))
+    axes[1].set(ylim=(0,1.5e10))
 
     #df.plot(kind='bar', rot=0, subplots=True, marker='o', linestyle='dashed')
     # set the spacing between subplots
@@ -32,9 +43,9 @@ def gather_data():
     #axes[1].legend(loc=2)
     type(axes)
     #plt.savefig('output.png')
-    #plt.savefig('output_direct.png')
-    #plt.savefig('output_cuda.png')
-    plt.savefig('output_copy.png')
+    #plt.savefig('output_direct_new.png')
+    #plt.savefig('output_cuda_new.png')
+    plt.savefig('output_copy_new.png')
     #print(data)
 
 
