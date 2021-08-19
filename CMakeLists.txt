@@ -27,6 +27,10 @@ set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
 target_link_libraries(ping_pong PUBLIC Kokkos::kokkos MPI::MPI_CXX)
 target_link_libraries(ping_pong PRIVATE nvToolsExt)
 
+# wrap.py setup -- grab the add_wrapped_file macro.
+set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
+include(wrap/WrapConfig.cmake)
+
 # add built strings to source code
 #if(CUDA)
 #  target_compile_definitions(fiesta PRIVATE HAVE_CUDA)
