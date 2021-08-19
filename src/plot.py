@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import sys
 
 '''
 ===============================================================================
@@ -11,10 +12,30 @@ import os
 @returns:
 ===============================================================================
 '''
-def gather_data():
-    #df = pd.read_csv("ping_pong_direct.dat")
-    #df = pd.read_csv("ping_pong_cuda.dat")
-    df = pd.read_csv("ping_pong_copy.dat")
+def gather_data( mode ):
+    #df = pd.DataFrame()
+    mode_str = ''
+    if ( mode == '0' ):
+        mode_str = 'direct'
+    elif ( mode == '1' ): 
+        mode_str = 'cuda'
+    elif ( mode == '2' ):
+        mode_str = 'copy'
+    else:
+        print( 'Invalid mode chosen.' )
+        return 0
+    
+    df = pd.read_csv( 'ping_pong_' + mode_str + '.dat' ) 
+    #if ( mode == "0" ):
+    #    df = pd.read_csv("ping_pong_direct.dat")
+    #elif ( mode == "1" ): 
+    #    df = pd.read_csv("ping_pong_cuda.dat")
+    #elif ( mode == "2" ):
+    #    df = pd.read_csv("ping_pong_copy.dat")
+    #else:
+    #    print( "Invalid mode chosen." )
+    #    return 0
+    
     #df = pd.read_csv("ping_pong.dat")
     axes = df.plot.line(subplots=True, x='max_i', marker='o') 
     #axes[0].set_ylabel('seconds')
@@ -42,12 +63,19 @@ def gather_data():
     #                    hspace=0.4)
     #axes[1].legend(loc=2)
     type(axes)
-    #plt.savefig('output.png')
-    #plt.savefig('output_direct_new.png')
-    #plt.savefig('output_cuda_new.png')
-    plt.savefig('output_copy_new.png')
+    plt.savefig( 'output_' + mode_str + '_new.png' )
+    #if ( mode == "0" ):
+    #    plt.savefig('output_direct_new.png')
+    #elif ( mode == "1" ): 
+    #    plt.savefig('output_cuda_new.png')
+    #elif ( mode == "2" ):
+    #    plt.savefig('output_copy_new.png')
+    #else:
+    #    print( "Invalid mode chosen." )
     #print(data)
 
+def main( argv ):
+    gather_data( argv[1] )
 
 '''
 ===============================================================================
@@ -58,4 +86,4 @@ def gather_data():
 ===============================================================================
 '''
 if __name__ == '__main__':
-    gather_data()
+    main( sys.argv )

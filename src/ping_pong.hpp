@@ -47,7 +47,7 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
                , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
                , FS4D rightRecv, MPI_Datatype leftRecvSubArray
                , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
-               , MPI_Datatype rightSendSubArray
+               , MPI_Datatype rightSendSubArray, int direction
                );
 //void cuda_aware(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
 //void copy(int rank, int n_iterations, FS4D a, inputConfig cf, int mode);
@@ -56,7 +56,7 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
          , FS4D rightRecv, MPI_Datatype leftRecvSubArray
          , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
          , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
-         , FS4DH rightSend_H, FS4DH rightRecv_H
+         , FS4DH rightSend_H, FS4DH rightRecv_H, int direction
          );
 
 //void send_recv(int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, int mode);
@@ -65,7 +65,7 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
               , FS4D rightRecv, MPI_Datatype leftRecvSubArray
               , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
               , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
-              , FS4DH rightSend_H, FS4DH rightRecv_H
+              , FS4DH rightSend_H, FS4DH rightRecv_H, int direction
               );
 
 

@@ -67,14 +67,14 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
       Kokkos::parallel_for(
         xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
-          rightSend( i, j, k, v ) = a( i, j + cf.nci, k, v );
+          rightSend( i, j, k, v ) = a( i, j + cf.ncj, k, v );
         });
       break;
     case 2:
       Kokkos::parallel_for(
         xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
-          rightSend( i, j, k, v ) = a( i, j, k + cf.nci, v );
+          rightSend( i, j, k, v ) = a( i, j, k + cf.nck, v );
         });
       break;
   }
@@ -108,14 +108,14 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
      Kokkos::parallel_for(
       xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(i, cf.nci - cf.ng + j, k, v) = rightRecv(i, j, k, v);
+        a(i, cf.ncj - cf.ng + j, k, v) = rightRecv(i, j, k, v);
       });
       break;
     case 2:
      Kokkos::parallel_for(
       xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(i, j, cf.nci - cf.ng + k, v) = rightRecv(i, j, k, v);
+        a(i, j, cf.nck - cf.ng + k, v) = rightRecv(i, j, k, v);
       });
       break;
   }
@@ -157,14 +157,14 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
       Kokkos::parallel_for(
         xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
-          rightSend( i, j, k, v ) = a( i, j + cf.nci, k, v );
+          rightSend( i, j, k, v ) = a( i, j + cf.ncj, k, v );
         });
       break;
     case 2:
       Kokkos::parallel_for(
         xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
-          rightSend( i, j, k, v ) = a( i, j, k + cf.nci, v );
+          rightSend( i, j, k, v ) = a( i, j, k + cf.nck, v );
         });
       break;
   }
@@ -200,14 +200,14 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
      Kokkos::parallel_for(
       xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(i, cf.nci - cf.ng + j, k, v) = rightRecv(i, j, k, v);
+        a(i, cf.ncj - cf.ng + j, k, v) = rightRecv(i, j, k, v);
       });
       break;
     case 2:
      Kokkos::parallel_for(
       xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(i, j, cf.nci - cf.ng + k, v) = rightRecv(i, j, k, v);
+        a(i, j, cf.nck - cf.ng + k, v) = rightRecv(i, j, k, v);
       });
       break;
   }
@@ -420,13 +420,13 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int 
 
     switch ( mode ) {
     case 0:
-        file.open("ping_pong_direct.dat", ios::out | ios::app);
+        file.open("ping_pong_direct" + to_string( direction ) + ".dat", ios::out | ios::app);
         break;
     case 1:
-        file.open("ping_pong_cuda.dat", ios::out | ios::app);
+        file.open("ping_pong_cuda" + to_string( direction ) + ".dat", ios::out | ios::app);
         break;
     case 2:
-        file.open("ping_pong_copy.dat", ios::out | ios::app);
+        file.open("ping_pong_copy" + to_string( direction ) + ".dat", ios::out | ios::app);
         break;       
     }
 
@@ -434,7 +434,8 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int 
     file << to_string( max_i     ) + ","
           + to_string( duration  ) + "," 
           + to_string( latency   ) + "," 
-          + to_string( bandwidth ) << endl;
+          + to_string( bandwidth ) + "," 
+          + to_string( direction ) << endl;
 
     cout << "Duration  = " + to_string( duration )  << endl;
     cout << "Latency   = " + to_string( latency )   << endl;
