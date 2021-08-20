@@ -166,7 +166,16 @@ Slide 5:
   the same performance.
 
 Slide 6:
-  Lastly I would like to talk a bit about where we would like to go next: First we would
+  Next I would like to show some results for the direct method when changing the 
+  direction of accessing data in either the x, y, or z dimensions. The first figure
+  is the same as the direct method from the last slide and we may observe the higher
+  bandwidth and the NVprof output wherein there are only 24 calls to CUDA memcopy. In
+  the y and z directions the latencies are much higher, especially in the z direction
+  and the bandwidth for each are very low. We may also observe that for y there are
+  around 80,000 calls to CUDA memcopy and over 3,000,000 for the z direction. 
+
+Slide 7:
+  Now, I would like to talk a bit about where we would like to go next: First we would
   like to modify the ping pong test in order to make use of dimensions other than x and
   we want to use Fortran order arrays. Second, we want to look at using other versions of
   MPI in order to see how GPU usage changes depending on the version. Third, we want to
@@ -174,7 +183,10 @@ Slide 6:
   to look at running on non-NVIDIA accelerators, AMD, etc, and lastly we want to consider
   integration with other performance monitoring systems other than NVprof.
 
-Slide 7:
+Slide 8:
+  Lastly I would like to acknowledge ...
+
+Slide 9:
   Thank you for listening to my talk, are there any questions?
 
 
