@@ -15,7 +15,7 @@
     lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 0 1
     lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 1 1
     lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 2 1
-    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 0 2
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 0 2
     lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 1 2
     lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ./build/ping_pong $i 1000 4 2 2
   done

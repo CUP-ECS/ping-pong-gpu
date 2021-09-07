@@ -4,17 +4,17 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/ghostbird/Hacking/黒澤玲/ping-pong-gpu/kokkos
-BuildDirectory: /home/ghostbird/Hacking/黒澤玲/ping-pong-gpu/build/kokkos
+SourceDirectory: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/kokkos
+BuildDirectory: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build/kokkos
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: izanami
+Site: lassen425
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-c++
+BuildName: Linux-nvcc_wrapper
 
 # Subprojects
 LabelsForSubprojects: 
@@ -26,8 +26,8 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/ghostbird/Hacking/黒澤玲/ping-pong-gpu/kokkos"
-MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
+ConfigureCommand: "/usr/tce/packages/cmake/cmake-3.18.0/bin/cmake" "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/kokkos"
+MakeCommand: /usr/tce/packages/cmake/cmake-3.18.0/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -35,35 +35,35 @@ UpdateVersionOnly:
 
 # CVS options
 # Default is "-d -P -A"
-CVSCommand: 
-CVSUpdateOptions: 
+CVSCommand: /usr/bin/cvs
+CVSUpdateOptions: -d -A -P
 
 # Subversion options
-SVNCommand: 
+SVNCommand: /usr/bin/svn
 SVNOptions: 
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: 
+GITCommand: /usr/tcetmp/bin/git
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 
 
 # Perforce options
-P4Command: 
+P4Command: P4COMMAND-NOTFOUND
 P4Client: 
 P4Options: 
 P4UpdateOptions: 
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: 
+UpdateCommand: /usr/tcetmp/bin/git
 UpdateOptions: 
-UpdateType: 
+UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/c++
-CompilerVersion: 10.2.0
+Compiler: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/kokkos/bin/nvcc_wrapper
+CompilerVersion: 8.3.1
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -71,17 +71,19 @@ ValgrindCommand:
 ValgrindCommandOptions: 
 DrMemoryCommand: 
 DrMemoryCommandOptions: 
-CudaSanitizerCommand: 
-CudaSanitizerCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: /opt/cuda-10.1/bin/cuda-memcheck
+MemoryCheckCommand: /usr/tcetmp/bin/valgrind
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 
 # Coverage
 CoverageCommand: /usr/bin/gcov
 CoverageExtraFlags: -l
+
+# Cluster commands
+SlurmBatchCommand: SLURM_SBATCH_COMMAND-NOTFOUND
+SlurmRunCommand: /usr/tcetmp/bin/srun
 
 # Testing options
 # TimeOut is the amount of time in seconds to wait for processes
