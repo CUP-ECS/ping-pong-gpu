@@ -7,6 +7,7 @@
   UNM. To start off working at Sandia, I will be working on using nvprof or 
   similar tools to analyze the performance and communication patterns of applications 
   which run on the GPU. Recently
+
   I have been spending time working on an MPI/CUDA based ping pong test which focuses
   on three different techniques; direct sending and recieving,
   a cuda aware method, and a method for copying data to the GPU first. From here I will
@@ -150,15 +151,23 @@ Slide 5:
   pong test with nvprof on Lassen. To start, the first three top plots are the duration, 
   latency, and bandwidth produced by the application itself. Below each one is the 
   corresponding output from nvprof showing where each run was spending most of its 
-  time. As we can see for the direct method around 50 percent of the application time 
+  time. 
+  As we can see for the direct method around 50 percent of the application time 
   is being spent in
   CUDA memcopy from device to host and another 48 percent is being spent copying memory
-  for CUDA from host to device. Looking at the first figure we may also observe that
-  the bandwidth is higher than for both cuda aware and copy and the duration and latency
-  is lower than both cuda aware and copy and that cuda aware is also better than copy
-  in each area as well. Also of note, both cuda aware and copy spend about 33 percent
-  in cuda_parallel_launch_local_memory twice before then spending around 15-16 percent
-  of their time in CUDA memcopy from device to host and then host to device. Max_i is
+  for CUDA from host to device. 
+
+  Looking at the first figure we may also observe that overall the direct method gets
+  better performance than either the cuda aware or the copy methods. Note that this is
+  using C ordering for Kokkos.
+
+  #the bandwidth is higher than for both cuda aware and copy and the duration and latency
+  #is lower than both cuda aware and copy and that cuda aware is also better than copy
+  #in each area as well. Also of note, both cuda aware and copy spend about 33 percent
+  #in cuda_parallel_launch_local_memory twice before then spending around 15-16 percent
+  #of their time in CUDA memcopy from device to host and then host to device. 
+
+  Max_i is
   used to define one side of the data structure being used; for this we looked at 10,
   20, 40, 80, 160, 320, and 640. Also of note, we ran these tests using C order data
   structure accessing. When we switch over to Fortran ordering we get around 40 seconds
@@ -166,7 +175,16 @@ Slide 5:
   the same performance.
 
 Slide 6:
-  Lastly I would like to talk a bit about where we would like to go next: First we would
+  Next I would like to show some results for the direct method when changing the 
+  direction of accessing data in either the x, y, or z dimensions. The first figure
+  is the same as the direct method from the last slide and we may observe the higher
+  bandwidth and the NVprof output wherein there are only 24 calls to CUDA memcopy. In
+  the y and z directions the latencies are much higher, especially in the z direction
+  and the bandwidth for each are very low. We may also observe that for y there are
+  around 80,000 calls to CUDA memcopy and over 3,000,000 for the z direction. 
+
+Slide 7:
+  Now, I would like to talk a bit about where we would like to go next: First we would
   like to modify the ping pong test in order to make use of dimensions other than x and
   we want to use Fortran order arrays. Second, we want to look at using other versions of
   MPI in order to see how GPU usage changes depending on the version. Third, we want to
@@ -174,7 +192,10 @@ Slide 6:
   to look at running on non-NVIDIA accelerators, AMD, etc, and lastly we want to consider
   integration with other performance monitoring systems other than NVprof.
 
-Slide 7:
+Slide 8:
+  Lastly I would like to acknowledge ...
+
+Slide 9:
   Thank you for listening to my talk, are there any questions?
 
 
@@ -216,3 +237,84 @@ Slide 7:
 ,1.696082
 ,6.218402
 ,27.05968
+
+direct x
+320,0.001078,11402078314.659918
+640,0.004027,12204511793.726007
+
+direct y
+320,0.017196,714601616.617975
+640,0.050782,967900745.201599
+
+cuda x
+320,0.001414,8688246751.909416
+640,0.005845,8409797301.958844
+
+cuda y
+320,2.724455,0.001362,9020518425.556820,1
+640,11.102240,0.005551,8854429511.995148,1
+
+cuda z
+320,2.722141,0.001361,9028188143.611574,2
+640,11.247306,0.005624,8740226486.279173,2
+
+copy x
+320,0.003069,4003636486.599613
+640,0.013575,3620798813.318490
+
+copy y
+320,6.058765,0.003029,4056272018.010347,1
+640,26.555536,0.013278,3701827056.404373,1
+
+copy z
+320,6.032429,0.003016,4073980577.683510,2
+640,26.376700,0.013188,3726925656.883216,2
+
+
+*** CUDA Streams and Interface ***
+
+  * gpudirect async
+  * libmp
+  * MPI_Send_Init -> MPI_Start(&reqs[0])
+  * MPI_Stream_Enqueue(&stream, &reqs[0])
+
+  * Sketch out stream triggered communication and look at persistent communication.
+  * cudaGraphAddMemcpyNode
+  * Long message protocol -> sending long messages
+  * Clear to send CTS
+
+
+* My work focuses on the performance analysis of hybrid GPU/MPI applications
+  running on large scale High Performance Computing systems. Currently I have 
+  been working on building a ping pong test
+  which utilizes Kokkos data structures and primitives borrowed from the particle and
+  atmospheric code FIESTA and adapted to my test. The ping pong uses a four dimensional
+  array; it has three spatial dimensions and a fourth for variables. Ultimately I have
+  been focused on building a program which tests real world data structures using MPI
+  and GPU communication between nodes using various techniques and it may be configured
+  to access data in various directions. The tool implements three different methods of
+  GPU data transfer; directly sending and receiving between nodes, a cuda aware method
+  which first packs data into a flat Kokkos buffer and a copy method which uses a deep
+  copy to move data from device to host before sending and receiving I have also been
+  using code for wrapping MPI
+  calls which may then be monitored by NVprof, the NVIDIA profiling library.
+  Ultimately I want to develop a framework for analyzing
+  such applications. Next steps include making use of Fortran order arrays, using
+  different versions of MPI to see how GPU usage varies, implementing stream-triggered
+  communication, and implementing persistent communication. Lastly I want to look 
+  into making use of profiling tools other than NVprof
+
+** Meeting CS 600 -> Friday 1:00 pm 3rd Aug.
+
+This is what we think we need, here is how we have gone about it so far
+
+** Requirements
+* We need benchmarks which are more representative of how we run MPI
+  ** We need them to be more tightly coupled with GPU monitoring tools
+  *  Where are we in the process (paragraph 2)
+  * To what degree is that design or setting up contributions
+
+  * Contributions:
+
+ * We did this for this reason *
+ * * We need to talk about the "why", why did we do this?? * *
