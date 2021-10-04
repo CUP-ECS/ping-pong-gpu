@@ -36,6 +36,20 @@ INCLUDE(CMakeFindDependencyMacro)
 
 #This needs to go above the KokkosTargets in case
 #the Kokkos targets depend in some way on the TPL imports
+IF(NOT TARGET CUDA::cudart)
+ADD_LIBRARY(CUDA::cudart INTERFACE IMPORTED)
+SET_TARGET_PROPERTIES(CUDA::cudart PROPERTIES
+INTERFACE_INCLUDE_DIRECTORIES "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/include"
+INTERFACE_LINK_LIBRARIES "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64/libcudart.so"
+)
+ENDIF()
+IF(NOT TARGET CUDA::cuda_driver)
+ADD_LIBRARY(CUDA::cuda_driver INTERFACE IMPORTED)
+SET_TARGET_PROPERTIES(CUDA::cuda_driver PROPERTIES
+INTERFACE_INCLUDE_DIRECTORIES "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/include"
+INTERFACE_LINK_LIBRARIES "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64/libcuda.so"
+)
+ENDIF()
 IF(NOT TARGET Kokkos::LIBDL)
 ADD_LIBRARY(Kokkos::LIBDL UNKNOWN IMPORTED)
 SET_TARGET_PROPERTIES(Kokkos::LIBDL PROPERTIES
@@ -69,7 +83,7 @@ IF("launch_compiler" IN_LIST Kokkos_FIND_COMPONENTS)
         GLOBAL
         CHECK_CUDA_COMPILES)
 
-ELSEIF(OFF AND NOT "separable_compilation" IN_LIST Kokkos_FIND_COMPONENTS)
+ELSEIF(ON AND NOT "separable_compilation" IN_LIST Kokkos_FIND_COMPONENTS)
     #
     # if CUDA was enabled, separable compilation was not specified, and current compiler
     # cannot compile CUDA, then set the RULE_LAUNCH_COMPILE and RULE_LAUNCH_LINK globally and

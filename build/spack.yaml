@@ -16,7 +16,7 @@ spack:
   #      modules:
   #      - mvapich2/2021.05.28-cuda-10.1.243
   #    buildable: False 
-  - kokkos std=14 +cuda +cuda_lambda cuda_arch=70 +wrapper
+  - kokkos std=17 +cuda +cuda_lambda cuda_arch=70 +wrapper
   #- cuda @10.1.243 +hwloc +numactl
   concretization: together
   view: true

@@ -5,19 +5,21 @@ cmake_minimum_required(VERSION 3.18)
 project(Ping_Pong CXX C Fortran CUDA)
 
 # Switch to nvcc compiler wrapper if building for cuda
-set(CMAKE_CXX_COMPILER "nvcc_wrapper")
+#set(CMAKE_CXX_COMPILER "nvcc_wrapper") 
+#set(CMAKE_CXX_FLAGS "-ccbin xlc++")
+
+
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_COMPILER "${CMAKE_SOURCE_DIR}/kokkos/bin/nvcc_wrapper") 
+#set(CMAKE_CXX_COMPILER "${CMAKE_SOURCE_DIR}/kokkos/bin/nvcc_wrapper -ccbin xlc++") 
 
 # MPI
 find_package(MPI REQUIRED)
-#find_package(Kokkos 3 REQUIRED)
+find_package(Kokkos 3 REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 include_directories(SYSTEM $CUDA_HOME/include/)
 
-add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
 #target_link_libraries(ping_pong
 #                      kokkos
 #                      lua)
@@ -41,18 +43,28 @@ add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
 
 # Configure Kokkos
 #include_directories(${Kokkos_INCLUDE_DIRS_RET})
-add_subdirectory(kokkos) 
+#add_subdirectory(kokkos) 
 
 #add_subdirectory(tempi)
+# wrap.py setup -- grab the add_wrapped_file macro.
+set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
+set(OLD_MPI_CXX_COMPILER $MPI_CXX_COMPILER)
+set(MPI_CXX_COMPILER "mpicxx")
+include(wrap/WrapConfig.cmake)
+add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w -f)
+set(MPI_CXX_COMPILER $OLD_MPI_CXX_COMPILER)
+
+add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp nvtx_pmpi.cpp)
+
+# Generate rule for nvtx_pmpi.o, rather than by hand
 set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
-target_link_libraries(ping_pong PUBLIC ${PROJECT_SOURCE_DIR}/nvtx_pmpi.o)
+#target_link_libraries(ping_pong PUBLIC ${PROJECT_SOURCE_DIR}/nvtx_pmpi.o)
 #target_link_libraries(ping_pong PRIVATE tempi::tempi)
-target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) # MPI::MPI_CXX)
+target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) 
+target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
 target_link_libraries(ping_pong PRIVATE nvToolsExt)
 
-# wrap.py setup -- grab the add_wrapped_file macro.
-#set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
-#include(wrap/WrapConfig.cmake)
+
 
 # add built strings to source code
 #if(CUDA)

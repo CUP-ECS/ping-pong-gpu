@@ -1,9 +1,9 @@
-SET(Kokkos_DEVICES SERIAL)
-SET(Kokkos_OPTIONS DEPRECATED_CODE_3;DEPRECATION_WARNINGS;LAUNCH_COMPILER;IMPL_DESUL_ATOMICS;COMPLEX_ALIGN)
-SET(Kokkos_TPLS LIBDL)
-SET(Kokkos_ARCH )
+SET(Kokkos_DEVICES CUDA;SERIAL)
+SET(Kokkos_OPTIONS DEPRECATED_CODE_3;DEPRECATION_WARNINGS;LAUNCH_COMPILER;IMPL_DESUL_ATOMICS;CUDA_LAMBDA;COMPLEX_ALIGN)
+SET(Kokkos_TPLS CUDA;LIBDL)
+SET(Kokkos_ARCH VOLTA70)
 SET(Kokkos_CXX_COMPILER "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/kokkos/bin/nvcc_wrapper")
-SET(Kokkos_CXX_COMPILER_ID "GNU")
+SET(Kokkos_CXX_COMPILER_ID "NVIDIA")
 
 # These are needed by KokkosKernels
 FOREACH(DEV ${Kokkos_DEVICES})
@@ -194,7 +194,7 @@ FUNCTION(kokkos_compilation)
         ${ARGN})
 
     # if built w/o CUDA support, we want to basically make this a no-op
-    SET(_Kokkos_ENABLE_CUDA OFF)
+    SET(_Kokkos_ENABLE_CUDA ON)
 
     # search relative first and then absolute
     SET(_HINTS "${CMAKE_CURRENT_LIST_DIR}/../.." "/usr/local")
