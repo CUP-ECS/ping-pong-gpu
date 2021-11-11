@@ -51,7 +51,7 @@ set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
 set(OLD_MPI_CXX_COMPILER $MPI_CXX_COMPILER)
 set(MPI_CXX_COMPILER "mpicxx")
 include(wrap/WrapConfig.cmake)
-add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w -f)
+add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
 set(MPI_CXX_COMPILER $OLD_MPI_CXX_COMPILER)
 
 add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp nvtx_pmpi.cpp)

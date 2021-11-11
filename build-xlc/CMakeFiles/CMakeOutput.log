@@ -1,0 +1,1182 @@
+The system is: Linux - 4.14.0-115.21.2.1chaos.ch6a.ppc64le - ppc64le
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin/nvcc_wrapper -ccbin;xlc++
+Build flags: 
+Id flags:  
+
+The output was:
+0
+nvcc warning : The 'compute_35', 'compute_37', 'compute_50', 'sm_35', 'sm_37' and 'sm_50' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is XLClang, found in "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/3.20.2/CompilerIdCXX/a.out"
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpicc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is XLClang, found in "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/3.20.2/CompilerIdC/a.out"
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" succeeded.
+Compiler: /usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+0
+mpifort for MVAPICH2 version 2.3.6
+exec: export(export,XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/etc/xlf.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlf_r,NULL) 
+exec: export(export,XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/dis -o "CMakeFortranCompilerId.s" "CMakeFortranCompilerId.o",NULL) 
+exec: /usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/cpp(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/cpp,CMakeFortranCompilerId.F,/var/tmp/xlf.NXMrp0/luymvr,-I/usr/tce/packages/cuda/cuda-11.1.1/include,-I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include,-I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include,-D__ibmxl__,-C,-q64,-I/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include,-I/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include,-I/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include,NULL) 
+exec: /usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry,/var/tmp/xlf.NXMrp0/luymvr,/var/tmp/xlf.NXMrp0/roUmSf,/var/tmp/xlf.NXMrp0/roUmSfF.lst,xlfsmsg.cat,xlfmsg.cat,CMakeFortranCompilerId.F,OSVAR(rhel.7.6),THREADED,NOZEROSIZE,ALIAS(intptr),POSITION(appendold),XLF90(noautodealloc,nosignedzero,oldpad),XLF77(intarg,intxor,noleadzero,gedit77,noblankpad,oldboz,softeof),XLF2003(nopolymorphic,nobozlitargs,nostopexcept,novolatile,noautorealloc,oldnaninf),XLF2008(nocheckpresence),64,GNU_VERSION(4.9.3),SAVEOPTFILE(/var/tmp/xlf.NXMrp0/optf.Vo84LO),SAVEVERSIONFILE(/var/tmp/xlf.NXMrp0/version.ZYxI8C),-I/usr/tce/packages/cuda/cuda-11.1.1/include,-I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include,-I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include,WSTREAMS(/var/tmp/xlf.NXMrp0/h1,/var/tmp/xlf.NXMrp0/b1,/var/tmp/xlf.NXMrp0/s1),DEFMSG(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/msg/en_US),XFLAG(CPP),-I/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include,-I/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include,-I/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include,NULL) 
+** cmakefortrancompilerid   === End of Compilation 1 ===
+unlink: /var/tmp/xlf.NXMrp0/luymvr
+exec: export(export,XL_FRONTEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry,NULL) 
+exec: export(export,XL_ASTI=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot,NULL) 
+exec: export(export,XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode,NULL) 
+exec: export(export,XL_LINKER=/usr/bin/ld,NULL) 
+exec: export(export,XL_BOLT=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/bolt,NULL) 
+exec: /usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot,/var/tmp/xlf.NXMrp0/h1,/var/tmp/xlf.NXMrp0/h2,/var/tmp/xlf.NXMrp0/b1,/var/tmp/xlf.NXMrp0/b2,/var/tmp/xlf.NXMrp0/s1,/var/tmp/xlf.NXMrp0/s2,/var/tmp/xlf.NXMrp0/roUmSf,/var/tmp/xlf.NXMrp0/roUmSfA.lst,NULL) 
+exec: export(export,XL_FRONTEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry,NULL) 
+exec: export(export,XL_ASTI=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot,NULL) 
+exec: export(export,XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode,NULL) 
+exec: export(export,XL_LINKER=/usr/bin/ld,NULL) 
+exec: export(export,XL_BOLT=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/bolt,NULL) 
+exec: /usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode,/var/tmp/xlf.NXMrp0/h2,/var/tmp/xlf.NXMrp0/b2,CMakeFortranCompilerId.o,/var/tmp/xlf.NXMrp0/roUmSfB.lst,/var/tmp/xlf.NXMrp0/s2,NULL) 
+1501-510  Compilation successful for file CMakeFortranCompilerId.F.
+unlink: /var/tmp/xlf.NXMrp0/roUmSfA.lst
+exec: /usr/bin/ld(ld,--eh-frame-hdr,-Qy,-melf64lppc,-dynamic-linker,/lib64/ld64.so.2,-L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs,-L/usr/tce/packages/cuda/cuda-11.1.1/lib64,-L/usr/tce/packages/cuda/cuda-11.1.1/lib64/,-L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib,-L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64,-L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64,-L/usr/tce/packages/cuda/cuda-11.1.1/lib64,-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64,-L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64,-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib,/lib/../lib64/crt1.o,/lib/../lib64/crti.o,/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o,-L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib,-L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib,-L/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib,-R/usr/tce/packages/xl/xl-2021.03.11/lib,-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3,-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64,-L/lib/../lib64,-L/usr/lib/../lib64,-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..,-R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64,--no-toc-optimize,--no-toc-optimize,--no-toc-optimize,--no-toc-optimize,--no-toc-optimize,--no-toc-optimize,-lcuda,-lcudart,-lrt,-rpath,/usr/tce/packages/cuda/cuda-11.1.1/lib64,--build-id,-rpath,/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib,-lpmix,-lm,-rpath,/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64,-lcupti,CMakeFortranCompilerId.o,-lmpifort,-rpath,/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64,-lmpi,-lxlf90_r,-lxlopt,-lxlomp_ser,-lxl,-lxlfmath,-lgcc_s,-ldl,-lrt,-lpthread,-lgcc,-lm,-lc,-lgcc_s,-lgcc,/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o,/lib/../lib64/crtn.o,NULL)  | 
+exec: /usr/bin/awk(/usr/bin/awk,BEGIN{a=0;b=0;s=""};{if(($0!~/.*-224.*@TP.*/)&&($0!~/.*-34[45].*loadmap.*/||b==1||a==0)){b=1;print $0;}else{a=1;if((s=="")&& $0 ~ /.*-34[45].*loadmap.*/){s=$0}}};END{if(b==1 && s!=""){print s}},NULL) 
+unlink: /var/tmp/xlf.NXMrp0/optf.Vo84LO
+unlink: CMakeFortranCompilerId.o
+unlink: /var/tmp/xlf.NXMrp0/h1
+unlink: /var/tmp/xlf.NXMrp0/h2
+unlink: /var/tmp/xlf.NXMrp0/b1
+unlink: /var/tmp/xlf.NXMrp0/b2
+unlink: /var/tmp/xlf.NXMrp0/s1
+unlink: /var/tmp/xlf.NXMrp0/s2
+unlink: /var/tmp/xlf.NXMrp0/version.ZYxI8C
+unlink: /var/tmp/xlf.NXMrp0
+
+
+Compilation of the Fortran compiler identification source "CMakeFortranCompilerId.F" produced "a.out"
+
+The Fortran compiler identification is XL, found in "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/3.20.2/CompilerIdFortran/a.out"
+
+Checking whether the CUDA compiler is NVIDIA using "" matched "nvcc: NVIDIA \(R\) Cuda compiler driver":
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2020 NVIDIA Corporation
+Built on Mon_Oct_12_20:09:47_PDT_2020
+Cuda compilation tools, release 11.1, V11.1.105
+Build cuda_11.1.TC455_06.29190527_0
+Compiling the CUDA compiler identification source file "CMakeCUDACompilerId.cu" succeeded.
+Compiler: /usr/tce/packages/cuda/cuda-11.1.1/bin/nvcc 
+Build flags: 
+Id flags: --keep;--keep-dir;tmp -v
+
+The output was:
+0
+#$ _NVVM_BRANCH_=nvvm
+#$ _SPACE_= 
+#$ _CUDART_=cudart
+#$ _HERE_=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin
+#$ _THERE_=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin
+#$ _TARGET_SIZE_=
+#$ _TARGET_DIR_=
+#$ _TARGET_DIR_=targets/ppc64le-linux
+#$ TOP=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/..
+#$ NVVMIR_LIBRARY_DIR=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/libdevice
+#$ LD_LIBRARY_PATH=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../lib:{LD_LIBRARY_PATH:+/usr/tce/packages/cuda/cuda-11.1.1/lib64:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/lib:}/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1
+#$ PATH=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/bin:/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin:/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin{PATH}:+:/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin:/usr/tce/packages/cuda/cuda-11.1.1/bin:/usr/tce/packages/xl/xl-2021.03.11/bin:/usr/tce/packages/cmake/cmake-3.20.2/bin:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/bin:/usr/tcetmp/bin:/g/g15/haskins8/spack/bin:/usr/lib64/qt-3.3/bin:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/etc:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/bin:/usr/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibm/spectrum_mpi/jsm_pmix/bin:/opt/ibm/bb/bin:/opt/ibm/flightlog/bin:/opt/ibutils/bin:.}
+#$ INCLUDES="-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"  
+#$ LIBRARIES=  "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"
+#$ CUDAFE_FLAGS=
+#$ PTXAS_FLAGS=
+#$ rm tmp/a_dlink.reg.c
+#$ gcc -D__CUDA_ARCH__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -include "cuda_runtime.h" "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" 
+#$ cicc --gnu_version=40903 --orig_src_file_name "CMakeCUDACompilerId.cu" --allow_managed --unsigned_chars   -arch compute_52 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused -nvvmir-library "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"
+#$ ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" 
+#$ fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" 
+#$ gcc -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -include "cuda_runtime.h" "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" 
+#$ cudafe++ --gnu_version=40903 --orig_src_file_name "CMakeCUDACompilerId.cu" --allow_managed --unsigned_chars  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" 
+#$ gcc -D__CUDA_ARCH__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"   "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" 
+#$ nvlink --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"  -m64   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib" -cpu-arch=PPC64LE "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin"
+#$ fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" 
+#$ gcc -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/crt/link.stub" -o "tmp/a_dlink.o" 
+#$ g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" 
+
+
+Compilation of the CUDA compiler identification source "CMakeCUDACompilerId.cu" produced "a.out"
+
+The CUDA compiler identification is NVIDIA, found in "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/3.20.2/CompilerIdCUDA/a.out"
+
+Parsed CUDA nvcc implicit link information from above output:
+  found 'PATH=' string: [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/bin:/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin:/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin{PATH}:+:/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin:/usr/tce/packages/cuda/cuda-11.1.1/bin:/usr/tce/packages/xl/xl-2021.03.11/bin:/usr/tce/packages/cmake/cmake-3.20.2/bin:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/bin:/usr/tcetmp/bin:/g/g15/haskins8/spack/bin:/usr/lib64/qt-3.3/bin:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/etc:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/bin:/usr/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibm/spectrum_mpi/jsm_pmix/bin:/opt/ibm/bb/bin:/opt/ibm/flightlog/bin:/opt/ibutils/bin:.}]
+  found 'LIBRARIES=' string: ["-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"]
+  considering line: [#$ rm tmp/a_dlink.reg.c]
+  considering line: [gcc -D__CUDA_ARCH__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -include "cuda_runtime.h" "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+  considering line: [cicc --gnu_version=40903 --orig_src_file_name "CMakeCUDACompilerId.cu" --allow_managed --unsigned_chars   -arch compute_52 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused -nvvmir-library "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+  considering line: [ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" ]
+  considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" ]
+  considering line: [gcc -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -include "cuda_runtime.h" "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [cudafe++ --gnu_version=40903 --orig_src_file_name "CMakeCUDACompilerId.cu" --allow_managed --unsigned_chars  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [gcc -D__CUDA_ARCH__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"   "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" ]
+  considering line: [nvlink --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"  -m64   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib" -cpu-arch=PPC64LE "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin"]
+    ignoring nvlink line
+  considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+  considering line: [gcc -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/crt/link.stub" -o "tmp/a_dlink.o" ]
+  considering line: [g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    extracted link line: [g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+  considering line: []
+  extracted link launcher name: [g++]
+  found link launcher absolute path: [/usr/tcetmp/bin/g++]
+
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line: [cuda-fake-ld g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    arg [cuda-fake-ld] ==> ignore
+    arg [g++] ==> ignore
+    arg [-Wl,--start-group] ==> ignore
+    arg [tmp/a_dlink.o] ==> ignore
+    arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+    arg [-Xlinker] ==> ignore
+    arg [-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1] ==> ignore
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib]
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-Wl,--end-group] ==> ignore
+    arg [-o] ==> ignore
+    arg [a.out] ==> ignore
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+  implicit objs: []
+  implicit dirs: [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs;/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+  implicit fwks: []
+
+
+Parsed CUDA nvcc include information from above output:
+  found 'PATH=' string: [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/bin:/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin:/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin{PATH}:+:/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin:/usr/tce/packages/cuda/cuda-11.1.1/bin:/usr/tce/packages/xl/xl-2021.03.11/bin:/usr/tce/packages/cmake/cmake-3.20.2/bin:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/bin:/usr/tcetmp/bin:/g/g15/haskins8/spack/bin:/usr/lib64/qt-3.3/bin:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/etc:/opt/ibm/spectrumcomputing/lsf/10.1.0.10/linux3.10-glibc2.17-ppc64le-csm/bin:/usr/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibm/spectrum_mpi/jsm_pmix/bin:/opt/ibm/bb/bin:/opt/ibm/flightlog/bin:/opt/ibutils/bin:.}]
+  found 'LIBRARIES=' string: ["-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"]
+  considering line: [#$ rm tmp/a_dlink.reg.c]
+  considering line: [gcc -D__CUDA_ARCH__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -include "cuda_runtime.h" "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+  considering line: [cicc --gnu_version=40903 --orig_src_file_name "CMakeCUDACompilerId.cu" --allow_managed --unsigned_chars   -arch compute_52 -m64 -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused -nvvmir-library "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../nvvm/libdevice/libdevice.10.bc" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+  considering line: [ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" ]
+  considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" ]
+  considering line: [gcc -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -include "cuda_runtime.h" "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [cudafe++ --gnu_version=40903 --orig_src_file_name "CMakeCUDACompilerId.cu" --allow_managed --unsigned_chars  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+  considering line: [gcc -D__CUDA_ARCH__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"   "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" ]
+  considering line: [nvlink --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"  -m64   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib" -cpu-arch=PPC64LE "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin"]
+    ignoring nvlink line
+  considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+  considering line: [gcc -c -x c++ -DFATBINFILE="\"tmp/a_dlink.fatbin.c\"" -DREGISTERLINKBINARYFILE="\"tmp/a_dlink.reg.c\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"    -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/crt/link.stub" -o "tmp/a_dlink.o" ]
+  considering line: [g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    extracted link line: [g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+  considering line: []
+  extracted link launcher name: [g++]
+  found link launcher absolute path: [/usr/tcetmp/bin/g++]
+  found 'INCLUDES=' string: ["-I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"  ]
+
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line: [cuda-fake-ld g++ -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o" -Xlinker "-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1"   "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs" "-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+    arg [cuda-fake-ld] ==> ignore
+    arg [g++] ==> ignore
+    arg [-Wl,--start-group] ==> ignore
+    arg [tmp/a_dlink.o] ==> ignore
+    arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+    arg [-Xlinker] ==> ignore
+    arg [-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1] ==> ignore
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib]
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-Wl,--end-group] ==> ignore
+    arg [-o] ==> ignore
+    arg [a.out] ==> ignore
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+  implicit objs: []
+  implicit dirs: [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs;/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_ec1aa/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_ec1aa.dir/build.make CMakeFiles/cmTC_ec1aa.dir/build
+gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o
+/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin/nvcc_wrapper  -ccbin xlc++ -x c++   -V -o CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+nvcc warning : The 'compute_35', 'compute_37', 'compute_50', 'sm_35', 'sm_37' and 'sm_50' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ 
+export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASZJPv98 
+export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "/var/tmp/haskins8/tmpxft_00005e41_00000000-7_CMakeCXXCompilerABI.cpp1.ii" "CMakeCXXCompilerABI.o"" 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -D__CUDA_ARCH__=350 -E -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__ -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -includecuda_runtime.h -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -oCMakeCXXCompilerABI.o /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp /var/tmp/haskins8/xlcW0PvMjOB /var/tmp/haskins8/xlcW1h7m0fs /dev/null /var/tmp/haskins8/xlcLjkjlBZF.lst /dev/null /var/tmp/haskins8/xlcW2CfZGHi 
+rm /var/tmp/haskins8/xlcASZJPv98
+rm /var/tmp/haskins8/xlcLjkjlBZ
+rm /var/tmp/haskins8/xlcW0PvMjOB
+rm /var/tmp/haskins8/xlcW1h7m0fs
+rm /var/tmp/haskins8/xlcW2CfZGHi
+rm /var/tmp/haskins8/xlc.Nc8CmL
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ 
+export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASZpJvbz 
+export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "/var/tmp/haskins8/tmpxft_00005e41_00000000-5_CMakeCXXCompilerABI.cpp4.ii" "CMakeCXXCompilerABI.o"" 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -E -D__CUDACC__ -D__NVCC__ -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -includecuda_runtime.h -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -oCMakeCXXCompilerABI.o /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp /var/tmp/haskins8/xlcW0FHece1 /var/tmp/haskins8/xlcW1pE9zSR /dev/null /var/tmp/haskins8/xlcLQIx3PpF.lst /dev/null /var/tmp/haskins8/xlcW2uQ0XwI 
+rm /var/tmp/haskins8/xlcASZpJvbz
+rm /var/tmp/haskins8/xlcLQIx3Pp
+rm /var/tmp/haskins8/xlcW0FHece1
+rm /var/tmp/haskins8/xlcW1pE9zSR
+rm /var/tmp/haskins8/xlcW2uQ0XwI
+rm /var/tmp/haskins8/xlc.BrwOza
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ 
+export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASChMz3H 
+export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o" "tmpxft_00005e41_00000000-6_CMakeCXXCompilerABI.cudafe1.o"" 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -D__CUDA_ARCH__=350 -DCUDA_DOUBLE_MATH_FUNCTIONS -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -oCMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o /var/tmp/haskins8/tmpxft_00005e41_00000000-6_CMakeCXXCompilerABI.cudafe1.cpp /var/tmp/haskins8/xlcW0FYSAG9 /var/tmp/haskins8/xlcW1tilxt0 /dev/null /var/tmp/haskins8/xlcLbP3FQyF.lst /dev/null /var/tmp/haskins8/xlcW2CpOtgR 
+export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode 
+export XL_LINKER=/usr/bin/ld 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode -qalias=ansi -qthreaded -qtls -maltivec -qtls /var/tmp/haskins8/xlcW0FYSAG9 /var/tmp/haskins8/xlcW1tilxt0 CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o /var/tmp/haskins8/xlcLbP3FQyB.lst /var/tmp/haskins8/xlcW2CpOtgR 
+rm /var/tmp/haskins8/xlcASChMz3H
+rm /var/tmp/haskins8/xlcLbP3FQy
+rm /var/tmp/haskins8/xlcW0FYSAG9
+rm /var/tmp/haskins8/xlcW1tilxt0
+rm /var/tmp/haskins8/xlcW2CpOtgR
+rm /var/tmp/haskins8/xlc.wBmETi
+Linking CXX executable cmTC_ec1aa
+/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec1aa.dir/link.txt --verbose=1
+/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin/nvcc_wrapper  -ccbin xlc++  -V CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ec1aa 
+nvcc warning : The 'compute_35', 'compute_37', 'compute_50', 'sm_35', 'sm_37' and 'sm_50' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ 
+export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASh3k12d 
+export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o" "link.o"" 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -DFATBINFILE="/var/tmp/haskins8/tmpxft_00005e65_00000000-4_cmTC_ec1aa_dlink.fatbin.c" -DREGISTERLINKBINARYFILE="/var/tmp/haskins8/tmpxft_00005e65_00000000-3_cmTC_ec1aa_dlink.reg.c" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__ -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -o/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/crt/link.stub /var/tmp/haskins8/xlcW0Xd1UYE /var/tmp/haskins8/xlcW1QGAe0v /dev/null /var/tmp/haskins8/xlcLJ2Gu44F.lst /dev/null /var/tmp/haskins8/xlcW2hYiy1m 
+export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode 
+export XL_LINKER=/usr/bin/ld 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode -qalias=ansi -qthreaded -qtls -maltivec -qtls /var/tmp/haskins8/xlcW0Xd1UYE /var/tmp/haskins8/xlcW1QGAe0v /var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o /var/tmp/haskins8/xlcLJ2Gu44B.lst /var/tmp/haskins8/xlcW2hYiy1m 
+rm /var/tmp/haskins8/xlcASh3k12d
+rm /var/tmp/haskins8/xlcLJ2Gu44
+rm /var/tmp/haskins8/xlcW0Xd1UYE
+rm /var/tmp/haskins8/xlcW1QGAe0v
+rm /var/tmp/haskins8/xlcW2hYiy1m
+rm /var/tmp/haskins8/xlc.SWvBXN
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ 
+/usr/bin/ld --eh-frame-hdr -Qy -melf64lppc -dynamic-linker /lib64/ld64.so.2 -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib -R/usr/tce/packages/xl/xl-2021.03.11/lib -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. -R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --start-group /var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o -rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1 -lcudadevrt -lcudart_static -lrt -lpthread -ldl --end-group -o cmTC_ec1aa -lxlopt -lxl -libmc++ -lstdc++ -lm -ldl -lgcc_s -lgcc --as-needed -lpthread --no-as-needed -lm -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o 
+rm /var/tmp/haskins8/xlcW0xYvHTH
+rm /var/tmp/haskins8/xlcW1XIW4Xy
+rm /var/tmp/haskins8/xlcW248ws2p
+rm /var/tmp/haskins8/xlc.zD1jPQ
+gmake[1]: Leaving directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  got implicit includes via XL parser!
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/powerpc64le-unknown-linux-gnu]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/backward]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  collapse include dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/include]
+  implicit include dirs: [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include;/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include;/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/powerpc64le-unknown-linux-gnu;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/backward;/usr/local/include;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include;/usr/include;/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_ec1aa/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_ec1aa.dir/build.make CMakeFiles/cmTC_ec1aa.dir/build]
+  ignore line: [gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin/nvcc_wrapper  -ccbin xlc++ -x c++   -V -o CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [nvcc warning : The 'compute_35'  'compute_37'  'compute_50'  'sm_35'  'sm_37' and 'sm_50' architectures are deprecated  and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ ]
+  ignore line: [export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASZJPv98 ]
+  ignore line: [export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "/var/tmp/haskins8/tmpxft_00005e41_00000000-7_CMakeCXXCompilerABI.cpp1.ii" "CMakeCXXCompilerABI.o"" ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -D__CUDA_ARCH__=350 -E -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__ -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -includecuda_runtime.h -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -oCMakeCXXCompilerABI.o /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp /var/tmp/haskins8/xlcW0PvMjOB /var/tmp/haskins8/xlcW1h7m0fs /dev/null /var/tmp/haskins8/xlcLjkjlBZF.lst /dev/null /var/tmp/haskins8/xlcW2CfZGHi ]
+  ignore line: [rm /var/tmp/haskins8/xlcASZJPv98]
+  ignore line: [rm /var/tmp/haskins8/xlcLjkjlBZ]
+  ignore line: [rm /var/tmp/haskins8/xlcW0PvMjOB]
+  ignore line: [rm /var/tmp/haskins8/xlcW1h7m0fs]
+  ignore line: [rm /var/tmp/haskins8/xlcW2CfZGHi]
+  ignore line: [rm /var/tmp/haskins8/xlc.Nc8CmL]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ ]
+  ignore line: [export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASZpJvbz ]
+  ignore line: [export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "/var/tmp/haskins8/tmpxft_00005e41_00000000-5_CMakeCXXCompilerABI.cpp4.ii" "CMakeCXXCompilerABI.o"" ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -E -D__CUDACC__ -D__NVCC__ -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -includecuda_runtime.h -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -oCMakeCXXCompilerABI.o /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp /var/tmp/haskins8/xlcW0FHece1 /var/tmp/haskins8/xlcW1pE9zSR /dev/null /var/tmp/haskins8/xlcLQIx3PpF.lst /dev/null /var/tmp/haskins8/xlcW2uQ0XwI ]
+  ignore line: [rm /var/tmp/haskins8/xlcASZpJvbz]
+  ignore line: [rm /var/tmp/haskins8/xlcLQIx3Pp]
+  ignore line: [rm /var/tmp/haskins8/xlcW0FHece1]
+  ignore line: [rm /var/tmp/haskins8/xlcW1pE9zSR]
+  ignore line: [rm /var/tmp/haskins8/xlcW2uQ0XwI]
+  ignore line: [rm /var/tmp/haskins8/xlc.BrwOza]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ ]
+  ignore line: [export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASChMz3H ]
+  ignore line: [export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o" "tmpxft_00005e41_00000000-6_CMakeCXXCompilerABI.cudafe1.o"" ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -D__CUDA_ARCH__=350 -DCUDA_DOUBLE_MATH_FUNCTIONS -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -oCMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o /var/tmp/haskins8/tmpxft_00005e41_00000000-6_CMakeCXXCompilerABI.cudafe1.cpp /var/tmp/haskins8/xlcW0FYSAG9 /var/tmp/haskins8/xlcW1tilxt0 /dev/null /var/tmp/haskins8/xlcLbP3FQyF.lst /dev/null /var/tmp/haskins8/xlcW2CpOtgR ]
+  ignore line: [export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode ]
+  ignore line: [export XL_LINKER=/usr/bin/ld ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode -qalias=ansi -qthreaded -qtls -maltivec -qtls /var/tmp/haskins8/xlcW0FYSAG9 /var/tmp/haskins8/xlcW1tilxt0 CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o /var/tmp/haskins8/xlcLbP3FQyB.lst /var/tmp/haskins8/xlcW2CpOtgR ]
+  ignore line: [rm /var/tmp/haskins8/xlcASChMz3H]
+  ignore line: [rm /var/tmp/haskins8/xlcLbP3FQy]
+  ignore line: [rm /var/tmp/haskins8/xlcW0FYSAG9]
+  ignore line: [rm /var/tmp/haskins8/xlcW1tilxt0]
+  ignore line: [rm /var/tmp/haskins8/xlcW2CpOtgR]
+  ignore line: [rm /var/tmp/haskins8/xlc.wBmETi]
+  ignore line: [Linking CXX executable cmTC_ec1aa]
+  ignore line: [/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec1aa.dir/link.txt --verbose=1]
+  ignore line: [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/bin/nvcc_wrapper  -ccbin xlc++  -V CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ec1aa ]
+  ignore line: [nvcc warning : The 'compute_35'  'compute_37'  'compute_50'  'sm_35'  'sm_37' and 'sm_50' architectures are deprecated  and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ ]
+  ignore line: [export XL_ASMOBJFILES=/var/tmp/haskins8/xlcASh3k12d ]
+  ignore line: [export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o" "link.o"" ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -DFATBINFILE="/var/tmp/haskins8/tmpxft_00005e65_00000000-4_cmTC_ec1aa_dlink.fatbin.c" -DREGISTERLINKBINARYFILE="/var/tmp/haskins8/tmpxft_00005e65_00000000-3_cmTC_ec1aa_dlink.reg.c" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__ -I/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D__CUDACC_VER_MAJOR__=11 -D__CUDACC_VER_MINOR__=1 -D__CUDACC_VER_BUILD__=105 -D__CUDA_API_VER_MAJOR__=11 -D__CUDA_API_VER_MINOR__=1 -xc++ -qasm_as=/usr/bin/as -qcpp_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_cpp_stdinc=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -o/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/crt/link.stub /var/tmp/haskins8/xlcW0Xd1UYE /var/tmp/haskins8/xlcW1QGAe0v /dev/null /var/tmp/haskins8/xlcLJ2Gu44F.lst /dev/null /var/tmp/haskins8/xlcW2hYiy1m ]
+  ignore line: [export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode ]
+  ignore line: [export XL_LINKER=/usr/bin/ld ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode -qalias=ansi -qthreaded -qtls -maltivec -qtls /var/tmp/haskins8/xlcW0Xd1UYE /var/tmp/haskins8/xlcW1QGAe0v /var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o /var/tmp/haskins8/xlcLJ2Gu44B.lst /var/tmp/haskins8/xlcW2hYiy1m ]
+  ignore line: [rm /var/tmp/haskins8/xlcASh3k12d]
+  ignore line: [rm /var/tmp/haskins8/xlcLJ2Gu44]
+  ignore line: [rm /var/tmp/haskins8/xlcW0Xd1UYE]
+  ignore line: [rm /var/tmp/haskins8/xlcW1QGAe0v]
+  ignore line: [rm /var/tmp/haskins8/xlcW2hYiy1m]
+  ignore line: [rm /var/tmp/haskins8/xlc.SWvBXN]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc++ ]
+  link line: [/usr/bin/ld --eh-frame-hdr -Qy -melf64lppc -dynamic-linker /lib64/ld64.so.2 -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib -R/usr/tce/packages/xl/xl-2021.03.11/lib -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. -R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --start-group /var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o -rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1 -lcudadevrt -lcudart_static -lrt -lpthread -ldl --end-group -o cmTC_ec1aa -lxlopt -lxl -libmc++ -lstdc++ -lm -ldl -lgcc_s -lgcc --as-needed -lpthread --no-as-needed -lm -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o ]
+    arg [/usr/bin/ld] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-Qy] ==> ignore
+    arg [-melf64lppc] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld64.so.2] ==> ignore
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+    arg [-L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib]
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib]
+    arg [-R/usr/tce/packages/xl/xl-2021.03.11/lib] ==> ignore
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..]
+    arg [-R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64] ==> ignore
+    arg [--start-group] ==> ignore
+    arg [/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o] ==> obj [/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o]
+    arg [CMakeFiles/cmTC_ec1aa.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-rpath=/usr/tce/packages/cuda/cuda-11.1.1/nvidia/lib64:/usr/tce/packages/cuda/cuda-11.1.1] ==> ignore
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [--end-group] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_ec1aa] ==> ignore
+    arg [-lxlopt] ==> lib [xlopt]
+    arg [-lxl] ==> lib [xl]
+    arg [-libmc++] ==> lib [ibmc++]
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-ldl] ==> lib [dl]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lpthread] ==> lib [pthread]
+    arg [--no-as-needed] ==> ignore
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib/stubs] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/lib] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl;xlopt;xl;ibmc++;stdc++;m;dl;gcc_s;gcc;pthread;m;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o;/var/tmp/haskins8/tmpxft_00005e65_00000000-6_cmTC_ec1aa_dlink.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs;/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib;/usr/tce/packages/cuda/cuda-11.1.1/lib64;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64;/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib;/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib;/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib;/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64;/lib64;/usr/lib64]
+  implicit fwks: []
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_353ad/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_353ad.dir/build.make CMakeFiles/cmTC_353ad.dir/build
+gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o
+/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpicc   -V -o CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCCompilerABI.c
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc_r 
+export XL_ASMOBJFILES=/var/tmp/xlcASgREzcT 
+export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o" "CMakeCCompilerABI.o"" 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -I/usr/tce/packages/cuda/cuda-11.1.1/include -I/usr/tce/packages/cuda/cuda-11.1.1/include -fno-sized-deallocation -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -xc -qasm_as=/usr/bin/as -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qvac_include_path=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -oCMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCCompilerABI.c /var/tmp/xlcW0jQ7snh /var/tmp/xlcW1ZJGMj9 /dev/null /var/tmp/xlcLsa828KF.lst /dev/null /var/tmp/xlcW2gSl6f1 
+export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode 
+export XL_LINKER=/usr/bin/ld 
+/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode -qalias=ansi -qthreaded -qtls -maltivec -qtls /var/tmp/xlcW0jQ7snh /var/tmp/xlcW1ZJGMj9 CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o /var/tmp/xlcLsa828KB.lst /var/tmp/xlcW2gSl6f1 
+rm /var/tmp/xlcASgREzcT
+rm /var/tmp/xlcLsa828K
+rm /var/tmp/xlcW0jQ7snh
+rm /var/tmp/xlcW1ZJGMj9
+rm /var/tmp/xlcW2gSl6f1
+rm /var/tmp/xlc.rsH9qp
+Linking C executable cmTC_353ad
+/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_353ad.dir/link.txt --verbose=1
+/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpicc  -V CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o -o cmTC_353ad 
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc_r 
+/usr/bin/ld --eh-frame-hdr -Qy -melf64lppc -dynamic-linker /lib64/ld64.so.2 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/ -L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib -R/usr/tce/packages/xl/xl-2021.03.11/lib -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. -R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 -lcuda -lcudart -lrt -rpath /usr/tce/packages/cuda/cuda-11.1.1/lib64 --build-id -rpath /usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -lpmix -lm -rpath /usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -lcupti CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o -o cmTC_353ad -rpath /usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -lmpi -lxlopt -lxl --as-needed -ldl --no-as-needed -lgcc_s --as-needed -lpthread --no-as-needed -lgcc -lm -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o 
+rm /var/tmp/xlcW0GWqbau
+rm /var/tmp/xlcW1l2hHdm
+rm /var/tmp/xlcW2GXfdhe
+rm /var/tmp/xlc.X9NF6B
+gmake[1]: Leaving directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  got implicit includes via XL parser!
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  collapse include dir [/usr/tce/packages/cuda/cuda-11.1.1/include] ==> [/usr/tce/packages/cuda/cuda-11.1.1/include]
+  collapse include dir [/usr/tce/packages/cuda/cuda-11.1.1/include] ==> [/usr/tce/packages/cuda/cuda-11.1.1/include]
+  collapse include dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include] ==> [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include]
+  implicit include dirs: [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include;/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include;/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include;/usr/local/include;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include;/usr/include;/usr/tce/packages/cuda/cuda-11.1.1/include;/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_353ad/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_353ad.dir/build.make CMakeFiles/cmTC_353ad.dir/build]
+  ignore line: [gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpicc   -V -o CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc_r ]
+  ignore line: [export XL_ASMOBJFILES=/var/tmp/xlcASgREzcT ]
+  ignore line: [export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/dis -o "CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o" "CMakeCCompilerABI.o"" ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCentry -qosvar=rhel.7.6 -qalias=ansi -qthreaded -D_REENTRANT -D__VACPP_MULTI__ -qtls -q64 -D_CALL_SYSV -D__NO_MATH_INLINES -D_CALL_ELF=2 -Wno-parentheses -Wno-unused-value -maltivec -qtls -q64 -qgnu_version=4.9.3 -I/usr/tce/packages/cuda/cuda-11.1.1/include -I/usr/tce/packages/cuda/cuda-11.1.1/include -fno-sized-deallocation -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -xc -qasm_as=/usr/bin/as -qc_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -qgcc_c_stdinc=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qcomplexgccincl=/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/local/include:/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include:/usr/tce/packages/gcc/gcc-4.9.3/gnu/include:/usr/include -qvac_include_path=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/include -oCMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCCompilerABI.c /var/tmp/xlcW0jQ7snh /var/tmp/xlcW1ZJGMj9 /dev/null /var/tmp/xlcLsa828KF.lst /dev/null /var/tmp/xlcW2gSl6f1 ]
+  ignore line: [export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode ]
+  ignore line: [export XL_LINKER=/usr/bin/ld ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/exe/xlCcode -qalias=ansi -qthreaded -qtls -maltivec -qtls /var/tmp/xlcW0jQ7snh /var/tmp/xlcW1ZJGMj9 CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o /var/tmp/xlcLsa828KB.lst /var/tmp/xlcW2gSl6f1 ]
+  ignore line: [rm /var/tmp/xlcASgREzcT]
+  ignore line: [rm /var/tmp/xlcLsa828K]
+  ignore line: [rm /var/tmp/xlcW0jQ7snh]
+  ignore line: [rm /var/tmp/xlcW1ZJGMj9]
+  ignore line: [rm /var/tmp/xlcW2gSl6f1]
+  ignore line: [rm /var/tmp/xlc.rsH9qp]
+  ignore line: [Linking C executable cmTC_353ad]
+  ignore line: [/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_353ad.dir/link.txt --verbose=1]
+  ignore line: [/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpicc  -V CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o -o cmTC_353ad ]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/etc/xlc.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlc_r ]
+  link line: [/usr/bin/ld --eh-frame-hdr -Qy -melf64lppc -dynamic-linker /lib64/ld64.so.2 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/ -L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib -R/usr/tce/packages/xl/xl-2021.03.11/lib -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. -R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 -lcuda -lcudart -lrt -rpath /usr/tce/packages/cuda/cuda-11.1.1/lib64 --build-id -rpath /usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -lpmix -lm -rpath /usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -lcupti CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o -o cmTC_353ad -rpath /usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -lmpi -lxlopt -lxl --as-needed -ldl --no-as-needed -lgcc_s --as-needed -lpthread --no-as-needed -lgcc -lm -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o ]
+    arg [/usr/bin/ld] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-Qy] ==> ignore
+    arg [-melf64lppc] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld64.so.2] ==> ignore
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64/] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/]
+    arg [-L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib] ==> dir [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib]
+    arg [-L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64] ==> dir [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64]
+    arg [-L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64] ==> dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+    arg [-L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib]
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib]
+    arg [-R/usr/tce/packages/xl/xl-2021.03.11/lib] ==> ignore
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..]
+    arg [-R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64] ==> ignore
+    arg [-lcuda] ==> lib [cuda]
+    arg [-lcudart] ==> lib [cudart]
+    arg [-lrt] ==> lib [rt]
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib] ==> ignore
+    arg [-lpmix] ==> lib [pmix]
+    arg [-lm] ==> lib [m]
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64] ==> ignore
+    arg [-lcupti] ==> lib [cupti]
+    arg [CMakeFiles/cmTC_353ad.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_353ad] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64] ==> ignore
+    arg [-lmpi] ==> lib [mpi]
+    arg [-lxlopt] ==> lib [xlopt]
+    arg [-lxl] ==> lib [xl]
+    arg [--as-needed] ==> ignore
+    arg [-ldl] ==> lib [dl]
+    arg [--no-as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--as-needed] ==> ignore
+    arg [-lpthread] ==> lib [pthread]
+    arg [--no-as-needed] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib] ==> [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib]
+  collapse library dir [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64] ==> [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64] ==> [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  implicit libs: [cuda;cudart;rt;pmix;m;cupti;mpi;xlopt;xl;dl;gcc_s;pthread;gcc;m;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs;/usr/tce/packages/cuda/cuda-11.1.1/lib64;/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib;/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64;/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64;/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib;/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib;/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib;/usr/tce/packages/xl/xl-2021.03.11/xlC/16.1.1/lib;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64;/lib64;/usr/lib64]
+  implicit fwks: []
+
+
+Detecting Fortran compiler ABI info compiled with the following output:
+Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_f1334/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_f1334.dir/build.make CMakeFiles/cmTC_f1334.dir/build
+gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o
+/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort   -qthreaded -qhalt=e    -V -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/etc/xlf.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlf_r 
+export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/dis -o "CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o" "CMakeFortranCompilerABI.o"" 
+/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/cpp /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeFortranCompilerABI.F /var/tmp/xlf.i2ClZU/SbFmiz -I/usr/tce/packages/cuda/cuda-11.1.1/include -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -D__ibmxl__ -C -q64 -I/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include 
+/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry /var/tmp/xlf.i2ClZU/SbFmiz /var/tmp/xlf.i2ClZU/J4nk4r /var/tmp/xlf.i2ClZU/J4nk4rF.lst xlfsmsg.cat xlfmsg.cat /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeFortranCompilerABI.F "OSVAR(rhel.7.6)" THREADED NOZEROSIZE "ALIAS(intptr)" "POSITION(appendold)" "XLF90(noautodealloc,nosignedzero,oldpad)" "XLF77(intarg,intxor,noleadzero,gedit77,noblankpad,oldboz,softeof)" "XLF2003(nopolymorphic,nobozlitargs,nostopexcept,novolatile,noautorealloc,oldnaninf)" "XLF2008(nocheckpresence)" 64 "GNU_VERSION(4.9.3)" "SAVEOPTFILE(/var/tmp/xlf.i2ClZU/optf.ho50KN)" "SAVEVERSIONFILE(/var/tmp/xlf.i2ClZU/version.q4KGwG)" -I/usr/tce/packages/cuda/cuda-11.1.1/include THREADED "HALT(e)" -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include "WSTREAMS(/var/tmp/xlf.i2ClZU/h1,/var/tmp/xlf.i2ClZU/b1,/var/tmp/xlf.i2ClZU/s1)" "DEFMSG(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/msg/en_US)" "XFLAG(CPP)" -I/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include 
+** cmakefortrancompilerabi   === End of Compilation 1 ===
+rm /var/tmp/xlf.i2ClZU/SbFmiz
+export XL_FRONTEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry 
+export XL_ASTI=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot 
+export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode 
+export XL_LINKER=/usr/bin/ld 
+export XL_BOLT=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/bolt 
+/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot /var/tmp/xlf.i2ClZU/h1 /var/tmp/xlf.i2ClZU/h2 /var/tmp/xlf.i2ClZU/b1 /var/tmp/xlf.i2ClZU/b2 /var/tmp/xlf.i2ClZU/s1 /var/tmp/xlf.i2ClZU/s2 /var/tmp/xlf.i2ClZU/J4nk4r /var/tmp/xlf.i2ClZU/J4nk4rA.lst 
+export XL_FRONTEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry 
+export XL_ASTI=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot 
+export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode 
+export XL_LINKER=/usr/bin/ld 
+export XL_BOLT=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/bolt 
+/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode /var/tmp/xlf.i2ClZU/h2 /var/tmp/xlf.i2ClZU/b2 CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o /var/tmp/xlf.i2ClZU/J4nk4rB.lst /var/tmp/xlf.i2ClZU/s2 
+1501-510  Compilation successful for file CMakeFortranCompilerABI.F.
+rm /var/tmp/xlf.i2ClZU/J4nk4rA.lst
+rm /var/tmp/xlf.i2ClZU/optf.ho50KN
+rm /var/tmp/xlf.i2ClZU/h1
+rm /var/tmp/xlf.i2ClZU/h2
+rm /var/tmp/xlf.i2ClZU/b1
+rm /var/tmp/xlf.i2ClZU/b2
+rm /var/tmp/xlf.i2ClZU/s1
+rm /var/tmp/xlf.i2ClZU/s2
+rm /var/tmp/xlf.i2ClZU/version.q4KGwG
+rm /var/tmp/xlf.i2ClZU
+Linking Fortran executable cmTC_f1334
+/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1334.dir/link.txt --verbose=1
+/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort  -V -qthreaded -qhalt=e  CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o -o cmTC_f1334 
+export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/etc/xlf.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlf_r 
+/usr/bin/ld --eh-frame-hdr -Qy -melf64lppc -dynamic-linker /lib64/ld64.so.2 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/ -L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib -R/usr/tce/packages/xl/xl-2021.03.11/lib -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. -R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --no-toc-optimize --no-toc-optimize --no-toc-optimize --no-toc-optimize --no-toc-optimize --no-toc-optimize -lcuda -lcudart -lrt -rpath /usr/tce/packages/cuda/cuda-11.1.1/lib64 --build-id -rpath /usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -lpmix -lm -rpath /usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -lcupti CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o -o cmTC_f1334 -lmpifort -rpath /usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -lmpi -lxlf90_r -lxlopt -lxlomp_ser -lxl -lxlfmath -lgcc_s -ldl -lrt -lpthread -lgcc -lm -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o  | 
+/usr/bin/awk 'BEGIN{a=0;b=0;s=""};{if(($0!~/.*-224.*@TP.*/)&&($0!~/.*-34[45].*loadmap.*/||b==1||a==0)){b=1;print $0;}else{a=1;if((s=="")&& $0 ~ /.*-34[45].*loadmap.*/){s=$0}}};END{if(b==1 && s!=""){print s}}' 
+rm /var/tmp/xlf.33MP68/optf.svEK21
+rm /var/tmp/xlf.33MP68/version.hsKFYU
+rm /var/tmp/xlf.33MP68
+gmake[1]: Leaving directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+
+
+
+Parsed Fortran implicit include dir info from above output: rv=done
+  got implicit includes via XL parser!
+  collapse include dir [/usr/tce/packages/cuda/cuda-11.1.1/include] ==> [/usr/tce/packages/cuda/cuda-11.1.1/include]
+  collapse include dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include] ==> [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include]
+  collapse include dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include] ==> [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include]
+  collapse include dir [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include]
+  implicit include dirs: [/usr/tce/packages/cuda/cuda-11.1.1/include;/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include;/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include;/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include;/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include]
+
+
+Parsed Fortran implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_f1334/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_f1334.dir/build.make CMakeFiles/cmTC_f1334.dir/build]
+  ignore line: [gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp']
+  ignore line: [Building Fortran object CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o]
+  ignore line: [/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort   -qthreaded -qhalt=e    -V -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/etc/xlf.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlf_r ]
+  ignore line: [export "XL_DIS=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/dis -o "CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o" "CMakeFortranCompilerABI.o"" ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/cpp /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeFortranCompilerABI.F /var/tmp/xlf.i2ClZU/SbFmiz -I/usr/tce/packages/cuda/cuda-11.1.1/include -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -D__ibmxl__ -C -q64 -I/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry /var/tmp/xlf.i2ClZU/SbFmiz /var/tmp/xlf.i2ClZU/J4nk4r /var/tmp/xlf.i2ClZU/J4nk4rF.lst xlfsmsg.cat xlfmsg.cat /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeFortranCompilerABI.F "OSVAR(rhel.7.6)" THREADED NOZEROSIZE "ALIAS(intptr)" "POSITION(appendold)" "XLF90(noautodealloc nosignedzero oldpad)" "XLF77(intarg intxor noleadzero gedit77 noblankpad oldboz softeof)" "XLF2003(nopolymorphic nobozlitargs nostopexcept novolatile noautorealloc oldnaninf)" "XLF2008(nocheckpresence)" 64 "GNU_VERSION(4.9.3)" "SAVEOPTFILE(/var/tmp/xlf.i2ClZU/optf.ho50KN)" "SAVEVERSIONFILE(/var/tmp/xlf.i2ClZU/version.q4KGwG)" -I/usr/tce/packages/cuda/cuda-11.1.1/include THREADED "HALT(e)" -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include -I/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/include "WSTREAMS(/var/tmp/xlf.i2ClZU/h1 /var/tmp/xlf.i2ClZU/b1 /var/tmp/xlf.i2ClZU/s1)" "DEFMSG(/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/msg/en_US)" "XFLAG(CPP)" -I/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/include -I/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/include ]
+  ignore line: [** cmakefortrancompilerabi   === End of Compilation 1 ===]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/SbFmiz]
+  ignore line: [export XL_FRONTEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry ]
+  ignore line: [export XL_ASTI=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot ]
+  ignore line: [export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode ]
+  ignore line: [export XL_LINKER=/usr/bin/ld ]
+  ignore line: [export XL_BOLT=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/bolt ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot /var/tmp/xlf.i2ClZU/h1 /var/tmp/xlf.i2ClZU/h2 /var/tmp/xlf.i2ClZU/b1 /var/tmp/xlf.i2ClZU/b2 /var/tmp/xlf.i2ClZU/s1 /var/tmp/xlf.i2ClZU/s2 /var/tmp/xlf.i2ClZU/J4nk4r /var/tmp/xlf.i2ClZU/J4nk4rA.lst ]
+  ignore line: [export XL_FRONTEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfentry ]
+  ignore line: [export XL_ASTI=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfhot ]
+  ignore line: [export XL_BACKEND=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode ]
+  ignore line: [export XL_LINKER=/usr/bin/ld ]
+  ignore line: [export XL_BOLT=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/bolt ]
+  ignore line: [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/exe/xlfcode /var/tmp/xlf.i2ClZU/h2 /var/tmp/xlf.i2ClZU/b2 CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o /var/tmp/xlf.i2ClZU/J4nk4rB.lst /var/tmp/xlf.i2ClZU/s2 ]
+  ignore line: [1501-510  Compilation successful for file CMakeFortranCompilerABI.F.]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/J4nk4rA.lst]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/optf.ho50KN]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/h1]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/h2]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/b1]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/b2]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/s1]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/s2]
+  ignore line: [rm /var/tmp/xlf.i2ClZU/version.q4KGwG]
+  ignore line: [rm /var/tmp/xlf.i2ClZU]
+  ignore line: [Linking Fortran executable cmTC_f1334]
+  ignore line: [/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1334.dir/link.txt --verbose=1]
+  ignore line: [/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort  -V -qthreaded -qhalt=e  CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o -o cmTC_f1334 ]
+  ignore line: [export XL_CONFIG=/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/etc/xlf.cfg.rhel.7.6.gcc.4.9.3.cuda.10.1.v100:xlf_r ]
+  link line: [/usr/bin/ld --eh-frame-hdr -Qy -melf64lppc -dynamic-linker /lib64/ld64.so.2 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64/ -L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib -L/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib -R/usr/tce/packages/xl/xl-2021.03.11/lib -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. -R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --no-toc-optimize --no-toc-optimize --no-toc-optimize --no-toc-optimize --no-toc-optimize --no-toc-optimize -lcuda -lcudart -lrt -rpath /usr/tce/packages/cuda/cuda-11.1.1/lib64 --build-id -rpath /usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib -lpmix -lm -rpath /usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64 -lcupti CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o -o cmTC_f1334 -lmpifort -rpath /usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64 -lmpi -lxlf90_r -lxlopt -lxlomp_ser -lxl -lxlfmath -lgcc_s -ldl -lrt -lpthread -lgcc -lm -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o  | ]
+    arg [/usr/bin/ld] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-Qy] ==> ignore
+    arg [-melf64lppc] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld64.so.2] ==> ignore
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64/] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/]
+    arg [-L/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib] ==> dir [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib]
+    arg [-L/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64] ==> dir [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64]
+    arg [-L/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64] ==> dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+    arg [-L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib]
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib]
+    arg [-L/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib] ==> dir [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib]
+    arg [-R/usr/tce/packages/xl/xl-2021.03.11/lib] ==> ignore
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..]
+    arg [-R/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64] ==> ignore
+    arg [--no-toc-optimize] ==> ignore
+    arg [--no-toc-optimize] ==> ignore
+    arg [--no-toc-optimize] ==> ignore
+    arg [--no-toc-optimize] ==> ignore
+    arg [--no-toc-optimize] ==> ignore
+    arg [--no-toc-optimize] ==> ignore
+    arg [-lcuda] ==> lib [cuda]
+    arg [-lcudart] ==> lib [cudart]
+    arg [-lrt] ==> lib [rt]
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib] ==> ignore
+    arg [-lpmix] ==> lib [pmix]
+    arg [-lm] ==> lib [m]
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64] ==> ignore
+    arg [-lcupti] ==> lib [cupti]
+    arg [CMakeFiles/cmTC_f1334.dir/CMakeFortranCompilerABI.F.o] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_f1334] ==> ignore
+    arg [-lmpifort] ==> lib [mpifort]
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64] ==> ignore
+    arg [-lmpi] ==> lib [mpi]
+    arg [-lxlf90_r] ==> lib [xlf90_r]
+    arg [-lxlopt] ==> lib [xlopt]
+    arg [-lxlomp_ser] ==> lib [xlomp_ser]
+    arg [-lxl] ==> lib [xl]
+    arg [-lxlfmath] ==> lib [xlfmath]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-ldl] ==> lib [dl]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+    arg [|] ==> ignore
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64/] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib] ==> [/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib]
+  collapse library dir [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64] ==> [/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64] ==> [/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib]
+  collapse library dir [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib] ==> [/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  implicit libs: [cuda;cudart;rt;pmix;m;cupti;mpifort;mpi;xlf90_r;xlopt;xlomp_ser;xl;xlfmath;gcc_s;dl;rt;pthread;gcc;m;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/usr/tce/packages/cuda/cuda-11.1.1/lib64/stubs;/usr/tce/packages/cuda/cuda-11.1.1/lib64;/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib;/usr/tce/packages/cuda/cuda-10.1.243/extras/CUPTI/lib64;/usr/tce/packages/mvapich2/osu/mvapich2-2021.05.28-cuda-11.1.1/xl/lib64;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64;/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib;/usr/tce/packages/xl/xl-2021.03.11/xlsmp/5.1.1/lib;/usr/tce/packages/xl/xl-2021.03.11/xlmass/9.1.1/lib;/usr/tce/packages/xl/xl-2021.03.11/xlf/16.1.1/lib;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64;/lib64;/usr/lib64]
+  implicit fwks: []
+
+
+Determining if the Fortran compiler supports Fortran 90 passed with the following output:
+Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_95a39/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_95a39.dir/build.make CMakeFiles/cmTC_95a39.dir/build
+gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_95a39.dir/testFortranCompilerF90.f90.o
+/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort   -qthreaded -qhalt=e  -c /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp/testFortranCompilerF90.f90 -o CMakeFiles/cmTC_95a39.dir/testFortranCompilerF90.f90.o
+** testfortran90   === End of Compilation 1 ===
+1501-510  Compilation successful for file testFortranCompilerF90.f90.
+Linking Fortran executable cmTC_95a39
+/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95a39.dir/link.txt --verbose=1
+/usr/tce/packages/mvapich2/mvapich2-2021.05.28-cuda-11.1.1-xl-2021.03.11/bin/mpifort -qthreaded -qhalt=e  CMakeFiles/cmTC_95a39.dir/testFortranCompilerF90.f90.o -o cmTC_95a39 
+gmake[1]: Leaving directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CUDA compiler ABI info compiled with the following output:
+Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_d05b0/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_d05b0.dir/build.make CMakeFiles/cmTC_d05b0.dir/build
+gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+Building CUDA object CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o
+/usr/tce/packages/cuda/cuda-11.1.1/bin/nvcc -forward-unknown-to-host-compiler   --generate-code=arch=compute_52,code=[compute_52,sm_52]   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o
+Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs
+COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/gcc
+Target: powerpc64le-unknown-linux-gnu
+Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran,c,java,objc,c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad
+Thread model: posix
+gcc version 4.9.3 (GCC) 
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-7_CMakeCUDACompilerABI.cpp1.ii'
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/cc1plus -E -quiet -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D_GNU_SOURCE -D__unix__ -D__gnu_linux__ -D__linux__ -Dunix -D__unix -Dlinux -D__linux -Asystem=linux -Asystem=unix -Asystem=posix -D __CUDA_ARCH__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=1 -D __CUDACC_VER_BUILD__=105 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=1 -include cuda_runtime.h /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /var/tmp/haskins8/tmpxft_00006031_00000000-7_CMakeCUDACompilerABI.cpp1.ii
+ignoring nonexistent directory "/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../powerpc64le-unknown-linux-gnu/include"
+ignoring duplicate directory "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"
+  as it is a non-system directory that duplicates a system directory
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/tce/packages/cuda/cuda-11.1.1/include
+ /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include
+ /usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include
+ /usr/local/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed
+ /usr/include
+End of search list.
+COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/
+LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-7_CMakeCUDACompilerABI.cpp1.ii'
+Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs
+COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/gcc
+Target: powerpc64le-unknown-linux-gnu
+Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran,c,java,objc,c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad
+Thread model: posix
+gcc version 4.9.3 (GCC) 
+COLLECT_GCC_OPTIONS='-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-5_CMakeCUDACompilerABI.cpp4.ii'
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/cc1plus -E -quiet -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D_GNU_SOURCE -D__unix__ -D__gnu_linux__ -D__linux__ -Dunix -D__unix -Dlinux -D__linux -Asystem=linux -Asystem=unix -Asystem=posix -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=1 -D __CUDACC_VER_BUILD__=105 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=1 -include cuda_runtime.h /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /var/tmp/haskins8/tmpxft_00006031_00000000-5_CMakeCUDACompilerABI.cpp4.ii
+ignoring nonexistent directory "/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../powerpc64le-unknown-linux-gnu/include"
+ignoring duplicate directory "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"
+  as it is a non-system directory that duplicates a system directory
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/tce/packages/cuda/cuda-11.1.1/include
+ /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include
+ /usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include
+ /usr/local/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed
+ /usr/include
+End of search list.
+COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/
+LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-5_CMakeCUDACompilerABI.cpp4.ii'
+Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs
+COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/gcc
+Target: powerpc64le-unknown-linux-gnu
+Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran,c,java,objc,c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad
+Thread model: posix
+gcc version 4.9.3 (GCC) 
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-o' 'CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o'
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/cc1plus -quiet -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D_GNU_SOURCE -D__unix__ -D__gnu_linux__ -D__linux__ -Dunix -D__unix -Dlinux -D__linux -Asystem=linux -Asystem=unix -Asystem=posix -D __CUDA_ARCH__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS /var/tmp/haskins8/tmpxft_00006031_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpbase tmpxft_00006031_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -auxbase-strip CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -version -o /var/tmp/haskins8/ccMqrmVE.s
+GNU C++ (GCC) version 4.9.3 (powerpc64le-unknown-linux-gnu)
+	compiled by GNU C version 4.9.3, GMP version 6.1.0, MPFR version 3.1.5, MPC version 1.0.3
+warning: GMP header version 6.1.0 differs from library version 6.0.0.
+warning: MPFR header version 3.1.5 differs from library version 3.1.1.
+warning: MPC header version 1.0.3 differs from library version 1.0.1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../powerpc64le-unknown-linux-gnu/include"
+ignoring duplicate directory "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"
+  as it is a non-system directory that duplicates a system directory
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/tce/packages/cuda/cuda-11.1.1/include
+ /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include
+ /usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include
+ /usr/local/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/include
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed
+ /usr/include
+End of search list.
+GNU C++ (GCC) version 4.9.3 (powerpc64le-unknown-linux-gnu)
+	compiled by GNU C version 4.9.3, GMP version 6.1.0, MPFR version 3.1.5, MPC version 1.0.3
+warning: GMP header version 6.1.0 differs from library version 6.0.0.
+warning: MPFR header version 3.1.5 differs from library version 3.1.1.
+warning: MPC header version 1.0.3 differs from library version 1.0.1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 7ddf6164d8a7fc8bb2e879f349caa044
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-o' 'CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o'
+ as -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -a64 -mppc64 -many -mlittle -o CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o /var/tmp/haskins8/ccMqrmVE.s
+GNU assembler version 2.27 (ppc64le-redhat-linux) using BFD version version 2.27-43.base.el7
+COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/
+LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-o' 'CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o'
+Linking CUDA executable cmTC_d05b0
+/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d05b0.dir/link.txt --verbose=1
+/usr/tcetmp/bin/g++  -v CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -o cmTC_d05b0  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs" -L"/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib"
+Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs
+COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/g++
+COLLECT_LTO_WRAPPER=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/lto-wrapper
+Target: powerpc64le-unknown-linux-gnu
+Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran,c,java,objc,c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad
+Thread model: posix
+gcc version 4.9.3 (GCC) 
+COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/
+LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d05b0' '-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs' '-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib' '-shared-libgcc'
+ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/collect2 -plugin /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/liblto_plugin.so -plugin-opt=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/lto-wrapper -plugin-opt=-fresolution=/var/tmp/ccuKU14U.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -rpath /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --eh-frame-hdr -V -m elf64lppc -dynamic-linker /lib64/ld64.so.2 -o cmTC_d05b0 /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o
+GNU ld version 2.27-43.base.el7
+  Supported emulations:
+   elf64lppc
+   elf32ppc
+   elf32ppclinux
+   elf32ppcsim
+   elf32lppc
+   elf32lppclinux
+   elf32lppcsim
+   elf64ppc
+gmake[1]: Leaving directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CUDA implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/tce/packages/cuda/cuda-11.1.1/include]
+    add: [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include]
+    add: [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include]
+    add: [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3]
+    add: [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu]
+    add: [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward]
+    add: [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include]
+    add: [/usr/local/include]
+    add: [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+    add: [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/tce/packages/cuda/cuda-11.1.1/include] ==> [/usr/tce/packages/cuda/cuda-11.1.1/include]
+  collapse include dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include]
+  collapse include dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include] ==> [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/powerpc64le-unknown-linux-gnu]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/backward]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+  collapse include dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/tce/packages/cuda/cuda-11.1.1/include;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include;/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/powerpc64le-unknown-linux-gnu;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include/c++/4.9.3/backward;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include;/usr/local/include;/usr/tce/packages/gcc/gcc-4.9.3/gnu/include;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed;/usr/include]
+
+
+Parsed CUDA implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/tcetmp/bin/gmake -f Makefile cmTC_d05b0/fast && /usr/tcetmp/bin/gmake  -f CMakeFiles/cmTC_d05b0.dir/build.make CMakeFiles/cmTC_d05b0.dir/build]
+  ignore line: [gmake[1]: Entering directory '/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/CMakeFiles/CMakeTmp']
+  ignore line: [Building CUDA object CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o]
+  ignore line: [/usr/tce/packages/cuda/cuda-11.1.1/bin/nvcc -forward-unknown-to-host-compiler   --generate-code=arch=compute_52 code=[compute_52 sm_52]   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o]
+  ignore line: [Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs]
+  ignore line: [COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/gcc]
+  ignore line: [Target: powerpc64le-unknown-linux-gnu]
+  ignore line: [Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran c java objc c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.9.3 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-7_CMakeCUDACompilerABI.cpp1.ii']
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/cc1plus -E -quiet -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D_GNU_SOURCE -D__unix__ -D__gnu_linux__ -D__linux__ -Dunix -D__unix -Dlinux -D__linux -Asystem=linux -Asystem=unix -Asystem=posix -D __CUDA_ARCH__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=1 -D __CUDACC_VER_BUILD__=105 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=1 -include cuda_runtime.h /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /var/tmp/haskins8/tmpxft_00006031_00000000-7_CMakeCUDACompilerABI.cpp1.ii]
+  ignore line: [ignoring nonexistent directory "/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../powerpc64le-unknown-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/tce/packages/cuda/cuda-11.1.1/include]
+  ignore line: [ /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include]
+  ignore line: [ /usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-7_CMakeCUDACompilerABI.cpp1.ii']
+  ignore line: [Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs]
+  ignore line: [COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/gcc]
+  ignore line: [Target: powerpc64le-unknown-linux-gnu]
+  ignore line: [Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran c java objc c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.9.3 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-5_CMakeCUDACompilerABI.cpp4.ii']
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/cc1plus -E -quiet -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D_GNU_SOURCE -D__unix__ -D__gnu_linux__ -D__linux__ -Dunix -D__unix -Dlinux -D__linux -Asystem=linux -Asystem=unix -Asystem=posix -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=11 -D __CUDACC_VER_MINOR__=1 -D __CUDACC_VER_BUILD__=105 -D __CUDA_API_VER_MAJOR__=11 -D __CUDA_API_VER_MINOR__=1 -include cuda_runtime.h /usr/tce/packages/cmake/cmake-3.20.2/share/cmake/Modules/CMakeCUDACompilerABI.cu -o /var/tmp/haskins8/tmpxft_00006031_00000000-5_CMakeCUDACompilerABI.cpp4.ii]
+  ignore line: [ignoring nonexistent directory "/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../powerpc64le-unknown-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/tce/packages/cuda/cuda-11.1.1/include]
+  ignore line: [ /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include]
+  ignore line: [ /usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-D' '__CUDACC_VER_MAJOR__=11' '-D' '__CUDACC_VER_MINOR__=1' '-D' '__CUDACC_VER_BUILD__=105' '-D' '__CUDA_API_VER_MAJOR__=11' '-D' '__CUDA_API_VER_MINOR__=1' '-include' 'cuda_runtime.h' '-o' '/var/tmp/haskins8/tmpxft_00006031_00000000-5_CMakeCUDACompilerABI.cpp4.ii']
+  ignore line: [Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs]
+  ignore line: [COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/gcc]
+  ignore line: [Target: powerpc64le-unknown-linux-gnu]
+  ignore line: [Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran c java objc c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.9.3 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-o' 'CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o']
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/cc1plus -quiet -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -D_GNU_SOURCE -D__unix__ -D__gnu_linux__ -D__linux__ -Dunix -D__unix -Dlinux -D__linux -Asystem=linux -Asystem=unix -Asystem=posix -D __CUDA_ARCH__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS /var/tmp/haskins8/tmpxft_00006031_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpbase tmpxft_00006031_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -auxbase-strip CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -version -o /var/tmp/haskins8/ccMqrmVE.s]
+  ignore line: [GNU C++ (GCC) version 4.9.3 (powerpc64le-unknown-linux-gnu)]
+  ignore line: [	compiled by GNU C version 4.9.3  GMP version 6.1.0  MPFR version 3.1.5  MPC version 1.0.3]
+  ignore line: [warning: GMP header version 6.1.0 differs from library version 6.0.0.]
+  ignore line: [warning: MPFR header version 3.1.5 differs from library version 3.1.1.]
+  ignore line: [warning: MPC header version 1.0.3 differs from library version 1.0.1.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../powerpc64le-unknown-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/tce/packages/cuda/cuda-11.1.1/include]
+  ignore line: [ /g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/include]
+  ignore line: [ /usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/powerpc64le-unknown-linux-gnu]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../include/c++/4.9.3/backward]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/include]
+  ignore line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++ (GCC) version 4.9.3 (powerpc64le-unknown-linux-gnu)]
+  ignore line: [	compiled by GNU C version 4.9.3  GMP version 6.1.0  MPFR version 3.1.5  MPC version 1.0.3]
+  ignore line: [warning: GMP header version 6.1.0 differs from library version 6.0.0.]
+  ignore line: [warning: MPFR header version 3.1.5 differs from library version 3.1.1.]
+  ignore line: [warning: MPC header version 1.0.3 differs from library version 1.0.1.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 7ddf6164d8a7fc8bb2e879f349caa044]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-o' 'CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o']
+  ignore line: [ as -v -I /usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include -a64 -mppc64 -many -mlittle -o CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o /var/tmp/haskins8/ccMqrmVE.s]
+  ignore line: [GNU assembler version 2.27 (ppc64le-redhat-linux) using BFD version version 2.27-43.base.el7]
+  ignore line: [COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/usr/tce/packages/cuda/cuda-11.1.1/nvidia/bin/../targets/ppc64le-linux/include' '-o' 'CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o']
+  ignore line: [Linking CUDA executable cmTC_d05b0]
+  ignore line: [/usr/tce/packages/cmake/cmake-3.20.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d05b0.dir/link.txt --verbose=1]
+  ignore line: [/usr/tcetmp/bin/g++  -v CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -o cmTC_d05b0  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs" -L"/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib"]
+  ignore line: [Reading specs from /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/specs]
+  ignore line: [COLLECT_GCC=/usr/tce/packages/gcc/gcc-4.9.3/gnu/bin/g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/lto-wrapper]
+  ignore line: [Target: powerpc64le-unknown-linux-gnu]
+  ignore line: [Configured with: /builddir/build/BUILD/gccspack/spack/var/spack/stage/gcc-4.9.3-wrtcv2vmjcdbqawlku4lfzmeploo5uuw/gcc-4.9.3/configure --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --prefix=/usr/tce/packages/gcc/gcc-4.9.3/gnu --libdir=/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --disable-multilib --enable-languages=fortran c java objc c++ --with-mpc=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpc-1.0.3-omkclnkbg5sttyjbmiyaw2lnnhkyc5ul --with-mpfr=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/mpfr-3.1.5-rd6q42t6n2ndi3k6lmyoijwesiay5pwr --with-gmp=/builddir/build/BUILD/gccspack/spack/opt/spack/linux-rhel7-ppc64le/gcc-4.8.5/gmp-6.1.0-gfzbrglxig67w22ejob64amrkv7y6x53 --enable-lto --with-quad]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.9.3 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/tce/packages/cuda/cuda-11.1.1/lib64/:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/:/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d05b0' '-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs' '-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib' '-shared-libgcc']
+  link line: [ /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/collect2 -plugin /usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/liblto_plugin.so -plugin-opt=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/lto-wrapper -plugin-opt=-fresolution=/var/tmp/ccuKU14U.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -rpath /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64 --eh-frame-hdr -V -m elf64lppc -dynamic-linker /lib64/ld64.so.2 -o cmTC_d05b0 /lib/../lib64/crt1.o /lib/../lib64/crti.o /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs -L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/tce/packages/cuda/cuda-11.1.1/lib64 -L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64 -L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64 -L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../.. CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o /lib/../lib64/crtn.o]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/tce/packages/gcc/gcc-4.9.3/gnu/libexec/gcc/powerpc64le-unknown-linux-gnu/4.9.3/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/var/tmp/ccuKU14U.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib:/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-V] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf64lppc] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_d05b0] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+    arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64]
+    arg [-L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64] ==> dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+    arg [-L/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+    arg [-L/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+    arg [-L/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..]
+    arg [CMakeFiles/cmTC_d05b0.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
+    arg [-lcudadevrt] ==> lib [cudadevrt]
+    arg [-lcudart_static] ==> lib [cudart_static]
+    arg [-lrt] ==> lib [rt]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ldl] ==> lib [dl]
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o] ==> obj [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o]
+    arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+  collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+  collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+  collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib] ==> [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64/../lib64] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64/../lib64] ==> [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../../../lib64] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/tce/packages/cuda/cuda-11.1.1/lib64] ==> [/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  collapse library dir [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64] ==> [/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64]
+  collapse library dir [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64] ==> [/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64]
+  collapse library dir [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/../../..] ==> [/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64]
+  implicit libs: [cudadevrt;cudart_static;rt;pthread;dl;stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib64/crt1.o;/lib64/crti.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtbegin.o;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3/crtend.o;/lib64/crtn.o]
+  implicit dirs: [/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib/stubs;/usr/tce/packages/cuda/cuda-11.1.1/nvidia/targets/ppc64le-linux/lib;/g/g15/haskins8/spack/var/spack/environments/spack-xlc-mvapich/.spack-env/view/lib64;/usr/tce/packages/mvapich2/mvapich2-2020.12.11-cuda-10.1.243-xl-2021.03.11/lib64;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64/gcc/powerpc64le-unknown-linux-gnu/4.9.3;/usr/tce/packages/gcc/gcc-4.9.3/gnu/lib64;/lib64;/usr/lib64;/usr/tce/packages/cuda/cuda-11.1.1/lib64]
+  implicit fwks: []
+
+

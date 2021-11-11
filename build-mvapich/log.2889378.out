@@ -1,0 +1,103 @@
+Agent pid 47080
+Agent pid 47281
+Duration  = 0.094373
+Latency   = 0.000047
+Bandwidth = 254309882.292353
+Duration  = 0.130043
+Latency   = 0.000065
+Bandwidth = 738214582.969240
+Duration  = 0.271697
+Latency   = 0.000136
+Bandwidth = 1413337657.165080
+Duration  = 0.928282
+Latency   = 0.000464
+Bandwidth = 1654669176.831408
+Duration  = 3.187109
+Latency   = 0.001594
+Bandwidth = 1927765679.331154
+Duration  = 12.494622
+Latency   = 0.006247
+Bandwidth = 1966926281.519473
+Duration  = 49.792569
+Latency   = 0.024896
+Bandwidth = 1974270480.865661
+logout
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@lassen710>
+Subject: Job 2889378: <mvapich-gpu-bench> in cluster <lassen> Done
+
+Job <mvapich-gpu-bench> was submitted from host <lassen709> by user <haskins8> in cluster <lassen> at Thu Nov 11 13:10:01 2021
+Job was executed on host(s) <1*lassen710>, in queue <pbatch>, as user <haskins8> in cluster <lassen> at Thu Nov 11 13:10:03 2021
+                            <40*lassen544>
+                            <40*lassen40>
+</g/g15/haskins8> was used as the home directory.
+</g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich> was used as the working directory.
+Started at Thu Nov 11 13:10:03 2021
+Terminated at Thu Nov 11 13:12:15 2021
+Results reported at Thu Nov 11 13:12:15 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+
+### LSF Syntax
+#BSUB -nnodes 2
+##BSUB -W 12:00
+#BSUB -W 00:10
+#BSUB -e log.%J.err
+#BSUB -o log.%J.out
+#BSUB -J mvapich-gpu-bench
+#BSUB q pbatch
+
+export MVAPICHBIN=$(realpath /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/ping_pong)
+export OUTDIR=$(realpath ~/CUP_ECS/ping-pong-gpu/mvapich-out/)
+export TESTDIRCOPY=/p/gpfs1/haskins8
+cp ${MVAPICHBIN} ${TESTDIRCOPY}
+
+export MVAPICHBIN=${TESTDIRCOPY}/ping_pong
+
+cd ${TESTDIRCOPY}
+
+  for i in 10 20 40 80 160 320 640; do
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct.prof ${MVAPICHBIN} $i 1000 4 0 0
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_direct.prof ${MVAPICHBIN} $i 1000 4 1 0
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_direct.prof ${MVAPICHBIN} $i 1000 4 2 0
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_cuda.prof ${MVAPICHBIN} $i 1000 4 0 1
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_cuda.prof ${MVAPICHBIN} $i 1000 4 1 1
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_cuda.prof ${MVAPICHBIN} $i 1000 4 2 1
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_copy.prof ${MVAPICHBIN} $i 1000 4 0 2
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_copy.prof ${MVAPICHBIN} $i 1000 4 1 2
+#    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_copy.prof ${MVAPICHBIN} $i 1000 4 2 2
+  done
+
+mkdir -p ${OUTDIR}
+mv ./* ${OUTDIR}
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   0.25 sec.
+    Max Memory :                                 60 MB
+    Average Memory :                             56.50 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   1425 MB
+    Max Processes :                              4
+    Max Threads :                                27
+    Run time :                                   132 sec.
+    Turnaround time :                            134 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <log.2889378.err> for stderr output of this job.
+

@@ -1,0 +1,33 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+==72109== NVPROF is profiling process 72109, command: /p/gpfs1/haskins8/ping_pong 10 1000 4 0 0
+==152992== NVPROF is profiling process 152992, command: /p/gpfs1/haskins8/ping_pong 10 1000 4 0 0
+==72109== Generated result file: /p/gpfs1/haskins8/0_10_x_direct.prof
+==152992== Generated result file: /p/gpfs1/haskins8/1_10_x_direct.prof
+==153134== NVPROF is profiling process 153134, command: /p/gpfs1/haskins8/ping_pong 20 1000 4 0 0
+==72279== NVPROF is profiling process 72279, command: /p/gpfs1/haskins8/ping_pong 20 1000 4 0 0
+==72279== Generated result file: /p/gpfs1/haskins8/0_20_x_direct.prof
+==153134== Generated result file: /p/gpfs1/haskins8/1_20_x_direct.prof
+==153255== NVPROF is profiling process 153255, command: /p/gpfs1/haskins8/ping_pong 40 1000 4 0 0
+==72425== NVPROF is profiling process 72425, command: /p/gpfs1/haskins8/ping_pong 40 1000 4 0 0
+==72425== Generated result file: /p/gpfs1/haskins8/0_40_x_direct.prof
+==153255== Generated result file: /p/gpfs1/haskins8/1_40_x_direct.prof
+==153377== NVPROF is profiling process 153377, command: /p/gpfs1/haskins8/ping_pong 80 1000 4 0 0
+==72585== NVPROF is profiling process 72585, command: /p/gpfs1/haskins8/ping_pong 80 1000 4 0 0
+==72585== Generated result file: /p/gpfs1/haskins8/0_80_x_direct.prof
+==153377== Generated result file: /p/gpfs1/haskins8/1_80_x_direct.prof
+==153507== NVPROF is profiling process 153507, command: /p/gpfs1/haskins8/ping_pong 160 1000 4 0 0
+==72740== NVPROF is profiling process 72740, command: /p/gpfs1/haskins8/ping_pong 160 1000 4 0 0
+==72740== Generated result file: /p/gpfs1/haskins8/0_160_x_direct.prof
+==153507== Generated result file: /p/gpfs1/haskins8/1_160_x_direct.prof
+==153654== NVPROF is profiling process 153654, command: /p/gpfs1/haskins8/ping_pong 320 1000 4 0 0
+==72912== NVPROF is profiling process 72912, command: /p/gpfs1/haskins8/ping_pong 320 1000 4 0 0
+==153654== Generated result file: /p/gpfs1/haskins8/1_320_x_direct.prof
+==72912== Generated result file: /p/gpfs1/haskins8/0_320_x_direct.prof
+==153886== NVPROF is profiling process 153886, command: /p/gpfs1/haskins8/ping_pong 640 1000 4 0 0
+==73164== NVPROF is profiling process 73164, command: /p/gpfs1/haskins8/ping_pong 640 1000 4 0 0
+==153886== Generated result file: /p/gpfs1/haskins8/1_640_x_direct.prof
+==73164== Generated result file: /p/gpfs1/haskins8/0_640_x_direct.prof
+mv: target '/g/g15/haskins8/CUP_ECS/ping-pong-gpu/mvapich-out/' is not a directory

@@ -1,0 +1,32 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+==52860== NVPROF is profiling process 52860, command: /p/gpfs1/haskins8/ping_pong 10 1000 4 0 0
+==50270== NVPROF is profiling process 50270, command: /p/gpfs1/haskins8/ping_pong 10 1000 4 0 0
+==50270== Generated result file: /p/gpfs1/haskins8/0_10_x_direct.prof
+==52860== Generated result file: /p/gpfs1/haskins8/1_10_x_direct.prof
+==53007== NVPROF is profiling process 53007, command: /p/gpfs1/haskins8/ping_pong 20 1000 4 0 0
+==50393== NVPROF is profiling process 50393, command: /p/gpfs1/haskins8/ping_pong 20 1000 4 0 0
+==53007== Generated result file: /p/gpfs1/haskins8/1_20_x_direct.prof
+==50393== Generated result file: /p/gpfs1/haskins8/0_20_x_direct.prof
+==50514== NVPROF is profiling process 50514, command: /p/gpfs1/haskins8/ping_pong 40 1000 4 0 0
+==53156== NVPROF is profiling process 53156, command: /p/gpfs1/haskins8/ping_pong 40 1000 4 0 0
+==53156== Generated result file: /p/gpfs1/haskins8/1_40_x_direct.prof
+==50514== Generated result file: /p/gpfs1/haskins8/0_40_x_direct.prof
+==53304== NVPROF is profiling process 53304, command: /p/gpfs1/haskins8/ping_pong 80 1000 4 0 0
+==50636== NVPROF is profiling process 50636, command: /p/gpfs1/haskins8/ping_pong 80 1000 4 0 0
+==53304== Generated result file: /p/gpfs1/haskins8/1_80_x_direct.prof
+==50636== Generated result file: /p/gpfs1/haskins8/0_80_x_direct.prof
+==53459== NVPROF is profiling process 53459, command: /p/gpfs1/haskins8/ping_pong 160 1000 4 0 0
+==50767== NVPROF is profiling process 50767, command: /p/gpfs1/haskins8/ping_pong 160 1000 4 0 0
+==53459== Generated result file: /p/gpfs1/haskins8/1_160_x_direct.prof
+==50767== Generated result file: /p/gpfs1/haskins8/0_160_x_direct.prof
+==53642== NVPROF is profiling process 53642, command: /p/gpfs1/haskins8/ping_pong 320 1000 4 0 0
+==50920== NVPROF is profiling process 50920, command: /p/gpfs1/haskins8/ping_pong 320 1000 4 0 0
+==53642== Generated result file: /p/gpfs1/haskins8/1_320_x_direct.prof
+==50920== Generated result file: /p/gpfs1/haskins8/0_320_x_direct.prof
+==53905== NVPROF is profiling process 53905, command: /p/gpfs1/haskins8/ping_pong 640 1000 4 0 0
+==51156== NVPROF is profiling process 51156, command: /p/gpfs1/haskins8/ping_pong 640 1000 4 0 0
+==53905== Generated result file: /p/gpfs1/haskins8/1_640_x_direct.prof
+==51156== Generated result file: /p/gpfs1/haskins8/0_640_x_direct.prof

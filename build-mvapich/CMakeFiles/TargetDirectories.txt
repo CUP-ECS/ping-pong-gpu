@@ -1,0 +1,7 @@
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/install/strip.dir
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/install/local.dir
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/install.dir
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/list_install_components.dir
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/rebuild_cache.dir
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/edit_cache.dir
+/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles/ping_pong.dir
