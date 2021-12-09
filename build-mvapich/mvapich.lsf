@@ -3,7 +3,7 @@
 ### LSF Syntax
 #BSUB -nnodes 2
 ##BSUB -W 720
-#BSUB -W 720
+#BSUB -W 120
 #BSUB -e log.%J.err
 #BSUB -o log.%J.out
 #BSUB -J mvapich-gpu-bench
