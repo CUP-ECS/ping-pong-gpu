@@ -1,0 +1,37 @@
+#!/bin/bash
+
+### LSF Syntax
+#BSUB -nnodes 2
+##BSUB -W 720
+#BSUB -W 10
+#BSUB -e log.%J.err
+#BSUB -o log.%J.out
+#BSUB -J mvapich-gpu-bench
+##BSUB q pbatch
+#BSUB q pdebug
+
+export MVAPICHBIN=$(realpath /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/ping_pong)
+export OUTDIR=$(realpath /usr/workspace/haskins8/mvapich-out2/)
+export TESTDIRCOPY=/p/gpfs1/haskins8/mvapich2/
+mkdir -p $TESTDIRCOPY
+cp ${MVAPICHBIN} ${TESTDIRCOPY}
+
+export MVAPICHBIN=${TESTDIRCOPY}/ping_pong
+
+cd ${TESTDIRCOPY}
+
+#for i in 10 20 40 80 160 320 640; do
+for i in 10; do
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct.prof ${MVAPICHBIN} $i 1000 4 0 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_direct.prof ${MVAPICHBIN} $i 1000 4 1 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_direct.prof ${MVAPICHBIN} $i 1000 4 2 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_cuda.prof ${MVAPICHBIN} $i 1000 4 0 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_cuda.prof ${MVAPICHBIN} $i 1000 4 1 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_cuda.prof ${MVAPICHBIN} $i 1000 4 2 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_copy.prof ${MVAPICHBIN} $i 1000 4 0 2
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_copy.prof ${MVAPICHBIN} $i 1000 4 1 2
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nvprof -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_copy.prof ${MVAPICHBIN} $i 1000 4 2 2
+done
+
+mkdir -p ${OUTDIR}
+mv ./* ${OUTDIR}

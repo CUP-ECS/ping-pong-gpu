@@ -4,12 +4,8 @@ cmake_minimum_required(VERSION 3.18)
 # set project name and languages
 project(Ping_Pong CXX C Fortran CUDA)
 
-# Switch to nvcc compiler wrapper if building for cuda
-#set(CMAKE_CXX_COMPILER "nvcc_wrapper") 
-#set(CMAKE_CXX_FLAGS "-ccbin xlc++")
-
-
-
+set(CMAKE_CXX_FLAGS "-DMPICH_SKIP_MPICXX")
+set(CMAKE_CUDA_FLAGS "-DMPICH_SKIP_MPICXX")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 #set(CMAKE_CXX_COMPILER "${CMAKE_SOURCE_DIR}/kokkos/bin/nvcc_wrapper -ccbin xlc++") 
@@ -18,7 +14,46 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(MPI REQUIRED)
 find_package(Kokkos 3 REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
-include_directories(SYSTEM $CUDA_HOME/include/)
+#include_directories(SYSTEM ${CUDA_HOME}/include/)
+set(CMAKE_CUDA_ARCHITECTURES 70)
+
+set(TEMPI_ENABLE_KAHIP OFF)
+set(TEMPI_OUTPUT_LEVEL SPEW)
+add_subdirectory(tempi)
+
+# wrap.py setup -- grab the add_wrapped_file macro.
+set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
+set(OLD_MPI_CXX_COMPILER $MPI_CXX_COMPILER)
+set(MPI_CXX_COMPILER "mpicxx")
+include(wrap/WrapConfig.cmake)
+add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
+set(MPI_CXX_COMPILER $OLD_MPI_CXX_COMPILER)
+add_library(nvtx_pmpi SHARED nvtx_pmpi.cpp)
+
+add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
+
+# Generate rule for nvtx_pmpi.o, rather than by hand
+set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
+target_link_libraries(ping_pong PRIVATE tempi::tempi)
+target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
+target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) 
+target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
+target_link_libraries(ping_pong PRIVATE nvToolsExt)
+
+if (DIRECT)
+  target_compile_definitions(DIRECT)
+elseif(CUDA_AWARE)
+  target_compile_definitions(CUDA_AWARE)
+elseif(COPY)
+  target_compile_definitions(COPY)
+endif()
+
+# set install destination
+install(TARGETS ping_pong
+        RUNTIME DESTINATION)
+
+# print build strings
+message("Ping Pong Build Time ${BUILD_TIME}")
 
 #target_link_libraries(ping_pong
 #                      kokkos
@@ -45,24 +80,6 @@ include_directories(SYSTEM $CUDA_HOME/include/)
 #include_directories(${Kokkos_INCLUDE_DIRS_RET})
 #add_subdirectory(kokkos) 
 
-#add_subdirectory(tempi)
-# wrap.py setup -- grab the add_wrapped_file macro.
-set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
-set(OLD_MPI_CXX_COMPILER $MPI_CXX_COMPILER)
-set(MPI_CXX_COMPILER "mpicxx")
-include(wrap/WrapConfig.cmake)
-add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
-set(MPI_CXX_COMPILER $OLD_MPI_CXX_COMPILER)
-
-add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp nvtx_pmpi.cpp)
-
-# Generate rule for nvtx_pmpi.o, rather than by hand
-set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
-#target_link_libraries(ping_pong PUBLIC ${PROJECT_SOURCE_DIR}/nvtx_pmpi.o)
-#target_link_libraries(ping_pong PRIVATE tempi::tempi)
-target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) 
-target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
-target_link_libraries(ping_pong PRIVATE nvToolsExt)
 
 
 
@@ -73,18 +90,9 @@ target_link_libraries(ping_pong PRIVATE nvToolsExt)
 #  target_compile_definitions(fiesta PRIVATE HAVE_OPENMP)
 #endif()
 
-if (DIRECT)
-  target_compile_definitions(DIRECT)
-elseif(CUDA_AWARE)
-  target_compile_definitions(CUDA_AWARE)
-elseif(COPY)
-  target_compile_definitions(COPY)
-endif()
 
-# set install destination
-install(TARGETS ping_pong
-        RUNTIME DESTINATION)
+# Switch to nvcc compiler wrapper if building for cuda
+#set(CMAKE_CXX_COMPILER "nvcc_wrapper") 
+#set(CMAKE_CXX_FLAGS "-ccbin xlc++")
 
-# print build strings
-message("Ping Pong Build Time ${BUILD_TIME}")
 

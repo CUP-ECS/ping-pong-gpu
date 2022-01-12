@@ -1,0 +1,1 @@
+/g/g15/haskins8/spack/var/spack/environments/mvapich-gcc8/.spack-env/view/bin/nvcc_wrapper  -ccbin mpicxx -fPIC -DMPICH_SKIP_MPICXX -O3 -DNDEBUG -shared -Wl,-soname,libnvtx_pmpi.so -o libnvtx_pmpi.so CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.o 

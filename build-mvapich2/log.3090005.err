@@ -1,0 +1,6 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+ERROR:  One or more process (first noticed rank 1) terminated with signal 11 (core dumped)
+mv: inter-device move failed: '/p/gpfs1/haskins8/mvapich2' to '/usr/WS1/haskins8/mvapich2-out/mvapich2'; unable to remove target: Directory not empty

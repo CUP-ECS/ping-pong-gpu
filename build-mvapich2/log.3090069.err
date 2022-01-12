@@ -1,0 +1,40 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+==51112== NVPROF is profiling process 51112, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 0 0
+==107316== NVPROF is profiling process 107316, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 0 0
+==107316== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_x_direct.prof
+==51112== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_x_direct.prof
+==51280== NVPROF is profiling process 51280, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 1 0
+==107461== NVPROF is profiling process 107461, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 1 0
+==51280== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_y_direct.prof
+==107461== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_y_direct.prof
+==107582== NVPROF is profiling process 107582, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 2 0
+==51426== NVPROF is profiling process 51426, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 2 0
+==107582== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_z_direct.prof
+==51426== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_z_direct.prof
+==51582== NVPROF is profiling process 51582, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 0 1
+==107705== NVPROF is profiling process 107705, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 0 1
+==51582== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_x_cuda.prof
+==107705== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_x_cuda.prof
+==51730== NVPROF is profiling process 51730, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 1 1
+==107833== NVPROF is profiling process 107833, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 1 1
+==51730== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_y_cuda.prof
+==107833== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_y_cuda.prof
+==107984== NVPROF is profiling process 107984, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 2 1
+==51877== NVPROF is profiling process 51877, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 2 1
+==107984== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_z_cuda.prof
+==51877== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_z_cuda.prof
+==52023== NVPROF is profiling process 52023, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 0 2
+==108105== NVPROF is profiling process 108105, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 0 2
+==52023== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_x_copy.prof
+==108105== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_x_copy.prof
+==52172== NVPROF is profiling process 52172, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 1 2
+==108230== NVPROF is profiling process 108230, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 1 2
+==52172== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_y_copy.prof
+==108230== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_y_copy.prof
+==108353== NVPROF is profiling process 108353, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 2 2
+==52324== NVPROF is profiling process 52324, command: /p/gpfs1/haskins8/mvapich2//ping_pong 10 1000 4 2 2
+==108353== Generated result file: /p/gpfs1/haskins8/mvapich2/0_10_z_copy.prof
+==52324== Generated result file: /p/gpfs1/haskins8/mvapich2/1_10_z_copy.prof

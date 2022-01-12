@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/tempi/cmake_install.cmake")
+  include("/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2/tempi/cmake_install.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -54,12 +54,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/ping_pong")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2/ping_pong")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong"
-         OLD_RPATH "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/tempi:"
+         OLD_RPATH "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2/tempi:/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong")
@@ -75,5 +75,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

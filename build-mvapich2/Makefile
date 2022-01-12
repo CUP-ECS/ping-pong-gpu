@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /g/g15/haskins8/CUP-ECS/ping-pong-gpu
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich
+CMAKE_BINARY_DIR = /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2/CMakeFiles /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich2/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -173,6 +173,19 @@ ping_pong: cmake_check_build_system
 ping_pong/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ping_pong.dir/build.make CMakeFiles/ping_pong.dir/build
 .PHONY : ping_pong/fast
+
+#=============================================================================
+# Target rules for targets named nvtx_pmpi
+
+# Build rule for target.
+nvtx_pmpi: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nvtx_pmpi
+.PHONY : nvtx_pmpi
+
+# fast build rule for target.
+nvtx_pmpi/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/build
+.PHONY : nvtx_pmpi/fast
 
 #=============================================================================
 # Target rules for targets named mpiexec_link
@@ -590,454 +603,12 @@ bench-halo-exchange/fast:
 	$(MAKE) $(MAKESILENT) -f tempi/bin/CMakeFiles/bench-halo-exchange.dir/build.make tempi/bin/CMakeFiles/bench-halo-exchange.dir/build
 .PHONY : bench-halo-exchange/fast
 
-#=============================================================================
-# Target rules for targets named label_propagation
-
-# Build rule for target.
-label_propagation: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 label_propagation
-.PHONY : label_propagation
-
-# fast build rule for target.
-label_propagation/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/label_propagation.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/label_propagation.dir/build
-.PHONY : label_propagation/fast
-
-#=============================================================================
-# Target rules for targets named evaluator
-
-# Build rule for target.
-evaluator: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 evaluator
-.PHONY : evaluator
-
-# fast build rule for target.
-evaluator/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/evaluator.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/evaluator.dir/build
-.PHONY : evaluator/fast
-
-#=============================================================================
-# Target rules for targets named global_multisection
-
-# Build rule for target.
-global_multisection: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 global_multisection
-.PHONY : global_multisection
-
-# fast build rule for target.
-global_multisection/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/global_multisection.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/global_multisection.dir/build
-.PHONY : global_multisection/fast
-
-#=============================================================================
-# Target rules for targets named libkaffpa
-
-# Build rule for target.
-libkaffpa: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libkaffpa
-.PHONY : libkaffpa
-
-# fast build rule for target.
-libkaffpa/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/libkaffpa.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/libkaffpa.dir/build
-.PHONY : libkaffpa/fast
-
-#=============================================================================
-# Target rules for targets named kaffpaE
-
-# Build rule for target.
-kaffpaE: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kaffpaE
-.PHONY : kaffpaE
-
-# fast build rule for target.
-kaffpaE/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/kaffpaE.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/kaffpaE.dir/build
-.PHONY : kaffpaE/fast
-
-#=============================================================================
-# Target rules for targets named node_separator
-
-# Build rule for target.
-node_separator: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 node_separator
-.PHONY : node_separator
-
-# fast build rule for target.
-node_separator/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/node_separator.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/node_separator.dir/build
-.PHONY : node_separator/fast
-
-#=============================================================================
-# Target rules for targets named libnodeordering
-
-# Build rule for target.
-libnodeordering: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libnodeordering
-.PHONY : libnodeordering
-
-# fast build rule for target.
-libnodeordering/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/libnodeordering.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/libnodeordering.dir/build
-.PHONY : libnodeordering/fast
-
-#=============================================================================
-# Target rules for targets named edge_partitioning
-
-# Build rule for target.
-edge_partitioning: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 edge_partitioning
-.PHONY : edge_partitioning
-
-# fast build rule for target.
-edge_partitioning/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/edge_partitioning.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/edge_partitioning.dir/build
-.PHONY : edge_partitioning/fast
-
-#=============================================================================
-# Target rules for targets named libspac
-
-# Build rule for target.
-libspac: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libspac
-.PHONY : libspac
-
-# fast build rule for target.
-libspac/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/libspac.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/libspac.dir/build
-.PHONY : libspac/fast
-
-#=============================================================================
-# Target rules for targets named libmapping
-
-# Build rule for target.
-libmapping: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libmapping
-.PHONY : libmapping
-
-# fast build rule for target.
-libmapping/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/libmapping.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/libmapping.dir/build
-.PHONY : libmapping/fast
-
-#=============================================================================
-# Target rules for targets named partition_to_vertex_separator
-
-# Build rule for target.
-partition_to_vertex_separator: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 partition_to_vertex_separator
-.PHONY : partition_to_vertex_separator
-
-# fast build rule for target.
-partition_to_vertex_separator/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/partition_to_vertex_separator.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/partition_to_vertex_separator.dir/build
-.PHONY : partition_to_vertex_separator/fast
-
-#=============================================================================
-# Target rules for targets named interface_test
-
-# Build rule for target.
-interface_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 interface_test
-.PHONY : interface_test
-
-# fast build rule for target.
-interface_test/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/interface_test.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/interface_test.dir/build
-.PHONY : interface_test/fast
-
-#=============================================================================
-# Target rules for targets named graphchecker
-
-# Build rule for target.
-graphchecker: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 graphchecker
-.PHONY : graphchecker
-
-# fast build rule for target.
-graphchecker/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/graphchecker.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/graphchecker.dir/build
-.PHONY : graphchecker/fast
-
-#=============================================================================
-# Target rules for targets named libkaffpa_parallel
-
-# Build rule for target.
-libkaffpa_parallel: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libkaffpa_parallel
-.PHONY : libkaffpa_parallel
-
-# fast build rule for target.
-libkaffpa_parallel/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/libkaffpa_parallel.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/libkaffpa_parallel.dir/build
-.PHONY : libkaffpa_parallel/fast
-
-#=============================================================================
-# Target rules for targets named node_ordering
-
-# Build rule for target.
-node_ordering: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 node_ordering
-.PHONY : node_ordering
-
-# fast build rule for target.
-node_ordering/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/node_ordering.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/node_ordering.dir/build
-.PHONY : node_ordering/fast
-
-#=============================================================================
-# Target rules for targets named interface
-
-# Build rule for target.
-interface: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 interface
-.PHONY : interface
-
-# fast build rule for target.
-interface/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/interface.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/interface.dir/build
-.PHONY : interface/fast
-
-#=============================================================================
-# Target rules for targets named kaffpa
-
-# Build rule for target.
-kaffpa: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kaffpa
-.PHONY : kaffpa
-
-# fast build rule for target.
-kaffpa/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/kaffpa.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/kaffpa.dir/build
-.PHONY : kaffpa/fast
-
-#=============================================================================
-# Target rules for targets named interface_static
-
-# Build rule for target.
-interface_static: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 interface_static
-.PHONY : interface_static
-
-# fast build rule for target.
-interface_static/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/CMakeFiles/interface_static.dir/build.make tempi/thirdparty/KaHIP/CMakeFiles/interface_static.dir/build
-.PHONY : interface_static/fast
-
-#=============================================================================
-# Target rules for targets named libmodified_kahip_interface
-
-# Build rule for target.
-libmodified_kahip_interface: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libmodified_kahip_interface
-.PHONY : libmodified_kahip_interface
-
-# fast build rule for target.
-libmodified_kahip_interface/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/modified_kahip/CMakeFiles/libmodified_kahip_interface.dir/build.make tempi/thirdparty/KaHIP/parallel/modified_kahip/CMakeFiles/libmodified_kahip_interface.dir/build
-.PHONY : libmodified_kahip_interface/fast
-
-#=============================================================================
-# Target rules for targets named libmodified_kaffpa_async
-
-# Build rule for target.
-libmodified_kaffpa_async: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libmodified_kaffpa_async
-.PHONY : libmodified_kaffpa_async
-
-# fast build rule for target.
-libmodified_kaffpa_async/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/modified_kahip/CMakeFiles/libmodified_kaffpa_async.dir/build.make tempi/thirdparty/KaHIP/parallel/modified_kahip/CMakeFiles/libmodified_kaffpa_async.dir/build
-.PHONY : libmodified_kaffpa_async/fast
-
-#=============================================================================
-# Target rules for targets named libmodified_kaffpa
-
-# Build rule for target.
-libmodified_kaffpa: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libmodified_kaffpa
-.PHONY : libmodified_kaffpa
-
-# fast build rule for target.
-libmodified_kaffpa/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/build.make tempi/thirdparty/KaHIP/parallel/modified_kahip/CMakeFiles/libmodified_kaffpa.dir/build
-.PHONY : libmodified_kaffpa/fast
-
-#=============================================================================
-# Target rules for targets named parhip_interface_static
-
-# Build rule for target.
-parhip_interface_static: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 parhip_interface_static
-.PHONY : parhip_interface_static
-
-# fast build rule for target.
-parhip_interface_static/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/parhip_interface_static.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/parhip_interface_static.dir/build
-.PHONY : parhip_interface_static/fast
-
-#=============================================================================
-# Target rules for targets named parhip_interface
-
-# Build rule for target.
-parhip_interface: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 parhip_interface
-.PHONY : parhip_interface
-
-# fast build rule for target.
-parhip_interface/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/parhip_interface.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/parhip_interface.dir/build
-.PHONY : parhip_interface/fast
-
-#=============================================================================
-# Target rules for targets named libparallel
-
-# Build rule for target.
-libparallel: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libparallel
-.PHONY : libparallel
-
-# fast build rule for target.
-libparallel/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libparallel.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libparallel.dir/build
-.PHONY : libparallel/fast
-
-#=============================================================================
-# Target rules for targets named toolbox
-
-# Build rule for target.
-toolbox: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 toolbox
-.PHONY : toolbox
-
-# fast build rule for target.
-toolbox/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/toolbox.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/toolbox.dir/build
-.PHONY : toolbox/fast
-
-#=============================================================================
-# Target rules for targets named graph2binary_external
-
-# Build rule for target.
-graph2binary_external: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 graph2binary_external
-.PHONY : graph2binary_external
-
-# fast build rule for target.
-graph2binary_external/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/graph2binary_external.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/graph2binary_external.dir/build
-.PHONY : graph2binary_external/fast
-
-#=============================================================================
-# Target rules for targets named edge_list_to_metis_graph
-
-# Build rule for target.
-edge_list_to_metis_graph: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 edge_list_to_metis_graph
-.PHONY : edge_list_to_metis_graph
-
-# fast build rule for target.
-edge_list_to_metis_graph/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/edge_list_to_metis_graph.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/edge_list_to_metis_graph.dir/build
-.PHONY : edge_list_to_metis_graph/fast
-
-#=============================================================================
-# Target rules for targets named parhip
-
-# Build rule for target.
-parhip: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 parhip
-.PHONY : parhip
-
-# fast build rule for target.
-parhip/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/parhip.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/parhip.dir/build
-.PHONY : parhip/fast
-
-#=============================================================================
-# Target rules for targets named dspac
-
-# Build rule for target.
-dspac: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dspac
-.PHONY : dspac
-
-# fast build rule for target.
-dspac/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/dspac.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/dspac.dir/build
-.PHONY : dspac/fast
-
-#=============================================================================
-# Target rules for targets named libedgelist
-
-# Build rule for target.
-libedgelist: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libedgelist
-.PHONY : libedgelist
-
-# fast build rule for target.
-libedgelist/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libedgelist.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libedgelist.dir/build
-.PHONY : libedgelist/fast
-
-#=============================================================================
-# Target rules for targets named libgraph2bgf
-
-# Build rule for target.
-libgraph2bgf: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libgraph2bgf
-.PHONY : libgraph2bgf
-
-# fast build rule for target.
-libgraph2bgf/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libgraph2bgf.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libgraph2bgf.dir/build
-.PHONY : libgraph2bgf/fast
-
-#=============================================================================
-# Target rules for targets named graph2binary
-
-# Build rule for target.
-graph2binary: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 graph2binary
-.PHONY : graph2binary
-
-# fast build rule for target.
-graph2binary/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/graph2binary.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/graph2binary.dir/build
-.PHONY : graph2binary/fast
-
-#=============================================================================
-# Target rules for targets named libdspac
-
-# Build rule for target.
-libdspac: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libdspac
-.PHONY : libdspac
-
-# fast build rule for target.
-libdspac/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libdspac.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/libdspac.dir/build
-.PHONY : libdspac/fast
-
-#=============================================================================
-# Target rules for targets named readbgf
-
-# Build rule for target.
-readbgf: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 readbgf
-.PHONY : readbgf
-
-# fast build rule for target.
-readbgf/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/readbgf.dir/build.make tempi/thirdparty/KaHIP/parallel/parallel_src/CMakeFiles/readbgf.dir/build
-.PHONY : readbgf/fast
-
 nvtx_pmpi.o: nvtx_pmpi.cpp.o
 .PHONY : nvtx_pmpi.o
 
 # target to build an object file
 nvtx_pmpi.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ping_pong.dir/build.make CMakeFiles/ping_pong.dir/nvtx_pmpi.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.o
 .PHONY : nvtx_pmpi.cpp.o
 
 nvtx_pmpi.i: nvtx_pmpi.cpp.i
@@ -1045,7 +616,7 @@ nvtx_pmpi.i: nvtx_pmpi.cpp.i
 
 # target to preprocess a source file
 nvtx_pmpi.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ping_pong.dir/build.make CMakeFiles/ping_pong.dir/nvtx_pmpi.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.i
 .PHONY : nvtx_pmpi.cpp.i
 
 nvtx_pmpi.s: nvtx_pmpi.cpp.s
@@ -1053,7 +624,7 @@ nvtx_pmpi.s: nvtx_pmpi.cpp.s
 
 # target to generate assembly for a file
 nvtx_pmpi.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ping_pong.dir/build.make CMakeFiles/ping_pong.dir/nvtx_pmpi.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.s
 .PHONY : nvtx_pmpi.cpp.s
 
 src/input.o: src/input.cpp.o
@@ -1154,57 +725,24 @@ help:
 	@echo "... bench-pack-kernels"
 	@echo "... bench-type-commit"
 	@echo "... dist_graph_create_adjacent"
-	@echo "... dspac"
-	@echo "... edge_list_to_metis_graph"
-	@echo "... edge_partitioning"
-	@echo "... evaluator"
-	@echo "... global_multisection"
-	@echo "... graph2binary"
-	@echo "... graph2binary_external"
-	@echo "... graphchecker"
 	@echo "... iid"
 	@echo "... init_finalize"
-	@echo "... interface"
-	@echo "... interface_static"
-	@echo "... interface_test"
 	@echo "... isend"
 	@echo "... isend_contiguous"
-	@echo "... kaffpa"
-	@echo "... kaffpaE"
-	@echo "... label_propagation"
-	@echo "... libdspac"
-	@echo "... libedgelist"
-	@echo "... libgraph2bgf"
-	@echo "... libkaffpa"
-	@echo "... libkaffpa_parallel"
-	@echo "... libmapping"
-	@echo "... libmodified_kaffpa"
-	@echo "... libmodified_kaffpa_async"
-	@echo "... libmodified_kahip_interface"
-	@echo "... libnodeordering"
-	@echo "... libparallel"
-	@echo "... libspac"
 	@echo "... measure-system"
 	@echo "... measure_system"
-	@echo "... node_ordering"
-	@echo "... node_separator"
 	@echo "... numeric"
+	@echo "... nvtx_pmpi"
 	@echo "... pack_unpack"
-	@echo "... parhip"
-	@echo "... parhip_interface"
-	@echo "... parhip_interface_static"
 	@echo "... partition_kahip"
 	@echo "... partition_kahip_process_mapping"
-	@echo "... partition_to_vertex_separator"
 	@echo "... ping_pong"
-	@echo "... readbgf"
 	@echo "... send"
 	@echo "... send_vector"
 	@echo "... sender"
 	@echo "... tempi"
 	@echo "... tempi_bin"
 	@echo "... tempi_support"
-	@echo "... toolbox"
 	@echo "... type_commit"
 	@echo "... type_equivalence"
 	@echo "... nvtx_pmpi.o"

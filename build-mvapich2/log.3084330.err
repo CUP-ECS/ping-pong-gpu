@@ -1,0 +1,6 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+ERROR:  One or more process (first noticed rank 1) terminated with signal 9
+ERROR:  One or more process (first noticed rank 0) terminated with signal 11 (core dumped)
