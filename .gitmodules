@@ -4,3 +4,6 @@
 [submodule "wrap"]
 	path = wrap
 	url = git@github.com:LLNL/wrap.git
+[submodule "tempi"]
+	path = tempi
+	url = git@github.com:cwpearson/tempi.git
