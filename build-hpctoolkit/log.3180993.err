@@ -1,0 +1,6 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+Warning: jsrun wrapper could not find executable 'hpcrun', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0

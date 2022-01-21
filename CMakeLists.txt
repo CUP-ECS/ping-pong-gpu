@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.18)
 # set project name and languages
 project(Ping_Pong CXX C Fortran CUDA)
 
-set(CMAKE_CXX_FLAGS "-DMPICH_SKIP_MPICXX")
-set(CMAKE_CUDA_FLAGS "-DMPICH_SKIP_MPICXX")
+set(CMAKE_CXX_FLAGS "-DMPICH_SKIP_MPICXX -arch=sm_70")
+set(CMAKE_CUDA_FLAGS "-DMPICH_SKIP_MPICXX -arch=sm_70")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 #set(CMAKE_CXX_COMPILER "${CMAKE_SOURCE_DIR}/kokkos/bin/nvcc_wrapper -ccbin xlc++") 
@@ -17,25 +17,26 @@ include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 #include_directories(SYSTEM ${CUDA_HOME}/include/)
 set(CMAKE_CUDA_ARCHITECTURES 70)
 
-set(TEMPI_ENABLE_KAHIP OFF)
-set(TEMPI_OUTPUT_LEVEL SPEW)
-add_subdirectory(tempi)
+#set(TEMPI_ENABLE_KAHIP OFF)
+#set(TEMPI_OUTPUT_LEVEL SPEW)
+#add_subdirectory(tempi)
 
 # wrap.py setup -- grab the add_wrapped_file macro.
-set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
+#set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
 set(OLD_MPI_CXX_COMPILER $MPI_CXX_COMPILER)
 set(MPI_CXX_COMPILER "mpicxx")
-include(wrap/WrapConfig.cmake)
-add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
+#include(wrap/WrapConfig.cmake)
+#add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
 set(MPI_CXX_COMPILER $OLD_MPI_CXX_COMPILER)
-add_library(nvtx_pmpi SHARED nvtx_pmpi.cpp)
+#add_library(nvtx_pmpi SHARED nvtx_pmpi.cpp)
+#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/CUP-ECS/ping-pong-gpu/build-mvapich2/tempi/libtempi.so
 
 add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
 
 # Generate rule for nvtx_pmpi.o, rather than by hand
 set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
-target_link_libraries(ping_pong PRIVATE tempi::tempi)
-target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
+#target_link_libraries(ping_pong PRIVATE tempi::tempi)
+#target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
 target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) 
 target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
 target_link_libraries(ping_pong PRIVATE nvToolsExt)

@@ -1,0 +1,50 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+Warning: jsrun wrapper could not find executable 'hpcrun', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcrun: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcrun', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcrun: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcrun', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcrun: No such file or directory
+taskset: failed to execute hpcrun: No such file or directory
+/g/g15/haskins8/.lsbatch/1642538949.3181187.shell: line 46: hpcstruct: command not found
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+Warning: jsrun wrapper could not find executable 'hpcprof-mpi', skipping MPI mismatch tests
+Warning: Disable MPI mismatch tests by setting LLNL_JSRUN_DETECT_MPI_MISMATCH to 0
+taskset: failed to execute hpcprof-mpi: No such file or directory
+taskset: failed to execute hpcprof-mpi: No such file or directory
+mv: inter-device move failed: '/p/gpfs1/haskins8/hpctoolkit-gcc8' to '/usr/WS1/haskins8/hpctoolkit-gcc8/hpctoolkit-gcc8'; unable to remove target: Directory not empty
