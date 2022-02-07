@@ -54,8 +54,8 @@ lrun -N 2 -T 1 hpcprof-mpi --metric-db yes -S ./bin.struct -I ~/CUP-ECS/ping-pon
 lrun -N 2 -T 1 hpcprof-mpi --metric-db yes -S ./bin.struct -I ~/CUP-ECS/ping-pong-gpu/src ./hpctoolkit-measurements7
 lrun -N 2 -T 1 hpcprof-mpi --metric-db yes -S ./bin.struct -I ~/CUP-ECS/ping-pong-gpu/src ./hpctoolkit-measurements8
 
-#rm -f *sol-*h5*
-#rm -f *sol-*xmf
-#rm -f *sol-*lock
+rm -f *sol-*h5*
+rm -f *sol-*xmf
+rm -f *sol-*lock
 
 mv ${TESTDIR} ${OUTDIR}

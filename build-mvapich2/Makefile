@@ -253,32 +253,6 @@ send/fast:
 .PHONY : send/fast
 
 #=============================================================================
-# Target rules for targets named sender
-
-# Build rule for target.
-sender: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sender
-.PHONY : sender
-
-# fast build rule for target.
-sender/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/sender.dir/build.make tempi/test/CMakeFiles/sender.dir/build
-.PHONY : sender/fast
-
-#=============================================================================
-# Target rules for targets named isend_contiguous
-
-# Build rule for target.
-isend_contiguous: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 isend_contiguous
-.PHONY : isend_contiguous
-
-# fast build rule for target.
-isend_contiguous/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/isend_contiguous.dir/build.make tempi/test/CMakeFiles/isend_contiguous.dir/build
-.PHONY : isend_contiguous/fast
-
-#=============================================================================
 # Target rules for targets named iid
 
 # Build rule for target.
@@ -357,17 +331,17 @@ init_finalize/fast:
 .PHONY : init_finalize/fast
 
 #=============================================================================
-# Target rules for targets named partition_kahip
+# Target rules for targets named pack_unpack
 
 # Build rule for target.
-partition_kahip: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 partition_kahip
-.PHONY : partition_kahip
+pack_unpack: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pack_unpack
+.PHONY : pack_unpack
 
 # fast build rule for target.
-partition_kahip/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/partition_kahip.dir/build.make tempi/test/CMakeFiles/partition_kahip.dir/build
-.PHONY : partition_kahip/fast
+pack_unpack/fast:
+	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/pack_unpack.dir/build.make tempi/test/CMakeFiles/pack_unpack.dir/build
+.PHONY : pack_unpack/fast
 
 #=============================================================================
 # Target rules for targets named send_vector
@@ -396,30 +370,30 @@ isend/fast:
 .PHONY : isend/fast
 
 #=============================================================================
-# Target rules for targets named partition_kahip_process_mapping
+# Target rules for targets named isend_contiguous
 
 # Build rule for target.
-partition_kahip_process_mapping: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 partition_kahip_process_mapping
-.PHONY : partition_kahip_process_mapping
+isend_contiguous: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 isend_contiguous
+.PHONY : isend_contiguous
 
 # fast build rule for target.
-partition_kahip_process_mapping/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/partition_kahip_process_mapping.dir/build.make tempi/test/CMakeFiles/partition_kahip_process_mapping.dir/build
-.PHONY : partition_kahip_process_mapping/fast
+isend_contiguous/fast:
+	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/isend_contiguous.dir/build.make tempi/test/CMakeFiles/isend_contiguous.dir/build
+.PHONY : isend_contiguous/fast
 
 #=============================================================================
-# Target rules for targets named pack_unpack
+# Target rules for targets named sender
 
 # Build rule for target.
-pack_unpack: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pack_unpack
-.PHONY : pack_unpack
+sender: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sender
+.PHONY : sender
 
 # fast build rule for target.
-pack_unpack/fast:
-	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/pack_unpack.dir/build.make tempi/test/CMakeFiles/pack_unpack.dir/build
-.PHONY : pack_unpack/fast
+sender/fast:
+	$(MAKE) $(MAKESILENT) -f tempi/test/CMakeFiles/sender.dir/build.make tempi/test/CMakeFiles/sender.dir/build
+.PHONY : sender/fast
 
 #=============================================================================
 # Target rules for targets named bench-nbr-alltoallv-random-sparse
@@ -734,8 +708,6 @@ help:
 	@echo "... numeric"
 	@echo "... nvtx_pmpi"
 	@echo "... pack_unpack"
-	@echo "... partition_kahip"
-	@echo "... partition_kahip_process_mapping"
 	@echo "... ping_pong"
 	@echo "... send"
 	@echo "... send_vector"
