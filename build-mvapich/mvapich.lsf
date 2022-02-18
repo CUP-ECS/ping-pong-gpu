@@ -2,13 +2,13 @@
 
 ### LSF Syntax
 #BSUB -nnodes 2
-##BSUB -W 720
-#BSUB -W 120
+#BSUB -W 720
+##BSUB -W 120
 #BSUB -e log.%J.err
 #BSUB -o log.%J.out
 #BSUB -J mvapich-gpu-bench
-##BSUB q pbatch
-#BSUB q pdebug
+#BSUB q pbatch
+##BSUB q pdebug
 
 export MVAPICHBIN=$(realpath /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-mvapich/ping_pong)
 export OUTDIR=$(realpath /usr/workspace/haskins8/mvapich-out/)
