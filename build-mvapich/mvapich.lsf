@@ -2,8 +2,8 @@
 
 ### LSF Syntax
 #BSUB -nnodes 2
-#BSUB -W 720
-##BSUB -W 120
+##BSUB -W 720
+#BSUB -W 20
 #BSUB -e log.%J.err
 #BSUB -o log.%J.out
 #BSUB -J mvapich-gpu-bench
@@ -15,22 +15,22 @@ export OUTDIR=$(realpath /usr/workspace/haskins8/mvapich-nsys-out/)
 export TESTDIRCOPY=/p/gpfs1/haskins8/mvapich-nsys/
 mkdir -p $TESTDIRCOPY
 cp ${MVAPICHBIN} ${TESTDIRCOPY}
-
+#source mods
 export MVAPICHBIN=${TESTDIRCOPY}/ping_pong
 
 cd ${TESTDIRCOPY}
 
-  for i in 10 20 40 80 160 320 640; do
-  #for i in 10 20 40; do
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct.prof ${MVAPICHBIN} $i 1000 4 0 0
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_direct.prof ${MVAPICHBIN} $i 1000 4 1 0
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_direct.prof ${MVAPICHBIN} $i 1000 4 2 0
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_cuda.prof ${MVAPICHBIN} $i 1000 4 0 1
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_cuda.prof ${MVAPICHBIN} $i 1000 4 1 1
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_cuda.prof ${MVAPICHBIN} $i 1000 4 2 1
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_copy.prof ${MVAPICHBIN} $i 1000 4 0 2
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_copy.prof ${MVAPICHBIN} $i 1000 4 1 2
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_copy.prof ${MVAPICHBIN} $i 1000 4 2 2
+  #for i in 10 20 40 80 160 320 640; do
+  for i in 10; do
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct ${MVAPICHBIN} $i 10 4 0 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_direct ${MVAPICHBIN} $i 10 4 1 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_direct ${MVAPICHBIN} $i 10 4 2 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_cuda ${MVAPICHBIN} $i 10 4 0 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_cuda ${MVAPICHBIN} $i 10 4 1 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_cuda ${MVAPICHBIN} $i 10 4 2 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_copy ${MVAPICHBIN} $i 10 4 0 2
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_copy ${MVAPICHBIN} $i 10 4 1 2
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_copy ${MVAPICHBIN} $i 10 4 2 2
   done
 
 mkdir -p ${OUTDIR}
