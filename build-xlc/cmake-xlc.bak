@@ -1,4 +1,4 @@
 #CC='xlc' CXX='xlc++' FC='xlf' cmake -DCMAKE_CXX_COMPILER=`which nvcc_wrapper` ..
 #CC='xlc' CXX='xlc++' FC='xlf' cmake ..
 #CC='mpicc' CXX='nvcc_wrapper' FC='mpifort' MPI_CXX='nvcc_wrapper -ccbin xlc++' cmake ..
-CC='mpicc' CXX='nvcc_wrapper -ccbin xlc++' FC='mpifort' cmake -DGDSYNC_PATH=~/.local/ -DMP_PATH=~/.local/ ..
+CC='mpicc' CXX='nvcc_wrapper -ccbin xlc++' FC='mpifort' cmake ..

@@ -6,7 +6,7 @@ project(Ping_Pong CXX C Fortran CUDA)
 
 set(CMAKE_CXX_FLAGS "-DMPICH_SKIP_MPICXX -arch=sm_70")
 set(CMAKE_CUDA_FLAGS "-DMPICH_SKIP_MPICXX -arch=sm_70")
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
 #set(CMAKE_CXX_COMPILER "${CMAKE_SOURCE_DIR}/kokkos/bin/nvcc_wrapper -ccbin xlc++") 
 
@@ -20,6 +20,64 @@ set(CMAKE_CUDA_ARCHITECTURES 70)
 #set(TEMPI_ENABLE_KAHIP OFF)
 #set(TEMPI_OUTPUT_LEVEL SPEW)
 #add_subdirectory(tempi)
+
+##############################################################################
+## Copyright (c) 2018-2020, Lawrence Livermore National Security, LLC.
+##
+## Produced at the Lawrence Livermore National Laboratory
+##
+## LLNL-CODE-758885
+##
+## All rights reserved.
+##
+## This file is part of Comb.
+##
+## For details, see https://github.com/LLNL/Comb
+## Please also see the LICENSE file for MIT license.
+##############################################################################
+
+find_path(GDSYNC_PATH
+    NAMES "lib/libgdsync.so"
+    PATHS
+      ENV GDSYNC_DIR
+      /opt/ibm/spectrum_mpi/libgdsync
+    DOC "Path to gdsync library")
+
+
+if(GDSYNC_PATH)
+    message(STATUS "GDSYNC_PATH:  ${GDSYNC_PATH}")
+    set(GDSYNC_FOUND TRUE)
+    set(GDSYNC_CXX_COMPILE_FLAGS -I${GDSYNC_PATH}/include)
+    set(GDSYNC_INCLUDE_PATH      ${GDSYNC_PATH}/include)
+    set(GDSYNC_CXX_LINK_FLAGS    -L${GDSYNC_PATH}/lib)
+    set(GDSYNC_CXX_LIBRARIES     ${GDSYNC_PATH}/lib/libgdsync.so)
+    set(GDSYNC_ARCH              )
+else()
+    set(GDSYNC_FOUND FALSE)
+    message(WARNING "gdsync library not found")
+endif()
+
+#
+find_path(MP_PATH
+    NAMES "lib/libmp.so"
+    PATHS
+      ENV MP_DIR
+      /opt/ibm/spectrum_mpi/libmp
+    DOC "Path to mp library")
+
+
+if(MP_PATH)
+    message(STATUS "MP_PATH:  ${MP_PATH}")
+    set(MP_FOUND TRUE)
+    set(MP_CXX_COMPILE_FLAGS -I${MP_PATH}/include)
+    set(MP_INCLUDE_PATH      ${MP_PATH}/include)
+    set(MP_CXX_LINK_FLAGS    -L${MP_PATH}/lib)
+    set(MP_CXX_LIBRARIES     ${MP_PATH}/lib/libmp.so)
+    set(MP_ARCH              )
+else()
+    set(MP_FOUND FALSE)
+    message(WARNING "mp library not found")
+endif()
 
 # wrap.py setup -- grab the add_wrapped_file macro.
 set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
@@ -40,6 +98,10 @@ target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
 target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) 
 target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
 target_link_libraries(ping_pong PRIVATE nvToolsExt)
+include_directories(${MP_INCLUDE_PATH})
+target_link_libraries(ping_pong PRIVATE ${MP_CXX_LIBRARIES})
+include_directories(${GDSYNC_INCLUDE_PATH})
+target_link_libraries(ping_pong PRIVATE ${GDSYNC_CXX_LIBRARIES})
 
 if (DIRECT)
   target_compile_definitions(DIRECT)

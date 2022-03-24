@@ -1,0 +1,277 @@
+ld-mvapich
+  678  vim mods
+  679  vim mods
+  680  ll /p/gpfs1/haskins8/mvapich-nsys/
+  681  rm /p/gpfs1/haskins8/mvapich-nsys/*
+  682  ll /p/gpfs1/haskins8/mvapich-nsys/
+  683  source mods
+  684  module list
+  685  vim mvapich.lsf
+  686  ll
+  687  vim log.3302649.out
+  688  vim log.3302649.err
+  689  rm log.*
+  690  ll
+  691  vim mvapich.lsf
+  692  bsub mvapich.lsf
+  693  cs ../build-mvapich-tempi/
+  694  vim mvapich.lsf
+  695  vim mods
+  696  vim ../build-mvapich/mods
+  697  vim mods
+  698  bjobs
+  699  ll
+  700  cs ../build-mvapich
+  701  vim log.3318449.err
+  702  vim mods
+  703  module load nsight-systems/2021.5.1
+  704  module list
+  705  nsight-sys
+  706  nsys --version
+  707  vim mvapich.lsf
+  708  bsub mvapich.lsf
+  709  bjobs
+  710  exit
+  711  bjobs
+  712  cs /p/gpfs1/haskins8/mvapich-nsys/
+  713  ll
+  714  cs /usr/workspace/haskins8/mvapich-nsys-out/
+  715  cs ~/CUP-ECS/ping-pong-gpu/build-mvapich
+  716  vim log.3318627.err
+  717  rm log.3318*
+  718  ll
+  719  vim mvapich.lsf
+  720  source mods
+  721  bsub mvapich.lsf
+  722  bjobs
+  723  ll
+  724  vim log.3321472.err
+  725  vim log.3321472.out
+  726  vim log.3321472.err
+  727  module list
+  728  nsys --version
+  729  module list
+  730  nsys
+  731  module purge
+  732  module load nsight-systems/2021.5.1
+  733  nsys
+  734  module list
+  735  vim mvapich.lsf
+  736  bsub mvapich.lsf
+  737  bjobs
+  738  ll
+  739  bjobs
+  740  ll
+  741  vim log.3321486.err
+  742  vim log.3321486.out
+  743  ll /p/gpfs1/haskins8/mvapich-nsys/
+  744  ll /usr/workspace/haskins8/mvapich-nsys-out/
+  745  cp /usr/workspace/haskins8/mvapich-nsys-out/0_10_x_cuda.nsys-rep ../mvapich-nsys-out/
+  746  cs ../mvapich-nsys-out/
+  747  cs ..
+  748  git status
+  749  git commit -am 'Added older nsys data to mvapich-nsys-out.'
+  750  git push -u origin development
+  751  git add mvapich-nsys-out/
+  752  git commit -am 'Added older nsys data to mvapich-nsys-out.'
+  753  git push -u origin development
+  754  exit
+  755  cs ~/CUP-ECS/ping-pong-gpu/build-mvapich
+  756  vim mvapich.lsf
+  757  rm /usr/workspace/haskins8/mvapich-nsys-out/*
+  758  ll /usr/workspace/haskins8/mvapich-nsys-out/*
+  759  ll /usr/workspace/haskins8/mvapich-nsys-out/
+  760  module list
+  761  vim mods
+  762  vim profile
+  763  source profile
+  764  module list
+  765  vim profile
+  766  source profile
+  767  module list
+  768  vim mvapich.lsf
+  769  bsub ll
+  770  bjobs
+  771  ll
+  772  bsub mvapich.lsf
+  773  bjobs
+  774  module list
+  775  bjobs
+  776  ll
+  777  vim log.3321536.err
+  778  vim mvapich.lsf
+  779  bkill 3321536
+  780  ll
+  781  rm log.*
+  782  ll
+  783  bsub mvapich.lsf
+  784  bjobs
+  785  ll
+  786  vim log.3321557.err
+  787  vim mvapich.lsf
+  788  rm log.3321557.*
+  789  ll
+  790  bsub mvapich.lsf
+  791  bjobs
+  792  cs ~/CUP-ECS/ping-pong-gpu/build-mvapich
+  793  bjobs
+  794  ll
+  795  vim log.3321566.err
+  796  ll /usr/workspace/haskins8/mvapich-nsys-out/
+  797  vim mods
+  798  vim profile
+  799  vim mvapich.lsf
+  800  ll
+  801  ll /p/gpfs1/haskins8/mvapich-nsys/
+  802  cp /usr/workspace/haskins8/mvapich-nsys-out/0_640_z_direct.nsys-rep ../mvapich-nsys-out/
+  803  ll
+  804  cs ..
+  805  git add mvapich-nsys-out/
+  806  git commit -am 'Added another test file to mvapich-nsys-out'
+  807  git push -u origin development
+  808  cp /usr/workspace/haskins8/mvapich-nsys-out/0_640_x_direct.nsys-rep ../mvapich-nsys-out/
+  809  cp /usr/workspace/haskins8/mvapich-nsys-out/0_640_x_direct.nsys-rep mvapich-nsys-out/
+  810  cp /usr/workspace/haskins8/mvapich-nsys-out/0_640_x_cuda.nsys-rep mvapich-nsys-out/
+  811  ll mvapich-nsys-out/
+  812  git add mvapich-nsys-out/
+  813  git commit -am 'Added more data to use with Nsight'
+  814  git push -u origin development
+  815  cp /usr/workspace/haskins8/mvapich-nsys-out/0_320_x_cuda.nsys-rep mvapich-nsys-out/
+  816  git commit -am 'Trying a lower dimension of data for mvapich-nsys-out.'
+  817  git add mvapich-nsys-out/
+  818  git commit -am 'Trying a lower dimension of data for mvapich-nsys-out.'
+  819  git push -u origin development
+  820  rm mvapich-nsys-out/*
+  821  ll mvapich-nsys-out/
+  822  rm /usr/workspace/haskins8/mvapich-nsys-out/*
+  823  cs build-mvapich
+  824  vim mvapich.lsf
+  825  vim log.3321566.err
+  826  source profile
+  827  bsub mvapich.lsf
+  828  exit
+  829  cs /usr/workspace/haskins8/mvapich-nsys-out/
+  830  ll
+  831  cs ~/CUP-ECS/ping-pong-gpu/build-mvapich
+  832  vim log.3321624.out
+  833  vim log.3321624.err
+  834  ll ../mvapich-nsys-out/
+  835  cp /usr/workspace/haskins8/mvapich-nsys-out/0_320_x_cuda.nsys-rep mvapich-nsys-out/
+  836  cp /usr/workspace/haskins8/mvapich-nsys-out/0_320_x_cuda.nsys-rep ../mvapich-nsys-out/
+  837  cs ..
+  838  git add mvapich-nsys-out/
+  839  git commit -am 'Testing new data, added to mvapich-nsys-out.'
+  840  git add mvapich-nsys-out/
+  841  git commit -am 'Testing new data, added to mvapich-nsys-out.'
+  842  git status
+  843  ll mvapich-nsys-out/
+  844  git add mvapich-nsys-out/0_320_x_cuda.nsys-rep
+  845  git status
+  846  git push -u origin development
+  847  source build-mvapich/profile
+  848  ll
+  849  vim src/ping_pong.cpp
+  850  ll /usr/workspace/haskins8/mvapich-nsys-out/
+  851  ll build-mvapich
+  852  ll /p/gpfs1/haskins8/
+  853  ll /p/gpfs1/haskins8/mvapich-nsys/
+  854  ll
+  855  ll mvapich-nsys-out/
+  856  ll /usr/workspace/haskins8/mvapich-nsys-out/
+  857  exit
+  858  cs /usr/workspace/haskins8/mvapich-nsys-out/
+  859  ll
+  860  cs ~/CUP-ECS/ping-pong-gpu/build-mvapich
+*******************************************************************************************
+  861  cs ../libgdsync/
+  862  make clean
+  863  module list
+  864  rm -rf build
+  865  which nvcc
+  866  export CUDA=/usr/tce/packages/cuda/cuda-10.1.243/
+  867  which mpicc
+  868  export MPI_HOME=/usr/tce/packages/spectrum-mpi/spectrum-mpi-rolling-release-xl-2021.09.22/
+  869  ./build.sh
+  870  ll
+  871  ll build
+  872  ll build/src/
+  873  cs ..
+  874  cs libmp/
+  875  vim build.sh
+  876  vim scripts/env_setup.sh
+  877  cs ..
+  878  cs libgdsync/
+  879  cs build
+  880  cs ..
+  881  vim build.sh
+  882  ./build.sh
+  883  rm -rf build
+  884  ./build.sh
+  885  ll
+  886  vim build.sh
+  887  ./build.sh
+  888  pwd
+  889  vim build.sh
+  890  ll ~/.local/share/
+  891  ll ~/.local/
+  892  ./build
+  893  ./build.sh
+  894  ll ~/.local/lib/
+  895  cs ../libmp/
+  896  vim scripts/env_setup.sh
+  897  source scripts/env_setup.sh
+  898  ./build.sh
+  899  vim ~/.local/include/gdsync.h
+  900  vim ~/.local/include/gdsync/device.cuh
+  901  ./build.sh
+  902  ll ~/.local/include/
+  903  cs ..
+  904  vim CMakeLists.txt
+  905  cs ..
+  906  cs comb/
+  907  git pull -u origin master
+  908  git pull origin master
+  909  ll
+  910  cs cmake/
+  911  vim Findmp.cmake
+  912  cs ../..
+  913  cs ping-pong-gpu/
+  914  vim CMakeLists.txt
+  915  cs ../comb/cmake/
+  916  vim Findgdsync.cmake
+  917  cs -
+  918  vim CMakeLists.txt
+  919  cs build-mvapich
+  920  vim cmake
+  921  vim cmake-gcc
+  922  ./cmake-gcc
+  923  vim cmake
+  924  vim cmake-gcc
+  925  source mods
+  926  cs ../build-xlc/
+  927  vim mods
+  928  module purge
+  929  source mods
+  930  module list
+  931  ./cmake-xlc
+  932  cp cmake-xlc cmake-xlc.bak
+  933  vim cmake-xlc
+  934  ./cmake-xlc
+  935  vim ../CMakeLists.txt
+  936  ./cmake-xlc
+  937  vim ../CMakeLists.txt
+  938  ./cmake-xlc
+  939  make VERBOSE=1
+  940  vim ../CMakeLists.txt
+  941  vim spack-xlc-spectrum.yaml
+  942  vim ../CMakeLists.txt
+  943  ccm
+  944  ll
+  945  ./cmake-xlc
+  946  make VERBOSE=1
+  947  vim spack-xlc-spectrum.yaml
+  948  vim mods
+  949  which nvcc
+  950  which nvcc_wrapper
+  951  nvcc_wrapper --version
+  952  history

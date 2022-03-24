@@ -7,3 +7,9 @@
 [submodule "tempi"]
 	path = tempi
 	url = git@github.com:cwpearson/tempi.git
+[submodule "libmp"]
+	path = libmp
+	url = https://github.com/gpudirect/libmp.git
+[submodule "libgdsync"]
+	path = libgdsync
+	url = https://github.com/gpudirect/libgdsync.git

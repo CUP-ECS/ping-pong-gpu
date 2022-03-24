@@ -1,0 +1,247 @@
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+stty: standard input: Inappropriate ioctl for device
+Identity added: /g/g15/haskins8/.ssh/id_ed25519 (keirahaskins26@gmail.com)
+==77318== NVPROF is profiling process 77318, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 0 0
+==72020== NVPROF is profiling process 72020, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 0 0
+==72020== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_x_direct.prof
+==77318== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_x_direct.prof
+==72184== NVPROF is profiling process 72184, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 1 0
+==77495== NVPROF is profiling process 77495, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 1 0
+==77495== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_y_direct.prof
+==72184== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_y_direct.prof
+==77641== NVPROF is profiling process 77641, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 2 0
+==72305== NVPROF is profiling process 72305, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 2 0
+==77641== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_z_direct.prof
+==72305== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_z_direct.prof
+==77787== NVPROF is profiling process 77787, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 0 1
+==72426== NVPROF is profiling process 72426, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 0 1
+==72426== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_x_cuda.prof
+==77787== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_x_cuda.prof
+==77936== NVPROF is profiling process 77936, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 1 1
+==72557== NVPROF is profiling process 72557, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 1 1
+==77936== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_y_cuda.prof
+==72557== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_y_cuda.prof
+==78082== NVPROF is profiling process 78082, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 2 1
+==72674== NVPROF is profiling process 72674, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 2 1
+==78082== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_z_cuda.prof
+==72674== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_z_cuda.prof
+==72796== NVPROF is profiling process 72796, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 0 2
+==78241== NVPROF is profiling process 78241, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 0 2
+==72796== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_x_copy.prof
+==78241== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_x_copy.prof
+==78508== NVPROF is profiling process 78508, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 1 2
+==73018== NVPROF is profiling process 73018, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 1 2
+==73018== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_y_copy.prof
+==78508== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_y_copy.prof
+==78653== NVPROF is profiling process 78653, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 2 2
+==73151== NVPROF is profiling process 73151, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 10 1000 4 2 2
+==73151== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_10_z_copy.prof
+==78653== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_10_z_copy.prof
+==78795== NVPROF is profiling process 78795, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 0 0
+==73275== NVPROF is profiling process 73275, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 0 0
+==78795== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_x_direct.prof
+==73275== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_x_direct.prof
+==73386== NVPROF is profiling process 73386, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 1 0
+==78937== NVPROF is profiling process 78937, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 1 0
+==78937== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_y_direct.prof
+==73386== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_y_direct.prof
+==73506== NVPROF is profiling process 73506, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 2 0
+==79084== NVPROF is profiling process 79084, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 2 0
+==79084== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_z_direct.prof
+==73506== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_z_direct.prof
+==73627== NVPROF is profiling process 73627, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 0 1
+==79230== NVPROF is profiling process 79230, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 0 1
+==79230== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_x_cuda.prof
+==73627== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_x_cuda.prof
+==73766== NVPROF is profiling process 73766, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 1 1
+==79394== NVPROF is profiling process 79394, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 1 1
+==73766== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_y_cuda.prof
+==79394== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_y_cuda.prof
+==73887== NVPROF is profiling process 73887, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 2 1
+==79540== NVPROF is profiling process 79540, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 2 1
+==73887== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_z_cuda.prof
+==79540== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_z_cuda.prof
+==74008== NVPROF is profiling process 74008, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 0 2
+==79686== NVPROF is profiling process 79686, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 0 2
+==74008== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_x_copy.prof
+==79686== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_x_copy.prof
+==80363== NVPROF is profiling process 80363, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 1 2
+==74676== NVPROF is profiling process 74676, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 1 2
+==80363== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_y_copy.prof
+==74676== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_y_copy.prof
+==74808== NVPROF is profiling process 74808, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 2 2
+==80509== NVPROF is profiling process 80509, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 20 1000 4 2 2
+==80509== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_20_z_copy.prof
+==74808== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_20_z_copy.prof
+==74926== NVPROF is profiling process 74926, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 0 0
+==80655== NVPROF is profiling process 80655, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 0 0
+==74926== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_x_direct.prof
+==80655== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_x_direct.prof
+==75050== NVPROF is profiling process 75050, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 1 0
+==80803== NVPROF is profiling process 80803, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 1 0
+==80803== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_y_direct.prof
+==75050== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_y_direct.prof
+==75171== NVPROF is profiling process 75171, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 2 0
+==80949== NVPROF is profiling process 80949, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 2 0
+==80949== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_z_direct.prof
+==75171== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_z_direct.prof
+==75292== NVPROF is profiling process 75292, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 0 1
+==81096== NVPROF is profiling process 81096, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 0 1
+==75292== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_x_cuda.prof
+==81096== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_x_cuda.prof
+==81279== NVPROF is profiling process 81279, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 1 1
+==75450== NVPROF is profiling process 75450, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 1 1
+==81279== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_y_cuda.prof
+==75450== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_y_cuda.prof
+==81439== NVPROF is profiling process 81439, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 2 1
+==75573== NVPROF is profiling process 75573, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 2 1
+==81439== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_z_cuda.prof
+==75573== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_z_cuda.prof
+==81587== NVPROF is profiling process 81587, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 0 2
+==75705== NVPROF is profiling process 75705, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 0 2
+==75705== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_x_copy.prof
+==81587== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_x_copy.prof
+==77477== NVPROF is profiling process 77477, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 1 2
+==83385== NVPROF is profiling process 83385, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 1 2
+==83385== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_y_copy.prof
+==77477== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_y_copy.prof
+==83533== NVPROF is profiling process 83533, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 2 2
+==77610== NVPROF is profiling process 77610, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 40 1000 4 2 2
+==83533== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_40_z_copy.prof
+==77610== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_40_z_copy.prof
+==77732== NVPROF is profiling process 77732, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 0 0
+==83679== NVPROF is profiling process 83679, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 0 0
+==83679== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_x_direct.prof
+==77732== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_x_direct.prof
+==77853== NVPROF is profiling process 77853, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 1 0
+==83825== NVPROF is profiling process 83825, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 1 0
+==83825== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_y_direct.prof
+==77853== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_y_direct.prof
+==77975== NVPROF is profiling process 77975, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 2 0
+==83972== NVPROF is profiling process 83972, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 2 0
+==83972== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_z_direct.prof
+==77975== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_z_direct.prof
+==78099== NVPROF is profiling process 78099, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 0 1
+==84120== NVPROF is profiling process 84120, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 0 1
+==78099== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_x_cuda.prof
+==84120== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_x_cuda.prof
+==84350== NVPROF is profiling process 84350, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 1 1
+==78303== NVPROF is profiling process 78303, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 1 1
+==84350== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_y_cuda.prof
+==78303== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_y_cuda.prof
+==84510== NVPROF is profiling process 84510, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 2 1
+==78424== NVPROF is profiling process 78424, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 2 1
+==84510== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_z_cuda.prof
+==78424== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_z_cuda.prof
+==84662== NVPROF is profiling process 84662, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 0 2
+==78557== NVPROF is profiling process 78557, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 0 2
+==78557== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_x_copy.prof
+==84662== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_x_copy.prof
+==85605== NVPROF is profiling process 85605, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 1 2
+==91676== NVPROF is profiling process 91676, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 1 2
+==91676== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_y_copy.prof
+==85605== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_y_copy.prof
+==91826== NVPROF is profiling process 91826, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 2 2
+==85735== NVPROF is profiling process 85735, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 80 1000 4 2 2
+==91826== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_80_z_copy.prof
+==85735== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_80_z_copy.prof
+==85856== NVPROF is profiling process 85856, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 0 0
+==91972== NVPROF is profiling process 91972, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 0 0
+==91972== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_x_direct.prof
+==85856== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_x_direct.prof
+==92118== NVPROF is profiling process 92118, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 1 0
+==85977== NVPROF is profiling process 85977, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 1 0
+==92118== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_y_direct.prof
+==85977== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_y_direct.prof
+==92268== NVPROF is profiling process 92268, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 2 0
+==86099== NVPROF is profiling process 86099, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 2 0
+==92268== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_z_direct.prof
+==86099== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_z_direct.prof
+==92447== NVPROF is profiling process 92447, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 0 1
+==86245== NVPROF is profiling process 86245, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 0 1
+==92447== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_x_cuda.prof
+==86245== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_x_cuda.prof
+==86563== NVPROF is profiling process 86563, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 1 1
+==92780== NVPROF is profiling process 92780, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 1 1
+==92780== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_y_cuda.prof
+==86563== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_y_cuda.prof
+==92936== NVPROF is profiling process 92936, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 2 1
+==86696== NVPROF is profiling process 86696, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 2 1
+==92936== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_z_cuda.prof
+==86696== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_z_cuda.prof
+==93108== NVPROF is profiling process 93108, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 0 2
+==86832== NVPROF is profiling process 86832, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 0 2
+==86832== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_x_copy.prof
+==93108== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_x_copy.prof
+==120950== NVPROF is profiling process 120950, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 1 2
+==114596== NVPROF is profiling process 114596, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 1 2
+==120950== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_y_copy.prof
+==114596== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_y_copy.prof
+==121100== NVPROF is profiling process 121100, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 2 2
+==114729== NVPROF is profiling process 114729, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 160 1000 4 2 2
+==121100== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_160_z_copy.prof
+==114729== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_160_z_copy.prof
+==121257== NVPROF is profiling process 121257, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 0 0
+==114861== NVPROF is profiling process 114861, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 0 0
+==114861== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_x_direct.prof
+==121257== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_x_direct.prof
+==121428== NVPROF is profiling process 121428, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 1 0
+==115009== NVPROF is profiling process 115009, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 1 0
+==121428== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_y_direct.prof
+==115009== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_y_direct.prof
+==121602== NVPROF is profiling process 121602, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 2 0
+==115155== NVPROF is profiling process 115155, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 2 0
+==121602== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_z_direct.prof
+==115155== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_z_direct.prof
+==121845== NVPROF is profiling process 121845, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 0 1
+==115348== NVPROF is profiling process 115348, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 0 1
+==121845== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_x_cuda.prof
+==115348== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_x_cuda.prof
+==122397== NVPROF is profiling process 122397, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 1 1
+==115866== NVPROF is profiling process 115866, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 1 1
+==115866== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_y_cuda.prof
+==122397== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_y_cuda.prof
+==122571== NVPROF is profiling process 122571, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 2 1
+==116020== NVPROF is profiling process 116020, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 2 1
+==122571== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_z_cuda.prof
+==116020== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_z_cuda.prof
+==116210== NVPROF is profiling process 116210, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 0 2
+==122797== NVPROF is profiling process 122797, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 0 2
+==116210== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_x_copy.prof
+==122797== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_x_copy.prof
+==47976== NVPROF is profiling process 47976, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 1 2
+==55290== NVPROF is profiling process 55290, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 1 2
+==55290== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_y_copy.prof
+==47976== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_y_copy.prof
+==48128== NVPROF is profiling process 48128, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 2 2
+==55466== NVPROF is profiling process 55466, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 320 1000 4 2 2
+==55466== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_320_z_copy.prof
+==48128== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_320_z_copy.prof
+==55679== NVPROF is profiling process 55679, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 0 0
+==48307== NVPROF is profiling process 48307, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 0 0
+==55679== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_640_x_direct.prof
+==48307== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_640_x_direct.prof
+==55910== NVPROF is profiling process 55910, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 1 0
+==48527== NVPROF is profiling process 48527, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 1 0
+==55910== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_640_y_direct.prof
+==48527== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_640_y_direct.prof
+==56179== NVPROF is profiling process 56179, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 2 0
+==48769== NVPROF is profiling process 48769, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 2 0
+==56179== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_640_z_direct.prof
+==48769== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_640_z_direct.prof
+==56594== NVPROF is profiling process 56594, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 0 1
+==49154== NVPROF is profiling process 49154, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 0 1
+==49154== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_640_x_cuda.prof
+==56594== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_640_x_cuda.prof
+==50407== NVPROF is profiling process 50407, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 1 1
+==57876== NVPROF is profiling process 57876, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 1 1
+==50407== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_640_y_cuda.prof
+==57876== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_640_y_cuda.prof
+==58128== NVPROF is profiling process 58128, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 2 1
+==50661== NVPROF is profiling process 50661, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 2 1
+==58128== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/0_640_z_cuda.prof
+==50661== Generated result file: /p/gpfs1/haskins8/spectrum-xlc/1_640_z_cuda.prof
+==58541== NVPROF is profiling process 58541, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 0 2
+==51037== NVPROF is profiling process 51037, command: /p/gpfs1/haskins8/spectrum-xlc//ping_pong 640 1000 4 0 2
+User defined signal 2

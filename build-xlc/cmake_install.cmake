@@ -54,7 +54,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong"
-         OLD_RPATH "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc:"
+         OLD_RPATH "/g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc:/g/g15/haskins8/.local/lib:/g/g15/haskins8/spack/var/spack/environments/spack-xlc-spectrum/.spack-env/view/lib64:/usr/tce/packages/cuda/cuda-11.1.1/lib64:/usr/tce/packages/spectrum-mpi/ibm/spectrum-mpi-rolling-release/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/ping_pong")
