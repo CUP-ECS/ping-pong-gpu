@@ -174,43 +174,6 @@ ping_pong/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ping_pong.dir/build.make CMakeFiles/ping_pong.dir/build
 .PHONY : ping_pong/fast
 
-#=============================================================================
-# Target rules for targets named nvtx_pmpi
-
-# Build rule for target.
-nvtx_pmpi: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nvtx_pmpi
-.PHONY : nvtx_pmpi
-
-# fast build rule for target.
-nvtx_pmpi/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/build
-.PHONY : nvtx_pmpi/fast
-
-nvtx_pmpi.o: nvtx_pmpi.cpp.o
-.PHONY : nvtx_pmpi.o
-
-# target to build an object file
-nvtx_pmpi.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.o
-.PHONY : nvtx_pmpi.cpp.o
-
-nvtx_pmpi.i: nvtx_pmpi.cpp.i
-.PHONY : nvtx_pmpi.i
-
-# target to preprocess a source file
-nvtx_pmpi.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.i
-.PHONY : nvtx_pmpi.cpp.i
-
-nvtx_pmpi.s: nvtx_pmpi.cpp.s
-.PHONY : nvtx_pmpi.s
-
-# target to generate assembly for a file
-nvtx_pmpi.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nvtx_pmpi.dir/build.make CMakeFiles/nvtx_pmpi.dir/nvtx_pmpi.cpp.s
-.PHONY : nvtx_pmpi.cpp.s
-
 src/input.o: src/input.cpp.o
 .PHONY : src/input.o
 
@@ -295,11 +258,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... nvtx_pmpi"
 	@echo "... ping_pong"
-	@echo "... nvtx_pmpi.o"
-	@echo "... nvtx_pmpi.i"
-	@echo "... nvtx_pmpi.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"

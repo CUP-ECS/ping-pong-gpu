@@ -21,14 +21,22 @@ set(CMAKE_CUDA_ARCHITECTURES 70)
 #set(TEMPI_OUTPUT_LEVEL SPEW)
 #add_subdirectory(tempi)
 
+
 # wrap.py setup -- grab the add_wrapped_file macro.
-set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
+# HERE
+#set(WRAP ${PROJECT_SOURCE_DIR}/wrap/wrap.py)
 set(OLD_MPI_CXX_COMPILER $MPI_CXX_COMPILER)
 set(MPI_CXX_COMPILER "mpicxx")
-include(wrap/WrapConfig.cmake)
-add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
+
+# HERE
+#include(wrap/WrapConfig.cmake)
+#add_wrapped_file(nvtx_pmpi.cpp src/nvtx.w)
+
 set(MPI_CXX_COMPILER $OLD_MPI_CXX_COMPILER)
-add_library(nvtx_pmpi SHARED nvtx_pmpi.cpp)
+
+# HERE
+#add_library(nvtx_pmpi SHARED nvtx_pmpi.cpp)
+
 #LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/CUP-ECS/ping-pong-gpu/build-mvapich2/tempi/libtempi.so
 
 add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
@@ -36,7 +44,10 @@ add_executable(ping_pong src/main.cpp src/ping_pong.cpp src/input.cpp)
 # Generate rule for nvtx_pmpi.o, rather than by hand
 set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "70")
 #target_link_libraries(ping_pong PRIVATE tempi::tempi)
-target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
+
+# HERE
+#target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
+
 target_link_libraries(ping_pong PUBLIC Kokkos::kokkos) 
 target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
 target_link_libraries(ping_pong PRIVATE nvToolsExt)
