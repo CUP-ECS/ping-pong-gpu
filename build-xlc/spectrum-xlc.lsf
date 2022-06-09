@@ -2,6 +2,7 @@
 
 ### LSF Syntax
 #BSUB -nnodes 2
+##BSUB -W 720
 #BSUB -W 720
 #BSUB -e log.%J.err
 #BSUB -o log.%J.out
@@ -10,8 +11,9 @@
 ##BSUB q pdebug
 
 export SPECTRUMBIN=$(realpath /g/g15/haskins8/CUP-ECS/ping-pong-gpu/build-xlc/ping_pong)
-export OUTDIR=$(realpath /usr/workspace/haskins8/spectrum-xlc-nsys-out/)
-export TESTDIRCOPY=/p/gpfs1/haskins8/spectrum-xlc-nsys/
+#export OUTDIR=$(realpath /usr/workspace/haskins8/spectrum-xlc-nsys-out/)
+export OUTDIR=$(realpath /usr/workspace/haskins8/spectrum-xlc-fine-grain-out/)
+export TESTDIRCOPY=/p/gpfs1/haskins8/spectrum-xlc-fine-grain/
 mkdir -p $TESTDIRCOPY
 cp ${SPECTRUMBIN} ${TESTDIRCOPY}
 
@@ -19,17 +21,18 @@ export SPECTRUMBIN=${TESTDIRCOPY}/ping_pong
 
 cd ${TESTDIRCOPY}
 
-for i in 10 20 40 80 160; do
+for i in `seq -s ' ' 5 5 100` ; do
+#for i in 10 20 40 80 160; do
 #for i in 640; do
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct ${SPECTRUMBIN} $i 1000 4 0 0
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_direct ${SPECTRUMBIN} $i 1000 4 1 0
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_direct ${SPECTRUMBIN} $i 1000 4 2 0
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_cuda ${SPECTRUMBIN} $i 1000 4 0 1
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_cuda ${SPECTRUMBIN} $i 1000 4 1 1
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_cuda ${SPECTRUMBIN} $i 1000 4 2 1
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_copy ${SPECTRUMBIN} $i 1000 4 0 2
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_y_copy ${SPECTRUMBIN} $i 1000 4 1 2
-    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_copy ${SPECTRUMBIN} $i 1000 4 2 2
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct ${SPECTRUMBIN} $i 1000 4 0 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ${SPECTRUMBIN} $i 1000 4 1 0
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_direct ${SPECTRUMBIN} $i 1000 4 2 0
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_cuda ${SPECTRUMBIN} $i 1000 4 0 1
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ${SPECTRUMBIN} $i 1000 4 1 1
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_cuda ${SPECTRUMBIN} $i 1000 4 2 1
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_copy ${SPECTRUMBIN} $i 1000 4 0 2
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ${SPECTRUMBIN} $i 1000 4 1 2
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_z_copy ${SPECTRUMBIN} $i 1000 4 2 2
 done
 
 mkdir -p ${OUTDIR}
