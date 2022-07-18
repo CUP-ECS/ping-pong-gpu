@@ -52,18 +52,20 @@ def gather_data( mode, direction ):
     #    print( "Invalid mode chosen." )
     #    return 0
 
-    colors = ['r','b','tab:orange']
+    #colors = ['r','b','tab:orange']
+    colors = ['tab:orange']
     fig, ax = plt.subplots()
     #fig, ax = plt.subplots()
     #df = pd.read_csv("ping_pong.dat")
     idx = 0
     #plt.title('Bandwidth Direct, CUDA, and Copy; x Direction')
-    for frame in [df1]:
+    for frame in [df2]:
     #for frame in [df1, df2, df3]:
-        plt.loglog(frame['max_i'], frame['bandwidth'] / 10**6, marker='o', label=mode_strs[idx])
+        plt.plot(frame['size'], frame['duration'] / 10**6, marker='o', label=mode_strs[idx])
         plt.legend(loc='upper left')
         idx += 1
-    plt.ylim([1,10**4.5])
+    #plt.ylim([1,10**4.5])
+    #plt.ylim([10**-7,10**-6])
     #axes1 = df1.plot.line( x='max_i', marker='o', ax=ax )
     #axes2 = df2.plot.line( x='max_i', marker='o', ax=ax )
     #axes3 = df3.plot.line( x='max_i', marker='o', ax=ax )
@@ -80,7 +82,7 @@ def gather_data( mode, direction ):
 
     #ax.set_ylabel( 'Bandwidth (MiB/s)' )
     ax.set_ylabel( 'Duration' )
-    ax.set_xlabel( 'N Dimension' )
+    ax.set_xlabel( 'Message Size' )
     #axes1[0].set_ylabel( 'seconds' )
     #axes1[1].set_ylabel(   'GiB/s' )
 

@@ -318,3 +318,19 @@ This is what we think we need, here is how we have gone about it so far
 
  * We did this for this reason *
  * * We need to talk about the "why", why did we do this?? * *
+
+ * 03/10/2022 *
+
+  * Overlay library using Nickel
+  * Similar to Amanda's work
+  * Construct CUDA graphs, hand them to the GPU and say go.
+
+* 06/01/2022 *
+  * Use a postal model to measure alpha and beta in our benchmark
+  * Read over Amanda's paper and think about fitting a postal model
+    to the various outputs of our benchmark
+  * Run with small changes in n, then convert to bytes; table -> size vs latency, 
+    then fit a linear regression to it. the intercept is alpha and the slope is
+    beta.
+  * Look for papers that model GPU launch times; kernel launch and synchronization times
+    
