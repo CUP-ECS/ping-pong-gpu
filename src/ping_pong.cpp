@@ -145,6 +145,10 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
+  auto yPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ng, cf.ngk, cf.nvt} );
+  auto zPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ngj, cf.ng, cf.nvt} );
 
   //Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
   //      				    const int k, const int v) {
@@ -161,14 +165,14 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
       Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
           rightSend( i, j, k, v ) = a( i, j + cf.ncj, k, v );
         });
       break;
     case 2:
       Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
           rightSend( i, j, k, v ) = a( i, j, k + cf.nck, v );
         });
@@ -204,14 +208,14 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
      Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(i, cf.ncj - cf.ng + j, k, v) = rightRecv(i, j, k, v);
       });
       break;
     case 2:
      Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(i, j, cf.nck - cf.ng + k, v) = rightRecv(i, j, k, v);
       });
