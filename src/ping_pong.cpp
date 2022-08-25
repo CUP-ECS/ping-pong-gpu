@@ -4,6 +4,8 @@
 #include <fstream>
 #include "Kokkos_Core.hpp"
 #include "KokkosTypes.hpp"
+
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
@@ -55,6 +57,10 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                             {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
+  auto yPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ng, cf.ngk, cf.nvt} );
+  auto zPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ngj, cf.ng, cf.nvt} );
   switch( direction ) {
     case 0:
       Kokkos::parallel_for(
@@ -65,14 +71,14 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
       Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
           rightSend( i, j, k, v ) = a( i, j + cf.ncj, k, v );
         });
       break;
     case 2:
       Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
           rightSend( i, j, k, v ) = a( i, j, k + cf.nck, v );
         });
@@ -106,14 +112,14 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
      Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(i, cf.ncj - cf.ng + j, k, v) = rightRecv(i, j, k, v);
       });
       break;
     case 2:
      Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(i, j, cf.nck - cf.ng + k, v) = rightRecv(i, j, k, v);
       });
@@ -387,14 +393,37 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int 
       //break;
   }
 
-  FS4D leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+  FS4D leftSend, leftRecv, rightSend, rightRecv;
+  if (direction == 0) { 
+    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  FS4D leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  FS4D rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
                                         cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  FS4D rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
+   } else if (direction == 1) {
+    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
+    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
+    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+                                        cf.ngi,cf.ng,cf.ngk,cf.nvt);
+    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
+  } else if (direction == 2) {
+    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
+    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
+    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+                                        cf.ngi,cf.ngj,cf.ng,cf.nvt);
+    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
+  } else {
+    assert("Invalid direction argument." && 0);
+  }
 
   FS4DH leftSend_H  = Kokkos::create_mirror_view(leftSend); 
   FS4DH leftRecv_H  = Kokkos::create_mirror_view(leftRecv); 
