@@ -127,12 +127,20 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
      int temp_rank = rank - 1;
      MPI_Recv( leftRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
                , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+     /* We split this into two parallel for loops to be fair to MPI and because
+      * we're basically trying to measure one-way multi-send latency/bandwidth
+      * and want each direction to do the same work */
      switch( direction ) {
 	case 0:
 	   Kokkos::parallel_for(
 	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
 		 for (int nSend = 0; nSend <= 0; nSend++) {
 		    a(i + nSend*cf.ng, j, k, v) = leftRecv(i, j, k, v);
+		 }
+	      });
+	   Kokkos::parallel_for(
+	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
 		    leftSend( i, j, k, v ) = a( nSend*cf.ng +  i, j, k, v );
 		 }
 	      });
@@ -142,6 +150,11 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
 	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
 		 for (int nSend = 0; nSend <= 0; nSend++) {
 		    a(i, j + nSend*cf.ng, k, v) = leftRecv(i, j, k, v);
+		 }
+	      });
+	   Kokkos::parallel_for(
+	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
 		    leftSend(  i, j, k, v ) = a( i, nSend*cf.ng +  j, k, v );
 		 }
 	      });
@@ -151,6 +164,11 @@ void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
 	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
 		 for (int nSend = 0; nSend <= 0; nSend++) {
 		    a(i, j, k + nSend*cf.ng, v) = leftRecv(i, j, k, v);
+		 }
+	      });
+	   Kokkos::parallel_for(
+	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
 		    leftSend(i, j, k, v ) = a( i, j, nSend*cf.ng +  k, v );
 		 }
 	      });
