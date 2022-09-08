@@ -2,11 +2,23 @@
 #include "ping_pong.hpp"
 //#include "input.hpp"
 #include <stdio.h>
+#include <getopt.h>
 #include <iostream>
 #include <mpi.h>
 #include <chrono>
 
 using namespace std;
+
+static char* shortargs = (char*)"n:d:b:i:m:";
+
+static option longargs[] = {
+    // Basic simulation parameters
+    { "size", required_argument, NULL, 'n' },
+    { "direction", required_argument, NULL, 'd' },
+    { "buffers", required_argument, NULL, 'b' },
+    { "iterations", required_argument, NULL, 'i' },
+    { "mode", required_argument, NULL, 'm' }
+};
 
 int main( int argc, char *argv[] ) {
 
@@ -18,20 +30,38 @@ int main( int argc, char *argv[] ) {
 
   int max_i        = 20;
   int n_iterations = 1000;
-  int dimension    = 4;
+  int buffers      = 1;
   int mode         = 0;
   int direction    = 0;
 
-  if ( argc > 1 ) max_i        = atoi( argv[1] );
-  if ( argc > 2 ) n_iterations = atoi( argv[2] );
-  if ( argc > 3 ) dimension    = atoi( argv[3] );
-  if ( argc > 4 ) mode         = atoi( argv[4] );
-  if ( argc > 5 ) direction    = atoi( argv[5] );
+    int ch;
+    // Now parse any arguments
+    while ( ( ch = getopt_long( argc, argv, shortargs, longargs, NULL ) ) !=
+            -1 )
+    {
+        switch ( ch )
+        {
+        case 'n':
+            max_i = atoi( optarg );
+            break;
+        case 'i':
+            n_iterations = atoi( optarg );
+            break;
+        case 'd':
+            direction = atoi( optarg );
+            break;
+        case 'm':
+            mode = atoi( optarg );
+            break;
+        case 'b':
+            buffers = atoi( optarg );
+            break;
+        }
+    }
 
-  ping_pong_n_dim( max_i, n_iterations, dimension, mode, direction );
+    ping_pong_n_dim( max_i, n_iterations, buffers, mode, direction );
 
-  MPI_Finalize();
-
-  Kokkos::finalize();
-  return 0;
+    MPI_Finalize();
+    Kokkos::finalize();
+    return 0;
 }
