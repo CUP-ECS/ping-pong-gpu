@@ -1,5 +1,6 @@
-spack env activate spack-xlc-mvapich
+spack env activate spack-xlc-spectrum
 module load cmake/3.20.2
 module load xl/2021.03.11
 module load cuda/11.1.1
-module load mvapich2/2021.05.28-cuda-11.1.1
+module load nsight-systems/2021.5.1
+module load spectrum-mpi/rolling-release

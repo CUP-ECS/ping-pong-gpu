@@ -4,6 +4,8 @@
 #include <fstream>
 #include "Kokkos_Core.hpp"
 #include "KokkosTypes.hpp"
+
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
@@ -43,84 +45,169 @@ void direct( int rank, int n_iterations, FS4D a
   }
 }
 
-void cuda_aware( int rank, int n_iterations, FS4D a, inputConfig cf
-               , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
-               , FS4D rightRecv, MPI_Datatype leftRecvSubArray
-               , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
-               , MPI_Datatype rightSendSubArray
-               , int direction
+void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
+              , int mode, int order, FS4D send, FS4D recv, FS4DH send_H
+              , FS4DH recv_H, int direction, int copy
                ) {
 //void cuda_aware( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, 
 //                 int mode, int order ) {
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                             {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
-  switch( direction ) {
-    case 0:
-      Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-          leftSend(  i, j, k, v ) = a( cf.ng +  i, j, k, v );
-          rightSend( i, j, k, v ) = a( i + cf.nci, j, k, v );
-        });
-      break;
-    case 1:
-      Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-          leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
-          rightSend( i, j, k, v ) = a( i, j + cf.ncj, k, v );
-        });
-      break;
-    case 2:
-      Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-          leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
-          rightSend( i, j, k, v ) = a( i, j, k + cf.nck, v );
-        });
-      break;
-  }
-  Kokkos::fence();
-  
+  auto yPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ng, cf.ngk, cf.nvt} );
+  auto zPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ngj, cf.ng, cf.nvt} );
+  void *sendbuf, *recvbuf;
+
   if ( rank % 2 == 0 ) {
-    int temp_rank = rank + 1;
-    MPI_Send( rightSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
-    MPI_Recv( rightRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+     switch( direction ) {
+	case 0:
+	   Kokkos::parallel_for(
+	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    send( i, j, k, v ) = a( i + nSend*cf.ng, j, k, v );
+		 }
+	      });
+	   break;
+	case 1:
+	   Kokkos::parallel_for(
+	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    send( i, j, k, v ) = a( i, j + nSend*cf.ng, k, v );
+		 }
+	      });
+	   break;
+	case 2:
+	   Kokkos::parallel_for(
+	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    send( i, j, k, v ) = a( i, j, k + nSend*cf.ng, v );
+		 }
+	      });
+	   break;
+     }
+     if (copy) {
+        Kokkos::deep_copy(send_H, send);
+        sendbuf = send_H.data();
+        recvbuf = recv_H.data();
+     } else {
+        sendbuf = send.data();
+        recvbuf = recv.data();
+     }
+
+     Kokkos::fence();
+  
+     int temp_rank = rank + 1;
+     MPI_Send( sendbuf, cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
+             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
+     MPI_Recv( recvbuf, cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
+             , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+
+     if (copy) {
+        Kokkos::deep_copy(recv, recv_H);
+     }
+
+     switch( direction ) {
+	case 0:
+	   Kokkos::parallel_for(
+	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    a(i + nSend*cf.ng, j, k, v) = recv(i, j, k, v);
+		 }
+	      });
+	   break;
+	case 1:
+	   Kokkos::parallel_for(
+	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    a(i, nSend*cf.ng + j, k, v) = recv(i, j, k, v);
+		 }
+	      });
+	   break;
+	case 2:
+	   Kokkos::parallel_for(
+	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    a(i, j, nSend*cf.ng + k, v) = recv(i, j, k, v);
+		 }
+	      });
+	   break;
+     }
+     Kokkos::fence();
   }
   else {
-    int temp_rank = rank - 1;
-    MPI_Recv( leftRecv.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
-            , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
-    MPI_Send( leftSend.data(), cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
+     int temp_rank = rank - 1;
+
+     if (copy) {
+        recvbuf = recv_H.data();
+        sendbuf = send_H.data();
+     } 
+     else {
+        recvbuf = recv.data();
+        sendbuf = send.data();
+     }
+
+     MPI_Recv( recvbuf, cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
+               , temp_rank, MPI_TAG2, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+     /* We split this into two parallel for loops to be fair to MPI and because
+      * we're basically trying to measure one-way multi-send latency/bandwidth
+      * and want each direction to do the same work */
+
+     if (copy) {
+        Kokkos::deep_copy(recv, recv_H);
+     } 
+
+     switch( direction ) {
+	case 0:
+	   Kokkos::parallel_for(
+	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    a(i + nSend*cf.ng, j, k, v) = recv(i, j, k, v);
+		 }
+	      });
+	   Kokkos::parallel_for(
+	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    send( i, j, k, v ) = a( nSend*cf.ng +  i, j, k, v );
+		 }
+	      });
+	   break;
+	case 1:
+	   Kokkos::parallel_for(
+	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    a(i, j + nSend*cf.ng, k, v) = recv(i, j, k, v);
+		 }
+	      });
+	   Kokkos::parallel_for(
+	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    send(  i, j, k, v ) = a( i, nSend*cf.ng +  j, k, v );
+		 }
+	      });
+	   break;
+	case 2:
+	   Kokkos::parallel_for(
+	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    a(i, j, k + nSend*cf.ng, v) = recv(i, j, k, v);
+		 }
+	      });
+	   Kokkos::parallel_for(
+	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+		 for (int nSend = 0; nSend <= 0; nSend++) {
+		    send(i, j, k, v ) = a( i, j, nSend*cf.ng +  k, v );
+		 }
+	      });
+	   break;
+     }
+     if (copy) {
+        Kokkos::deep_copy(send_H, send);
+     } 
+    MPI_Send( sendbuf, cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
             , temp_rank, MPI_TAG2, MPI_COMM_WORLD );
   }
-  
-
-  switch( direction ) {
-    case 0:
-     Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-        a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(cf.nci - cf.ng + i, j, k, v) = rightRecv(i, j, k, v);
-      });
-      break;
-    case 1:
-     Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-        a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(i, cf.ncj - cf.ng + j, k, v) = rightRecv(i, j, k, v);
-      });
-      break;
-    case 2:
-     Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-        a(i, j, k, v) = leftRecv(i, j, k, v);
-        a(i, j, cf.nck - cf.ng + k, v) = rightRecv(i, j, k, v);
-      });
-      break;
-  }
-  Kokkos::fence();
-
 }
 
 //void copy( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, 
@@ -139,6 +226,10 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                            {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
+  auto yPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ng, cf.ngk, cf.nvt} );
+  auto zPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
+                                            {cf.ngi, cf.ngj, cf.ng, cf.nvt} );
 
   //Kokkos::parallel_for( xPol, KOKKOS_LAMBDA(const int i, const int j, 
   //      				    const int k, const int v) {
@@ -155,14 +246,14 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
       Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, cf.ng +  j, k, v );
           rightSend( i, j, k, v ) = a( i, j + cf.ncj, k, v );
         });
       break;
     case 2:
       Kokkos::parallel_for(
-        xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+        zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
           leftSend(  i, j, k, v ) = a( i, j, cf.ng +  k, v );
           rightSend( i, j, k, v ) = a( i, j, k + cf.nck, v );
         });
@@ -198,14 +289,14 @@ void copy( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
      Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(i, cf.ncj - cf.ng + j, k, v) = rightRecv(i, j, k, v);
       });
       break;
     case 2:
      Kokkos::parallel_for(
-      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
+      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
         a(i, j, k, v) = leftRecv(i, j, k, v);
         a(i, j, cf.nck - cf.ng + k, v) = rightRecv(i, j, k, v);
       });
@@ -240,21 +331,12 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
             , rightRecvSubArray, leftSendSubArray, rightSendSubArray);
       break;
     case 1:
-      cuda_aware( rank, n_iterations, a, cf, mode, order
-                , leftSend, leftRecv, rightSend, rightRecv
-                , leftRecvSubArray, rightRecvSubArray, leftSendSubArray
-                , rightSendSubArray
-                , direction
-                );
+      cuda_pack( rank, n_iterations, a, cf, mode, order
+                , leftSend, leftRecv, leftSend_H, leftRecv_H, direction, 0);
       break;
     case 2:
-      copy( rank, n_iterations, a, cf, mode, order
-          , leftSend, leftRecv, rightSend, rightRecv
-          , leftRecvSubArray, rightRecvSubArray, leftSendSubArray
-          , rightSendSubArray, leftSend_H, leftRecv_H
-          , rightSend_H, rightRecv_H
-          , direction
-          );
+      cuda_pack( rank, n_iterations, a, cf, mode, order
+                , leftSend, leftRecv, leftSend_H, leftRecv_H, direction, 1);
       break;
     default:
       cout << "Invalid Directive\n";
@@ -262,18 +344,12 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
   }
 }
 
-void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int direction ) {
+void ping_pong_n_dim( int max_i, int n_iterations, int buffers, int mode, int direction ) {
 
   ofstream file;
 
   MPI_Datatype leftRecvSubArray, rightRecvSubArray;
   MPI_Datatype leftSendSubArray, rightSendSubArray;
-
-  //MPI_Datatype bottomRecvSubArray, topRecvSubArray;
-  //MPI_Datatype bottomSendSubArray, topSendSubArray;
-
-  //MPI_Datatype downRecvSubArray, upRecvSubArray;
-  //MPI_Datatype downSendSubArray, upSendSubArray;
 
   struct inputConfig cf = executeConfiguration( max_i );
   auto start       = std::chrono::high_resolution_clock::now(); 
@@ -313,10 +389,6 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int 
   int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
   int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
 
-
-
-  //switch ( direction ) {
-    //case 0:
   if ( direction == 0 ) {
       int leftRecvStarts[4]  = { 0, 0, 0, 0 };
       int leftSendStarts[4]  = { cf.ng, 0, 0, 0 };
@@ -387,14 +459,37 @@ void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int 
       //break;
   }
 
-  FS4D leftSend  = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+  FS4D leftSend, leftRecv, rightSend, rightRecv;
+  if (direction == 0) { 
+    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  FS4D leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  FS4D rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
                                         cf.ng,cf.ngj,cf.ngk,cf.nvt);
-  FS4D rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
+   } else if (direction == 1) {
+    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
+    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
+    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+                                        cf.ngi,cf.ng,cf.ngk,cf.nvt);
+    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
+  } else if (direction == 2) {
+    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
+                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
+    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
+                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
+    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
+                                        cf.ngi,cf.ngj,cf.ng,cf.nvt);
+    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
+                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
+  } else {
+    assert("Invalid direction argument." && 0);
+  }
 
   FS4DH leftSend_H  = Kokkos::create_mirror_view(leftSend); 
   FS4DH leftRecv_H  = Kokkos::create_mirror_view(leftRecv); 
