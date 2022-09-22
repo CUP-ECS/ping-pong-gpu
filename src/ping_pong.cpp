@@ -49,8 +49,6 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
               , int mode, int order, FS4D send, FS4D recv, FS4DH send_H
               , FS4DH recv_H, int direction, int copy
                ) {
-//void cuda_aware( int rank, int n_iterations, FS4D a, FS1D aR, FS1D aS, inputConfig cf, 
-//                 int mode, int order ) {
 
   auto xPol = Kokkos::MDRangePolicy<Kokkos::Rank<4>>( {0, 0, 0, 0},
                                             {cf.ng, cf.ngj, cf.ngk, cf.nvt} );
@@ -65,25 +63,19 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
 	case 0:
 	   Kokkos::parallel_for(
 	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    send( i, j, k, v ) = a( i + nSend*cf.ng, j, k, v );
-		 }
+		 send( i, j, k, v ) = a( i, j, k, v );
 	      });
 	   break;
 	case 1:
 	   Kokkos::parallel_for(
 	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    send( i, j, k, v ) = a( i, j + nSend*cf.ng, k, v );
-		 }
+		 send( i, j, k, v ) = a( i, j, k, v );
 	      });
 	   break;
 	case 2:
 	   Kokkos::parallel_for(
 	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    send( i, j, k, v ) = a( i, j, k + nSend*cf.ng, v );
-		 }
+		 send( i, j, k, v ) = a( i, j, k, v );
 	      });
 	   break;
      }
@@ -112,25 +104,19 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
 	case 0:
 	   Kokkos::parallel_for(
 	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    a(i + nSend*cf.ng, j, k, v) = recv(i, j, k, v);
-		 }
+		    a(i, j, k, v) = recv(i, j, k, v);
 	      });
 	   break;
 	case 1:
 	   Kokkos::parallel_for(
 	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    a(i, nSend*cf.ng + j, k, v) = recv(i, j, k, v);
-		 }
+		 a(i, j, k, v) = recv(i, j, k, v);
 	      });
 	   break;
 	case 2:
 	   Kokkos::parallel_for(
 	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    a(i, j, nSend*cf.ng + k, v) = recv(i, j, k, v);
-		 }
+		 a(i, j, k, v) = recv(i, j, k, v);
 	      });
 	   break;
      }
@@ -154,7 +140,7 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
       * we're basically trying to measure one-way multi-send latency/bandwidth
       * and want each direction to do the same work */
 
-     if (copy) {
+     if (copy) {  
         Kokkos::deep_copy(recv, recv_H);
      } 
 
@@ -162,43 +148,31 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
 	case 0:
 	   Kokkos::parallel_for(
 	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    a(i + nSend*cf.ng, j, k, v) = recv(i, j, k, v);
-		 }
+		 a(i, j, k, v) = recv(i, j, k, v);
 	      });
 	   Kokkos::parallel_for(
 	      xPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    send( i, j, k, v ) = a( nSend*cf.ng +  i, j, k, v );
-		 }
+		 send( i, j, k, v ) = a(i, j, k, v );
 	      });
 	   break;
 	case 1:
 	   Kokkos::parallel_for(
 	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    a(i, j + nSend*cf.ng, k, v) = recv(i, j, k, v);
-		 }
+		 a(i, j, k, v) = recv(i, j, k, v);
 	      });
 	   Kokkos::parallel_for(
 	      yPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    send(  i, j, k, v ) = a( i, nSend*cf.ng +  j, k, v );
-		 }
+		 send(  i, j, k, v ) = a( i, j, k, v );
 	      });
 	   break;
 	case 2:
 	   Kokkos::parallel_for(
 	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    a(i, j, k + nSend*cf.ng, v) = recv(i, j, k, v);
-		 }
+		 a(i, j, k, v) = recv(i, j, k, v);
 	      });
 	   Kokkos::parallel_for(
 	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 for (int nSend = 0; nSend <= 0; nSend++) {
-		    send(i, j, k, v ) = a( i, j, nSend*cf.ng +  k, v );
-		 }
+		 send(i, j, k, v ) = a( i, j, k, v );
 	      });
 	   break;
      }
@@ -344,7 +318,7 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
   }
 }
 
-void ping_pong_n_dim( int max_i, int n_iterations, int buffers, int mode, int direction ) {
+void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction ) {
 
   ofstream file;
 

@@ -1,10 +1,9 @@
-Basic regular mesh multi-ping pong benchmark
+Basic regular mesh ping pong benchmark
 
 Arguments:
   * -n: Length of one face of the mesh being communicated (resulting communciation is n * n * 5 * 3 doubles
   * -i: Number of iterations to perform
-  * -b: Number of buffers to send/recv on each direction of the ping pong (not yet supported)
-  * -d: Face of mesh to communicate (0 = x/y, 1 = x/z, 2 = y/z)
+  * -d: Face of mesh to communicate (0 = y/z, 1 = x/z, 2 = x/y)
   * -m: Mode to use for sending and receiving (0 = MPI datatypes, 1 = Hand gpu pack, gpu-aware MPI, 2 = Hand gpu pack, host memory send)
 
 Example command line:

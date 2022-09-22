@@ -9,13 +9,12 @@
 
 using namespace std;
 
-static char* shortargs = (char*)"n:d:b:i:m:";
+static char* shortargs = (char*)"n:d:i:m:";
 
 static option longargs[] = {
     // Basic simulation parameters
     { "size", required_argument, NULL, 'n' },
     { "direction", required_argument, NULL, 'd' },
-    { "buffers", required_argument, NULL, 'b' },
     { "iterations", required_argument, NULL, 'i' },
     { "mode", required_argument, NULL, 'm' }
 };
@@ -30,7 +29,6 @@ int main( int argc, char *argv[] ) {
 
   int max_i        = 20;
   int n_iterations = 1000;
-  int buffers      = 1;
   int mode         = 0;
   int direction    = 0;
 
@@ -53,13 +51,10 @@ int main( int argc, char *argv[] ) {
         case 'm':
             mode = atoi( optarg );
             break;
-        case 'b':
-            buffers = atoi( optarg );
-            break;
         }
     }
 
-    ping_pong_n_dim( max_i, n_iterations, buffers, mode, direction );
+    ping_pong_n_dim( max_i, n_iterations, mode, direction );
 
     MPI_Finalize();
     Kokkos::finalize();

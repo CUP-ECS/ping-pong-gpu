@@ -69,4 +69,4 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
               );
 
 
-void ping_pong_n_dim( int max_i, int n_iterations, int dimension, int mode, int direction );
+void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction );
