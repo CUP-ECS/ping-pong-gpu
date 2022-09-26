@@ -22,12 +22,10 @@ spack env activate -d ${SPACK_ENVIRONMENT_HOME}
 echo "Changing to ${PINGPONG_BINARY_HOME} to run"
 cd ${PINGPONG_BINARY_HOME}
 
-#for d in 0 1 2
-for d in 2
+for d in 0 1 2
 do 
   echo "Testing ping pong direction=$d"
-  # for m in 0 1 2
-  for m in 2
+  for m in 0 1 2
   do
   echo "Testing ping pong mode=$m"
   # for n in $MESH_SIZE
