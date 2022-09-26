@@ -40,7 +40,10 @@ target_link_libraries(ping_pong PUBLIC Kokkos::kokkos)
 target_link_libraries(ping_pong PUBLIC MPI::MPI_CXX)
 
 #set_target_properties(ping_pong PROPERTIES CUDA_ARCHITECTURES "80")
-#target_link_libraries(ping_pong PRIVATE tempi::tempi)
+if (ENABLE_TEMPI)
+    target_link_libraries(ping_pong PRIVATE tempi::tempi)
+endif(ENABLE_TEMPI)
+
 #target_link_libraries(ping_pong PUBLIC nvtx_pmpi)
 
 # set install destination
@@ -49,15 +52,3 @@ install(TARGETS ping_pong
 
 # print build strings
 message("Ping Pong Build Time ${BUILD_TIME}")
-
-# set kokkos architecture flags depending on detected cuda architecture
-#if ("${TEST_ARCH_readable}" STREQUAL "sm_35")
-#set(Kokkos_ARCH_KEPLER35 ON CACHE BOOL "")
-#elseif ("${TEST_ARCH_readable}" STREQUAL "sm_60")
-#set(Kokkos_ARCH_PASCAL60 ON CACHE BOOL "")
-#elseif ("${TEST_ARCH_readable}" STREQUAL "sm_61")
-#set(Kokkos_ARCH_PASCAL61 ON CACHE BOOL "")
-#elseif ("${TEST_ARCH_readable}" STREQUAL "sm_70")
-#message("TURNING ON VOLTA70")
-#set(Kokkos_ARCH_VOLTA70 ON CACHE BOOL "")
-#endif()
