@@ -8,14 +8,26 @@
 #SBATCH --output=PingPongGPU.%j.log # Standard output and error log
 #SBATCH --partition=cup-ecs
 
-SPACK_ENVIRONMENT_HOME=/users/bridges/workspace/ping-pong-gpu/build-hopper
-PINGPONG_BINARY_HOME=/users/bridges/workspace/ping-pong-gpu/build-hopper-mpich
+
+
+VAR="/users/bridges"
+
+
+if ["${PWD:0:${#VAR}}" = "$VAR"]; then
+     SPACK_ENVIRONMENT_HOME=/users/bridges/workspace/ping-pong-gpu/build-hopper
+     PINGPONG_BINARY_HOME=/users/bridges/workspace/ping-pong-gpu/build-hopper-mpich
+else
+     SPACK_ENVIRONMENT_HOME=~/ping-pong-gpu/build-hopper
+     PINGPONG_BINARY_HOME=~/ping-pong-gpu/build-hopper-mpich
+fi
+
+
 MESH_SIZE="100 200 400 600 800 1000"
 echo "Loading compiler"
 module load gcc/11.2.0
 
 echo "Loading spack development environment"
-source /users/bridges/spack/share/spack/setup-env.sh
+source ~/spack/share/spack/setup-env.sh
 spack env deactivate
 spack env activate -d ${SPACK_ENVIRONMENT_HOME}
 
