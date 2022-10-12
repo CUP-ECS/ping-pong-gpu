@@ -17,7 +17,7 @@ if ["${PWD:0:${#VAR}}" = "$VAR"]; then
      PINGPONG_BINARY_HOME=/users/bridges/workspace/ping-pong-gpu/build-hopper-openmpi
 else
      SPACK_ENVIRONMENT_HOME=~/ping-pong-gpu/build-hopper
-     PINGPONG_BINARY_HOME=~/workspace/ping-pong-gpu/build-hopper-openmpi
+     PINGPONG_BINARY_HOME=~/ping-pong-gpu/build-hopper-openmpi
 fi
 
 
