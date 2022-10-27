@@ -1,0 +1,31 @@
+#!/bin/bash
+
+### LSF Syntax
+#BSUB -nnodes 2
+##BSUB -W 720
+#BSUB -W 720
+#BSUB -e log.%J.err
+#BSUB -o log.%J.out
+#BSUB -J spectrum-ping-pong-gpu
+##BSUB q pbatch
+#BSUB q pdebug
+
+export SPECTRUMBIN=$(realpath $(HOME)/ping-pong-gpu/build-lassen-spectrum/ping_pong)
+export OUTDIR=$(realpath /usr/workspace/$(USER)/ping-pong-gpu/spectrum/)
+export TESTDIR=/p/gpfs1/$(USER)/ping-pong-gpu/spectru
+mkdir -p $TESTDIR
+cp ${SPECTRUMBIN} ${TESTDIR}
+
+export SPECTRUMTESTBIN=${TESTDIR}/ping_pong
+
+cd ${TESTDIR}
+
+for i in `seq -s ' '100 100 500` ; do
+#for i in 10 20 40 80 160; do
+#for i in 640; do
+    #lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off nsys profile -t cuda,mpi,osrt --mpi-impl=openmpi -o %q{OMPI_COMM_WORLD_RANK}_${i}_x_direct ${SPECTRUMBIN} $i 1000 4 0 0
+    lrun -M "-gpu" -N 2 -T 1 -g 1 --gpubind=off ${SPECTRUMTESTBIN} -n $i -i 500 -d 0 -m 1
+done
+
+mkdir -p ${OUTDIR}
+mv ./* ${OUTDIR}
