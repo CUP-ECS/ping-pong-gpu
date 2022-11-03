@@ -21,7 +21,6 @@
 #define FIESTA_HPP
 
 #include "Kokkos_Core.hpp"
-#include "debug.hpp"
 #include <fstream>
 #include <iomanip>
 #include <ostream>
