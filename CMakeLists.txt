@@ -6,7 +6,7 @@ project(Ping_Pong CXX C Fortran CUDA)
 
 #set(CMAKE_CXX_FLAGS "-DMPICH_SKIP_MPICXX -arch=sm_35")
 #set(CMAKE_CUDA_FLAGS "-DMPICH_SKIP_MPICXX -arch=sm_35")
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
 #set(CMAKE_CXX_COMPILER "${CMAKE_SOURCE_DIR}/kokkos/bin/nvcc_wrapper -ccbin xlc++") 
 

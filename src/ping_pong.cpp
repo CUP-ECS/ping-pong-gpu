@@ -115,7 +115,7 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
 	case 2:
 	   Kokkos::parallel_for(
 	      zPol, KOKKOS_LAMBDA( const int i, const int j, const int k, const int v ) {
-		 a(i, j, cf.ngk - cf.nk + k, v) = recv(i, j, k, v);
+		 a(i, j, cf.ngk - cf.ng + k, v) = recv(i, j, k, v);
 	      });
 	   break;
      }
@@ -265,47 +265,32 @@ void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction ) {
 
   // Set up subarray datatypes
   int bigsizes[4]  = { cf.ngi, cf.ngj, cf.ngk, cf.nvt };
-  int xsubsizes[4] = { cf.ng,  cf.ngj, cf.ngk, cf.nvt };
-  int ysubsizes[4] = { cf.ngi,  cf.ng, cf.ngk, cf.nvt };
-  int zsubsizes[4] = { cf.ngi,  cf.ngj, cf.ng, cf.nvt };
-  int leftRecvStarts[4], leftSendStart[4], rightRecvStarts[4], rightSendStarts[4];
+  int subsizes[4] = { cf.ngi,  cf.ngj, cf.ngk, cf.nvt };
+  int leftRecvStarts[4] = {0, 0, 0, 0}, 
+      leftSendStarts[4] = {0, 0, 0, 0},
+      rightRecvStarts[4] = {0, 0, 0, 0},
+      rightSendStarts[4] = {0, 0, 0, 0};;
 
-  switch(direction) {
-  case 0:
-      leftRecvStarts[4]  = { 0, 0, 0, 0 };
-      leftSendStarts[4]  = { cf.ng, 0, 0, 0 };
-      rightRecvStarts[4] = { cf.ngi - cf.ng, 0, 0, 0 };
-      rightSendStarts[4] = { cf.nci, 0, 0, 0 };
-      break;
-  case 1:
-      leftRecvStarts[4]  = { 0, 0, 0, 0 };
-      leftSendStarts[4]  = { 0, cf.ng, 0, 0 };
-      rightRecvStarts[4] = { 0, cf.ngj - cf.ng, 0, 0 };
-      rightSendStarts[4] = { 0, cf.ncj, 0, 0 };
-      break;
-  case 2:
-      leftRecvStarts[4]  = { 0, 0, 0, 0 };
-      leftSendStarts[4]  = { 0, 0, cf.ng, 0 };
-      rightRecvStarts[4] = { 0, 0, cf.ngk - cf.ng, 0 };
-      rightSendStarts[4] = { 0, 0, cf.nck, 0 };
-      break;
-  default:
-      assert("Invalid direction argument." && 0);
-      break;
-  }
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftRecvStarts
+  // Code below assumes ngi == ngj == ngk
+  leftSendStarts[direction] = cf.ng;
+  rightRecvStarts[direction] = cf.ngi - cf.ng;
+  rightSendStarts[direction] = cf.nci;
+  subsizes[direction] = cf.ng;
+
+  // Now create hte subarrays
+  MPI_Type_create_subarray( 4, bigsizes, subsizes, leftRecvStarts
                           , order, MPI_DOUBLE, &leftRecvSubArray );
   MPI_Type_commit( &leftRecvSubArray );
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, leftSendStarts
+  MPI_Type_create_subarray( 4, bigsizes, subsizes, leftSendStarts
                           , order, MPI_DOUBLE, &leftSendSubArray );
   MPI_Type_commit( &leftSendSubArray );
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightRecvStarts
+  MPI_Type_create_subarray( 4, bigsizes, subsizes, rightRecvStarts
                           , order, MPI_DOUBLE, &rightRecvSubArray );
   MPI_Type_commit( &rightRecvSubArray );
 
-  MPI_Type_create_subarray( 4, bigsizes, xsubsizes, rightSendStarts
+  MPI_Type_create_subarray( 4, bigsizes, subsizes, rightSendStarts
                           , order, MPI_DOUBLE, &rightSendSubArray );
   MPI_Type_commit( &rightSendSubArray );
 
