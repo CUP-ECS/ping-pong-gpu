@@ -12,18 +12,6 @@
 
 using namespace std;
 
-//#define DIRECT
-//#define CUDA_AWARE
-//#define COPY
-
-//FS4D leftSend, leftRecv;
-//FS4D rightSend, rightRecv;
-
-
-//mpiBuffers::mpiBuffers(struct inputConfig cf) {
-//
-//}
-
 void direct( int rank, int n_iterations, FS4D a
            , inputConfig cf, int mode, int order
            , MPI_Datatype leftRecvSubArray, MPI_Datatype rightRecvSubArray
@@ -83,11 +71,10 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
         sendbuf = send_H.data();
         recvbuf = recv_H.data();
      } else {
+        Kokkos::fence();
         sendbuf = send.data();
         recvbuf = recv.data();
      }
-
-     Kokkos::fence();
   
      int temp_rank = rank + 1;
      MPI_Send( sendbuf, cf.ng*cf.ngj*cf.ngk*(cf.nvt), MPI_DOUBLE
@@ -192,18 +179,12 @@ void cuda_pack( int rank, int n_iterations, FS4D a, inputConfig cf
 }
 
 void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
-              , int mode, int order, FS4D leftSend, FS4D leftRecv, FS4D rightSend
-              , FS4D rightRecv, MPI_Datatype leftRecvSubArray
-              , MPI_Datatype rightRecvSubArray, MPI_Datatype leftSendSubArray
-              , MPI_Datatype rightSendSubArray, FS4DH leftSend_H, FS4DH leftRecv_H
-              , FS4DH rightSend_H, FS4DH rightRecv_H, int direction
+              , int mode, int order, FS4D send, FS4D recv
+              , MPI_Datatype leftRecvSubArray, MPI_Datatype rightRecvSubArray
+              , MPI_Datatype leftSendSubArray, MPI_Datatype rightSendSubArray
+              , FS4DH send_H, FS4DH recv_H, int direction
               ) {
 
-//void send_recv( int rank, int n_iterations, FS4D a, 
-//                FS1D aR,  FS1D aS, inputConfig cf, int mode, int order, FS4D leftSend,
-//                FS4D leftRecv, FS4D rightSend, FS4D rightRecv ) {
-//void send_recv( int rank, int n_iterations, FS4D a, 
-//                FS1D aR,  FS1D aS, inputConfig cf, int mode, int order ) {
   switch (mode) {
     case 0:
       direct( rank, n_iterations, a, cf, mode, order, leftRecvSubArray
@@ -211,11 +192,11 @@ void send_recv( int rank, int n_iterations, FS4D a, inputConfig cf
       break;
     case 1:
       cuda_pack( rank, n_iterations, a, cf, mode, order
-                , leftSend, leftRecv, leftSend_H, leftRecv_H, direction, 0);
+                , send, recv, send_H, recv_H, direction, 0);
       break;
     case 2:
       cuda_pack( rank, n_iterations, a, cf, mode, order
-                , leftSend, leftRecv, leftSend_H, leftRecv_H, direction, 1);
+                , send, recv, send_H, recv_H, direction, 1);
       break;
     default:
       cout << "Invalid Directive\n";
@@ -237,19 +218,17 @@ void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction ) {
   double latency   = duration / 2;
   double bandwidth = 10 / duration;
 
-  FS4D a  = Kokkos::View<double ****, FS_LAYOUT>( "data", cf.ngi, cf.ngj, cf.ngk,  cf.nvt );
-
   int rank, num_procs;
   MPI_Comm_rank( MPI_COMM_WORLD, &rank );
   MPI_Comm_size( MPI_COMM_WORLD, &num_procs );
 
-  MPI_Comm node_comm;
-  MPI_Comm_split_type( MPI_COMM_WORLD, MPI_COMM_TYPE_SHARED, rank,
-                       MPI_INFO_NULL, &node_comm );
-  int node_size, node_rank;
-  MPI_Comm_rank( node_comm, &node_rank );
-  MPI_Comm_size( node_comm, &node_size );
-  MPI_Comm_free( &node_comm );
+#if 0
+  std::cout << "Creating array on rank " << rank << " with size "
+            << cf.ngi << " " << cf.ngj << " " << cf.ngk << " " << cf.nvt << "\n"
+            << std::flush;
+#endif
+
+  FS4D a  = Kokkos::View<double ****, FS_LAYOUT>( "data", cf.ngi, cf.ngj, cf.ngk, cf.nvt);
 
   int max_bytes = pow( 2, max_i - 1 ) * sizeof( float );
   int order;
@@ -269,7 +248,7 @@ void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction ) {
   int leftRecvStarts[4] = {0, 0, 0, 0}, 
       leftSendStarts[4] = {0, 0, 0, 0},
       rightRecvStarts[4] = {0, 0, 0, 0},
-      rightSendStarts[4] = {0, 0, 0, 0};;
+      rightSendStarts[4] = {0, 0, 0, 0};
 
   // Code below assumes ngi == ngj == ngk
   leftSendStarts[direction] = cf.ng;
@@ -277,7 +256,36 @@ void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction ) {
   rightSendStarts[direction] = cf.nci;
   subsizes[direction] = cf.ng;
 
-  // Now create hte subarrays
+#if 0
+  std::cout << "Overall array is " 
+            << cf.ngi << " x " << cf.ngj << " x " << cf.ngk << " x " << cf.nvt
+            << "\n";
+
+  std::cout << "Subarray size is " 
+            << subsizes[0] << " x " << subsizes[1] 
+            << " x " << subsizes[2] << " x " << subsizes[3]
+            << "\n";
+
+  std::cout << "Left recv subarray starts at " 
+            << leftRecvStarts[0] << " x " << leftRecvStarts[1] 
+            << " x " << leftRecvStarts[2] << " x " << leftRecvStarts[3]
+            << "\n";
+  std::cout << "Left send subarray starts at " 
+            << leftSendStarts[0] << " x " << leftSendStarts[1] 
+            << " x " << leftSendStarts[2] << " x " << leftSendStarts[3]
+            << "\n";
+  std::cout << "Right send subarray starts at " 
+            << rightSendStarts[0] << " x " << rightSendStarts[1] 
+            << " x " << rightSendStarts[2] << " x " << rightSendStarts[3]
+            << "\n";
+  std::cout << "Right recv subarray starts at " 
+            << rightRecvStarts[0] << " x " << rightRecvStarts[1] 
+            << " x " << rightRecvStarts[2] << " x " << rightRecvStarts[3]
+            << "\n";
+  std::cout << std::flush;
+#endif
+
+  // Now create the subarrays
   MPI_Type_create_subarray( 4, bigsizes, subsizes, leftRecvStarts
                           , order, MPI_DOUBLE, &leftRecvSubArray );
   MPI_Type_commit( &leftRecvSubArray );
@@ -294,53 +302,25 @@ void ping_pong_n_dim( int max_i, int n_iterations, int mode, int direction ) {
                           , order, MPI_DOUBLE, &rightSendSubArray );
   MPI_Type_commit( &rightSendSubArray );
 
-  FS4D leftSend, leftRecv, rightSend, rightRecv;
-  if (direction == 0) { 
-    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
-                                       cf.ng,cf.ngj,cf.ngk,cf.nvt);
-    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
-                                       cf.ng,cf.ngj,cf.ngk,cf.nvt);
-    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
-                                        cf.ng,cf.ngj,cf.ngk,cf.nvt);
-    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
-                                       cf.ng,cf.ngj,cf.ngk,cf.nvt);
-   } else if (direction == 1) {
-    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
-                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
-    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
-                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
-    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
-                                        cf.ngi,cf.ng,cf.ngk,cf.nvt);
-    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
-                                       cf.ngi,cf.ng,cf.ngk,cf.nvt);
-  } else if (direction == 2) {
-    leftSend = Kokkos::View<double****,FS_LAYOUT>("leftSend",
-                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
-    leftRecv  = Kokkos::View<double****,FS_LAYOUT>("leftRecv",
-                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
-    rightSend = Kokkos::View<double****,FS_LAYOUT>("rightSend",
-                                        cf.ngi,cf.ngj,cf.ng,cf.nvt);
-    rightRecv = Kokkos::View<double****,FS_LAYOUT>("rightRecv",
-                                       cf.ngi,cf.ngj,cf.ng,cf.nvt);
-  } else {
-    assert("Invalid direction argument." && 0);
-  }
-
-  FS4DH leftSend_H  = Kokkos::create_mirror_view(leftSend); 
-  FS4DH leftRecv_H  = Kokkos::create_mirror_view(leftRecv); 
-  FS4DH rightSend_H = Kokkos::create_mirror_view(rightSend); 
-  FS4DH rightRecv_H = Kokkos::create_mirror_view(leftRecv); 
+  // And our buffers to send and receive with if we're not direct MPI
+  FS4D send, recv;
+  send = Kokkos::View<double****,FS_LAYOUT>("send", subsizes[0], subsizes[1],
+                                            subsizes[2], subsizes[3]);
+  recv = Kokkos::View<double****,FS_LAYOUT>("recv",  subsizes[0], subsizes[1],
+                                            subsizes[2], subsizes[3]);
+  FS4DH send_H = Kokkos::create_mirror_view(send); 
+  FS4DH recv_H = Kokkos::create_mirror_view(recv); 
 
   if ( rank == 0 )
     start = std::chrono::high_resolution_clock::now(); 
 
   for ( int i = 0; i < n_iterations; i++ ) {
-    send_recv( rank, n_iterations, a, cf, mode, order
-             , leftSend, leftRecv, rightSend, rightRecv, leftRecvSubArray, rightRecvSubArray
-             , leftSendSubArray, rightSendSubArray, leftSend_H, leftRecv_H, rightSend_H
-             , rightRecv_H, direction
+    send_recv( rank, n_iterations, a, cf, mode, order, send, recv
+             , leftRecvSubArray, rightRecvSubArray, leftSendSubArray, rightSendSubArray
+             , send_H, recv_H, direction
              );
   }
+
   if (rank == 0) {
     stop = std::chrono::high_resolution_clock::now();
 

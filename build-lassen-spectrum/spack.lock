@@ -6,24 +6,24 @@
   },
   "roots": [
     {
-      "hash": "xhozn5h7xdgp3pyz7xzfwgo47tf7t4qg",
-      "spec": "spectrum-mpi%gcc@7.3.1"
+      "hash": "y7ttldzglfl7cniglizglree4bv7flb7",
+      "spec": "spectrum-mpi%gcc@8.3.1"
     },
     {
-      "hash": "5tsqhsznn3jhrghob2stuk4k5xk5ostw",
-      "spec": "cuda%gcc@7.3.1"
+      "hash": "jc3swrjhqjxjpk3ucmiabalor53ckkdx",
+      "spec": "cuda%gcc@8.3.1"
     },
     {
-      "hash": "krixmdsipfqgwvyyiktcxgeifixtoieb",
+      "hash": "sxopwglav2jtyj5ohy3tfc6vpno2u2lx",
       "spec": "cmake"
     },
     {
-      "hash": "rkxpmro7o5luxypqs77cs6qytyb3ivsu",
-      "spec": "kokkos%gcc@7.3.1+cuda+cuda_lambda+wrapper cuda_arch=70 std=14"
+      "hash": "33wfvtue67uex2ehtnp3xfnuqx5wuawt",
+      "spec": "kokkos%gcc@8.3.1+cuda+cuda_lambda+wrapper cuda_arch=70 std=14"
     }
   ],
   "concrete_specs": {
-    "xhozn5h7xdgp3pyz7xzfwgo47tf7t4qg": {
+    "y7ttldzglfl7cniglizglree4bv7flb7": {
       "name": "spectrum-mpi",
       "version": "rolling-release",
       "arch": {
@@ -41,7 +41,7 @@
       },
       "compiler": {
         "name": "gcc",
-        "version": "7.3.1"
+        "version": "8.3.1"
       },
       "namespace": "builtin",
       "parameters": {
@@ -53,14 +53,14 @@
         "ldlibs": []
       },
       "external": {
-        "path": "/usr/tce/packages/spectrum-mpi/spectrum-mpi-rolling-release-gcc-7.3.1",
+        "path": "/usr/tce/packages/spectrum-mpi/spectrum-mpi-rolling-release-gcc-8.3.1",
         "module": null,
         "extra_attributes": {}
       },
       "package_hash": "qz4jihn73dodnofdzmurm3wgl6vn6tjjjwmn6j3v2dt6cuzg4vvq====",
-      "hash": "xhozn5h7xdgp3pyz7xzfwgo47tf7t4qg"
+      "hash": "y7ttldzglfl7cniglizglree4bv7flb7"
     },
-    "5tsqhsznn3jhrghob2stuk4k5xk5ostw": {
+    "jc3swrjhqjxjpk3ucmiabalor53ckkdx": {
       "name": "cuda",
       "version": "11.7.0",
       "arch": {
@@ -78,7 +78,7 @@
       },
       "compiler": {
         "name": "gcc",
-        "version": "7.3.1"
+        "version": "8.3.1"
       },
       "namespace": "builtin",
       "parameters": {
@@ -97,9 +97,9 @@
         "extra_attributes": {}
       },
       "package_hash": "oa6m53wii6kwaodmp4t45lpqvln5t434xmp7hvxjx7ezalhaqgpq====",
-      "hash": "5tsqhsznn3jhrghob2stuk4k5xk5ostw"
+      "hash": "jc3swrjhqjxjpk3ucmiabalor53ckkdx"
     },
-    "krixmdsipfqgwvyyiktcxgeifixtoieb": {
+    "sxopwglav2jtyj5ohy3tfc6vpno2u2lx": {
       "name": "cmake",
       "version": "3.23.1",
       "arch": {
@@ -117,7 +117,7 @@
       },
       "compiler": {
         "name": "gcc",
-        "version": "7.3.1"
+        "version": "8.3.1"
       },
       "namespace": "builtin",
       "parameters": {
@@ -139,9 +139,9 @@
         "extra_attributes": {}
       },
       "package_hash": "zfctaaglugx5mi5ctbs2go7qibzxajgw4lqq3rr52urayws3gtiq====",
-      "hash": "krixmdsipfqgwvyyiktcxgeifixtoieb"
+      "hash": "sxopwglav2jtyj5ohy3tfc6vpno2u2lx"
     },
-    "rkxpmro7o5luxypqs77cs6qytyb3ivsu": {
+    "33wfvtue67uex2ehtnp3xfnuqx5wuawt": {
       "name": "kokkos",
       "version": "3.6.01",
       "arch": {
@@ -159,7 +159,7 @@
       },
       "compiler": {
         "name": "gcc",
-        "version": "7.3.1"
+        "version": "8.3.1"
       },
       "namespace": "builtin",
       "parameters": {
@@ -214,14 +214,14 @@
       "dependencies": [
         {
           "name": "cmake",
-          "hash": "krixmdsipfqgwvyyiktcxgeifixtoieb",
+          "hash": "sxopwglav2jtyj5ohy3tfc6vpno2u2lx",
           "type": [
             "build"
           ]
         },
         {
           "name": "cuda",
-          "hash": "5tsqhsznn3jhrghob2stuk4k5xk5ostw",
+          "hash": "jc3swrjhqjxjpk3ucmiabalor53ckkdx",
           "type": [
             "build",
             "link"
@@ -229,16 +229,16 @@
         },
         {
           "name": "kokkos-nvcc-wrapper",
-          "hash": "2xkgjou74khuns6kjtzygskyem24pdel",
+          "hash": "cttaa544e6iiijlotr6aqcxhuhbpry67",
           "type": [
             "build",
             "link"
           ]
         }
       ],
-      "hash": "rkxpmro7o5luxypqs77cs6qytyb3ivsu"
+      "hash": "33wfvtue67uex2ehtnp3xfnuqx5wuawt"
     },
-    "2xkgjou74khuns6kjtzygskyem24pdel": {
+    "cttaa544e6iiijlotr6aqcxhuhbpry67": {
       "name": "kokkos-nvcc-wrapper",
       "version": "3.2.00",
       "arch": {
@@ -256,7 +256,7 @@
       },
       "compiler": {
         "name": "gcc",
-        "version": "7.3.1"
+        "version": "8.3.1"
       },
       "namespace": "builtin",
       "parameters": {
@@ -272,14 +272,14 @@
       "dependencies": [
         {
           "name": "cmake",
-          "hash": "krixmdsipfqgwvyyiktcxgeifixtoieb",
+          "hash": "sxopwglav2jtyj5ohy3tfc6vpno2u2lx",
           "type": [
             "build"
           ]
         },
         {
           "name": "cuda",
-          "hash": "5tsqhsznn3jhrghob2stuk4k5xk5ostw",
+          "hash": "jc3swrjhqjxjpk3ucmiabalor53ckkdx",
           "type": [
             "build",
             "link"
@@ -287,14 +287,14 @@
         },
         {
           "name": "spectrum-mpi",
-          "hash": "xhozn5h7xdgp3pyz7xzfwgo47tf7t4qg",
+          "hash": "y7ttldzglfl7cniglizglree4bv7flb7",
           "type": [
             "build",
             "link"
           ]
         }
       ],
-      "hash": "2xkgjou74khuns6kjtzygskyem24pdel"
+      "hash": "cttaa544e6iiijlotr6aqcxhuhbpry67"
     }
   }
 }
