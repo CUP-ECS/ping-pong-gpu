@@ -13,9 +13,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # MPI
 find_package(MPI REQUIRED)
 find_package(Kokkos 3 REQUIRED)
-#include_directories(SYSTEM ${MPI_INCLUDE_PATH})
-#include_directories(SYSTEM ${CUDA_HOME}/include/)
-#set(CMAKE_CUDA_ARCHITECTURES 80)
 
 if (ENABLE_TEMPI)
     set(TEMPI_ENABLE_KAHIP OFF)
